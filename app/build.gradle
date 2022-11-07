@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+apply from: "$rootDir/plugins/android.gradle"
+
+android {
+    namespace "com.eliascoelho911.sdui.sample"
+
+    defaultConfig {
+        applicationId "com.eliascoelho911.sdui.sample"
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // Android
+    implementation Libs.coreKtx
+    implementation Libs.lifecycleRuntimeKtx
+
+    // Koin
+    implementation Libs.koin
+}

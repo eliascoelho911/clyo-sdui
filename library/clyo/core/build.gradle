@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlinx-serialization'
+
+apply from: "$rootDir/plugins/android.gradle"
+
+android {
+    namespace 'com.eliascoelho911.notate.clyo.core'
+}
+
+dependencies {
+    // Kotlin
+    implementation Libs.kotlinSerializationJson
+}
