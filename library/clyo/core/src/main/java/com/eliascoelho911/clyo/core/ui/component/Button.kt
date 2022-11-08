@@ -1,7 +1,7 @@
-package com.eliascoelho911.notate.clyo.core.ui.component
+package com.eliascoelho911.clyo.core.ui.component
 
 import androidx.annotation.StyleRes
-import com.eliascoelho911.notate.clyo.core.ui.action.Action
+import com.eliascoelho911.clyo.core.ui.action.Action
 
 data class Button(
     @BindProperty("text")

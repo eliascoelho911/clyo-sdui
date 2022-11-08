@@ -1,4 +1,4 @@
-package com.eliascoelho911.notate.clyo.core.data
+package com.eliascoelho911.clyo.core.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,6 +1,6 @@
-package com.eliascoelho911.notate.clyo.core.ui.layout
+package com.eliascoelho911.clyo.core.ui.layout
 
-import com.eliascoelho911.notate.clyo.core.ui.component.Component
+import com.eliascoelho911.clyo.core.ui.component.Component
 
 abstract class Layout {
     private val components = ArrayDeque<Component>()

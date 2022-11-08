@@ -5,7 +5,7 @@ apply plugin: 'kotlinx-serialization'
 apply from: "$rootDir/plugins/android.gradle"
 
 android {
-    namespace 'com.eliascoelho911.notate.clyo.core'
+    namespace 'com.eliascoelho911.clyo.core'
 }
 
 dependencies {
