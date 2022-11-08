@@ -1,6 +1,4 @@
-package com.eliascoelho911.clyo.core.ui.layout
-
-import com.eliascoelho911.clyo.core.ui.component.Component
+package com.eliascoelho911.clyo.core.ui
 
 abstract class Layout {
     private val components = ArrayDeque<Component>()
