@@ -29,3 +29,7 @@ android {
         enabled = true
     }
 }
+
+dependencies {
+    implementation Libs.kotlin
+}

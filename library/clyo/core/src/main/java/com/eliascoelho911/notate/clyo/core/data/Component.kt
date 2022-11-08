@@ -8,5 +8,5 @@ import kotlinx.serialization.json.JsonObject
 data class ComponentData(
     @SerialName("type") val type: String,
     @SerialName("properties") val properties: JsonObject,
-    @SerialName("onClickActions") val onClickActions: List<Action>
+    @SerialName("onClickActions") val onClickActions: List<ActionData>
 )

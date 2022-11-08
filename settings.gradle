@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "notate-android"
 include ':app'
 include ':library:clyo:core'
+include ':library:clyo:material3'

@@ -8,5 +8,5 @@ data class ClyoData(
     @SerialName("root")
     val root: LayoutData,
     @SerialName("onInitAction")
-    val onInitAction: Action
+    val onInitAction: ActionData
 )

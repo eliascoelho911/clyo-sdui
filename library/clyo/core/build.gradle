@@ -11,4 +11,5 @@ android {
 dependencies {
     // Kotlin
     implementation Libs.kotlinSerializationJson
+    implementation Libs.kotlinReflect
 }

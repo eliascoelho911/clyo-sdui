@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
 @Serializable
-data class Action(
+data class ActionData(
     @SerialName("type")
     val type: String,
     @SerialName("metadata")
