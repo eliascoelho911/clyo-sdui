@@ -1,0 +1,10 @@
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'kotlinx-serialization'
+
+apply from: "$rootDir/plugins/kotlin.gradle"
+
+dependencies {
+    // Kotlin
+    implementation Libs.kotlinSerializationJson
+    implementation Libs.kotlinReflect
+}

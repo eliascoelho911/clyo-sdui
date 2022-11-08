@@ -1,0 +1,7 @@
+apply plugin: 'org.jetbrains.kotlin.jvm'
+
+apply from: "$rootDir/plugins/kotlin.gradle"
+
+dependencies {
+    implementation project(LocalLibs.clyoCore)
+}

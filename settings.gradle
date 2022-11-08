@@ -14,5 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "notate-android"
 include ':app'
-include ':library:clyo:core'
+include ':library:clyo:core:kotlin'
 include ':library:clyo:android'
+include ':library:clyo:test'
