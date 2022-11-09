@@ -1,7 +1,7 @@
 package com.eliascoelho911.clyo.test.component
 
 import com.eliascoelho911.clyo.core.component.Component
-import com.eliascoelho911.clyo.core.data.component.ComponentData
+import com.eliascoelho911.clyo.core.data.ComponentData
 import kotlin.test.assertEquals
 
 inline fun <reified T : Component> ComponentData.assertCreationSuccess(expected: T) {

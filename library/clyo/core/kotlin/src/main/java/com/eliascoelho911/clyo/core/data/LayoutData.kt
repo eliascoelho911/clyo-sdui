@@ -1,6 +1,5 @@
 package com.eliascoelho911.clyo.core.data
 
-import com.eliascoelho911.clyo.core.data.component.ComponentData
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

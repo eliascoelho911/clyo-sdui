@@ -3,6 +3,7 @@ object Versions {
     const val kotlin = "1.7.10"
     const val coroutines = "1.3.9"
     const val kotlinSerialization = "1.4.1"
+    const val kotlinKSP = "1.7.10-1.0.6"
 
     // Android
     const val androidCoreKtx = "1.9.0"

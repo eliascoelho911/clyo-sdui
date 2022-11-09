@@ -1,7 +1,7 @@
 package com.eliascoelho911.clyo.core.component
 
-import com.eliascoelho911.clyo.core.data.component.ComponentData
+import com.eliascoelho911.clyo.core.data.ComponentData
 
-interface ComponentFactory<COMPONENT: Component> {
-    fun create(data: ComponentData): COMPONENT
+abstract class ComponentFactory {
+    abstract fun create(data: ComponentData): Component
 }
