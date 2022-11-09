@@ -14,18 +14,18 @@ class ButtonTest {
                 Button::class to ButtonProvider
             )
         }
-
-        ComponentData(
+        val componentData = ComponentData(
             key = "android.button",
             properties = mapOf(
                 "text" to JsonPrimitive("texto"),
                 "style" to JsonPrimitive(1)
             )
-        ).testComponentCreation(
-            expected = Button(
-                text = "texto",
-                styleRes = 1
-            )
         )
+        val expected = Button(
+            text = "texto",
+            styleRes = 1
+        )
+
+        componentData.testComponentCreation(expected)
     }
 }
