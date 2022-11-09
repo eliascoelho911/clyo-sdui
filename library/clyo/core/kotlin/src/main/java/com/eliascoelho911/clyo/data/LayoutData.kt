@@ -1,4 +1,4 @@
-package com.eliascoelho911.clyo.core.data
+package com.eliascoelho911.clyo.data
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName

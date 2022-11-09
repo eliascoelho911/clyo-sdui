@@ -1,7 +1,7 @@
 package com.eliascoelho911.clyo.android.components
 
-import com.eliascoelho911.clyo.core.data.ComponentData
-import com.eliascoelho911.clyo.core.startClyo
+import com.eliascoelho911.clyo.data.ComponentData
+import com.eliascoelho911.clyo.startClyo
 import com.eliascoelho911.clyo.test.component.testComponentCreation
 import kotlinx.serialization.json.JsonPrimitive
 import org.junit.Test

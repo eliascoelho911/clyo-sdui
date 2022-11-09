@@ -1,8 +1,8 @@
-package com.eliascoelho911.clyo.core
+package com.eliascoelho911.clyo
 
-import com.eliascoelho911.clyo.core.component.Component
-import com.eliascoelho911.clyo.core.component.ComponentProvider
-import com.eliascoelho911.clyo.core.component.ComponentProviderModule
+import com.eliascoelho911.clyo.component.Component
+import com.eliascoelho911.clyo.component.ComponentProvider
+import com.eliascoelho911.clyo.component.ComponentProviderModule
 import kotlin.reflect.KClass
 
 class ClyoEngine {

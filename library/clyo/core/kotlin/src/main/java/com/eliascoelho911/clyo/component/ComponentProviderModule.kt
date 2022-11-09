@@ -1,4 +1,4 @@
-package com.eliascoelho911.clyo.core.component
+package com.eliascoelho911.clyo.component
 
 import kotlin.reflect.KClass
 

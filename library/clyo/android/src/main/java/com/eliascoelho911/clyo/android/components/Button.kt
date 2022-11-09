@@ -1,9 +1,9 @@
 package com.eliascoelho911.clyo.android.components
 
 import androidx.annotation.StyleRes
-import com.eliascoelho911.clyo.core.component.Component
-import com.eliascoelho911.clyo.core.component.ComponentProvider
-import com.eliascoelho911.clyo.core.data.ComponentData
+import com.eliascoelho911.clyo.component.Component
+import com.eliascoelho911.clyo.component.ComponentProvider
+import com.eliascoelho911.clyo.data.ComponentData
 
 data class Button(
     val text: String,
