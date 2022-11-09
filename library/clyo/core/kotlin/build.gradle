@@ -5,6 +5,6 @@ apply from: "$rootDir/plugins/kotlin.gradle"
 
 dependencies {
     // Kotlin
-    implementation Libs.kotlinSerializationJson
+    api Libs.kotlinSerializationJson
     implementation Libs.kotlinReflect
 }
