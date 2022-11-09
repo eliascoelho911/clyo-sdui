@@ -8,12 +8,15 @@ import kotlin.reflect.KClass
 class ClyoEngine {
     private var componentProviderModule = ComponentProviderModule()
 
-    fun <COMPONENT : Component> associate(
-        componentKlass: KClass<COMPONENT>,
-        componentProvider: ComponentProvider<COMPONENT>
+    fun <COMPONENT : Component> addComponentProvider(
+        vararg pair: Pair<KClass<COMPONENT>, ComponentProvider<COMPONENT>>,
     ) {
-        componentProviderModule.associate(componentKlass, componentProvider)
+        componentProviderModule.addAll(pair.toMap())
     }
+
+    fun <COMPONENT : Component> findComponentProvider(
+        componentKlass: KClass<COMPONENT>
+    ): ComponentProvider<COMPONENT>? = componentProviderModule[componentKlass]
 
     fun close() {
         componentProviderModule.close()
