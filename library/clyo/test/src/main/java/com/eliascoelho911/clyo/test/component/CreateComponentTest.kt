@@ -1,8 +1,7 @@
 package com.eliascoelho911.clyo.test.component
 
-import com.eliascoelho911.clyo.core.Component
-import com.eliascoelho911.clyo.core.data.ComponentData
-import com.eliascoelho911.clyo.core.data.converter.createComponent
+import com.eliascoelho911.clyo.core.component.Component
+import com.eliascoelho911.clyo.core.data.component.ComponentData
 import kotlin.reflect.KClass
 
 inline fun <reified T : Component> ComponentData.assertCreationSuccess(componentClazz: KClass<T>) {

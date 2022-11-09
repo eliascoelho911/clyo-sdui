@@ -1,4 +1,4 @@
-package com.eliascoelho911.clyo.core.data.converter
+package com.eliascoelho911.clyo.core.data.component
 
 @Target(AnnotationTarget.PROPERTY)
 @Retention(AnnotationRetention.RUNTIME)
