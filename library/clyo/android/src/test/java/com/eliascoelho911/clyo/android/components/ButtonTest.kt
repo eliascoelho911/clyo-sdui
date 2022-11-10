@@ -1,9 +1,9 @@
 package com.eliascoelho911.clyo.android.components
 
-import com.eliascoelho911.clyo.data.ComponentData
 import com.eliascoelho911.clyo.startClyo
+import com.eliascoelho911.clyo.test.component.MockComponentData
+import com.eliascoelho911.clyo.test.component.MockPropertyValue
 import com.eliascoelho911.clyo.test.component.testComponentCreation
-import kotlinx.serialization.json.JsonPrimitive
 import org.junit.Test
 
 class ButtonTest {
@@ -14,11 +14,11 @@ class ButtonTest {
                 Button::class to ButtonProvider
             )
         }
-        val componentData = ComponentData(
-            key = "android.button",
+        val componentData = MockComponentData(
+            name = "android.button",
             properties = mapOf(
-                "text" to JsonPrimitive("texto"),
-                "style" to JsonPrimitive(1)
+                "text" to MockPropertyValue("texto"),
+                "style" to MockPropertyValue(1)
             )
         )
         val expected = Button(
