@@ -1,7 +1,7 @@
 package com.eliascoelho911.clyo
 
-import com.eliascoelho911.clyo.component.Component
-import com.eliascoelho911.clyo.component.ComponentProvider
+import com.eliascoelho911.clyo.data.component.ComponentData
+import com.eliascoelho911.clyo.data.component.ComponentDataCreator
 import kotlin.reflect.KClass
 
 object Clyo {
@@ -16,9 +16,9 @@ object Clyo {
         engine = null
     }
 
-    fun <COMPONENT : Component> findComponentProvider(
+    fun <COMPONENT : ComponentData> findComponentProvider(
         componentKlass: KClass<COMPONENT>
-    ): ComponentProvider<COMPONENT>? = engine?.findComponentProvider(componentKlass)
+    ): ComponentDataCreator<COMPONENT>? = engine?.findComponentProvider(componentKlass)
 }
 
 fun startClyo(block: ClyoEngine.() -> Unit) {
@@ -29,5 +29,5 @@ fun stopClyo() {
     Clyo.stop()
 }
 
-inline fun <reified COMPONENT : Component> findComponentProvider(): ComponentProvider<COMPONENT>? =
+inline fun <reified COMPONENT : ComponentData> findComponentProvider(): ComponentDataCreator<COMPONENT>? =
     Clyo.findComponentProvider(COMPONENT::class)

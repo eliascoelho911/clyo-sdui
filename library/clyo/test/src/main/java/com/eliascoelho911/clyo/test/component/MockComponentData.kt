@@ -1,8 +1,8 @@
 package com.eliascoelho911.clyo.test.component
 
-import com.eliascoelho911.clyo.data.ComponentDataContract
-import com.eliascoelho911.clyo.data.ComponentName
 import com.eliascoelho911.clyo.data.PropertyValue
+import com.eliascoelho911.clyo.data.component.ComponentDataContract
+import com.eliascoelho911.clyo.data.component.ComponentName
 
 data class MockComponentData(
     override val name: ComponentName,

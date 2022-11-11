@@ -6,12 +6,12 @@ import com.eliascoelho911.clyo.test.component.MockPropertyValue
 import com.eliascoelho911.clyo.test.component.testComponentCreation
 import org.junit.Test
 
-class ButtonTest {
+class ButtonDataTest {
     @Test
     fun `SHOULD convert by data WHEN all required properties are declared`() {
         startClyo {
             addComponentProvider(
-                Button::class to ButtonProvider
+                ButtonData::class to ButtonDataCreator
             )
         }
         val componentData = MockComponentData(
@@ -21,7 +21,7 @@ class ButtonTest {
                 "style" to MockPropertyValue(1)
             )
         )
-        val expected = Button(
+        val expected = ButtonData(
             text = "texto",
             styleRes = 1
         )

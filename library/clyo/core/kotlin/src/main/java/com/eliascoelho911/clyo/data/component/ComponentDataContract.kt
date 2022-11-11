@@ -1,4 +1,6 @@
-package com.eliascoelho911.clyo.data
+package com.eliascoelho911.clyo.data.component
+
+import com.eliascoelho911.clyo.data.PropertyValue
 
 typealias ComponentName = String
 

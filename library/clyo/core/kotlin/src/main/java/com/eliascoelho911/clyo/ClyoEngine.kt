@@ -1,24 +1,24 @@
 package com.eliascoelho911.clyo
 
-import com.eliascoelho911.clyo.component.Component
-import com.eliascoelho911.clyo.component.ComponentProvider
-import com.eliascoelho911.clyo.component.ComponentProviderModule
+import com.eliascoelho911.clyo.data.component.ComponentData
+import com.eliascoelho911.clyo.data.component.ComponentDataCreator
+import com.eliascoelho911.clyo.data.component.ComponentDataCreatorModule
 import kotlin.reflect.KClass
 
 class ClyoEngine {
-    private var componentProviderModule = ComponentProviderModule()
+    private var componentDataCreatorModule = ComponentDataCreatorModule()
 
-    fun <COMPONENT : Component> addComponentProvider(
-        vararg pair: Pair<KClass<COMPONENT>, ComponentProvider<COMPONENT>>,
+    fun <COMPONENT : ComponentData> addComponentProvider(
+        vararg pair: Pair<KClass<COMPONENT>, ComponentDataCreator<COMPONENT>>,
     ) {
-        componentProviderModule.addAll(pair.toMap())
+        componentDataCreatorModule.addAll(pair.toMap())
     }
 
-    fun <COMPONENT : Component> findComponentProvider(
+    fun <COMPONENT : ComponentData> findComponentProvider(
         componentKlass: KClass<COMPONENT>
-    ): ComponentProvider<COMPONENT>? = componentProviderModule[componentKlass]
+    ): ComponentDataCreator<COMPONENT>? = componentDataCreatorModule[componentKlass]
 
     fun close() {
-        componentProviderModule.close()
+        componentDataCreatorModule.close()
     }
 }
