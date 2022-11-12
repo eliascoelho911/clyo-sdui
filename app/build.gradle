@@ -4,10 +4,11 @@ plugins {
 
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlinx-serialization'
 apply from: "$rootDir/plugins/android.gradle"
 
 android {
-    namespace "com.eliascoelho911.sdui.sample"
+    namespace "com.eliascoelho911.clyo.sample"
 
     defaultConfig {
         applicationId "com.eliascoelho911.sdui.sample"
@@ -27,6 +28,17 @@ dependencies {
     // Android
     implementation Libs.coreKtx
     implementation Libs.lifecycleRuntimeKtx
+    implementation Libs.lifecycleViewModelKtx
+    implementation Libs.livedataKtx
+    implementation Libs.appCompat
+
+    // Kotlin
+    implementation Libs.kotlinSerializationJson
+
+    // Clyo
+    implementation project(LocalLibs.clyoCore)
+    implementation project(LocalLibs.clyoKotlinxSerialization)
+    implementation project(LocalLibs.clyoAndroid)
 
     // Koin
     implementation Libs.koin

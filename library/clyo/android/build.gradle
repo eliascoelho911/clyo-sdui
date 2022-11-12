@@ -9,8 +9,8 @@ android {
 
 dependencies {
     // LocalLibs
-    implementation project(LocalLibs.clyoCore)
-    implementation project(LocalLibs.clyoCoreAndroid)
+    api project(LocalLibs.clyoCore)
+    api project(LocalLibs.clyoCoreAndroid)
     testImplementation project(LocalLibs.clyoTest)
 
     // Android

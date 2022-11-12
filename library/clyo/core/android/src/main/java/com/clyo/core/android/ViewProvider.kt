@@ -2,16 +2,19 @@ package com.clyo.core.android
 
 import android.content.Context
 import android.view.View
-import android.widget.Button
-import com.eliascoelho911.clyo.data.component.ComponentName
+import com.eliascoelho911.clyo.data.component.ComponentData
+import kotlin.reflect.KClass
 
-object ViewProvider {
+class ViewProvider(
+    val componentViewCreators: Map<KClass<out ComponentData>, ComponentViewCreator<*>>
+) {
 
     @Suppress("UNCHECKED_CAST")
-    fun <T : View> provideByComponentName(context: Context, componentName: ComponentName): T {
-        return when (componentName) {
-            "android.button" -> Button(context)
-            else -> View(context)
-        } as T
+    inline fun <reified DATA : ComponentData> provide(
+        context: Context,
+        componentData: DATA
+    ): View {
+        val creator = componentViewCreators[DATA::class] as ComponentViewCreator<DATA>? ?: error("")
+        return creator.create(context, componentData)
     }
 }

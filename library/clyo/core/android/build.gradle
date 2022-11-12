@@ -14,4 +14,7 @@ dependencies {
 
     // Android
     implementation Libs.appCompat
+
+    // Kotlin
+    implementation Libs.kotlinReflect
 }

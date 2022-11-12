@@ -1,6 +1,7 @@
 object Libs {
     // Android
     const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+    const val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.androidCoreKtx}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val lifecycleViewModelKtx =
