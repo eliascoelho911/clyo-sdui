@@ -1,7 +1,6 @@
-package com.eliascoelho911.clyo.android
+package com.clyo.core.android
 
 import android.view.ViewGroup
-import com.clyo.core.android.ViewProvider
 import com.eliascoelho911.clyo.ScreenData
 import com.eliascoelho911.clyo.ScreenRenderer
 
