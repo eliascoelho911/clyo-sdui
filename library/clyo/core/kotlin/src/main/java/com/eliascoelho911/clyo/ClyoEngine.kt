@@ -1,7 +1,5 @@
 package com.eliascoelho911.clyo
 
-import com.eliascoelho911.clyo.data.ScreenData
-
 class ClyoEngine(private val screenRenderer: ScreenRenderer) {
     fun close() {}
 

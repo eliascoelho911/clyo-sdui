@@ -2,7 +2,7 @@ package com.clyo.core.android
 
 import android.content.Context
 import android.view.View
-import com.eliascoelho911.clyo.data.ComponentData
+import com.eliascoelho911.clyo.ComponentData
 
 class ViewProvider(
     val componentViewCreators: Set<ComponentViewCreator>

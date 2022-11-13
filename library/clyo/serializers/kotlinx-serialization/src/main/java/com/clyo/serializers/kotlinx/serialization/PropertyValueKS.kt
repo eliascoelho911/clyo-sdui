@@ -1,6 +1,6 @@
 package com.clyo.serializers.kotlinx.serialization
 
-import com.eliascoelho911.clyo.data.PropertyValue
+import com.eliascoelho911.clyo.PropertyValue
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.boolean
