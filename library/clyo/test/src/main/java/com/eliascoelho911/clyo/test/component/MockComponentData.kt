@@ -1,13 +1,13 @@
 package com.eliascoelho911.clyo.test.component
 
 import com.eliascoelho911.clyo.data.PropertyValue
-import com.eliascoelho911.clyo.data.component.ComponentDataContract
+import com.eliascoelho911.clyo.data.component.ComponentData
 import com.eliascoelho911.clyo.data.component.ComponentName
 
 data class MockComponentData(
     override val name: ComponentName,
     override val properties: Map<String, MockPropertyValue>
-) : ComponentDataContract
+) : ComponentData
 
 data class MockPropertyValue(private val value: Any) : PropertyValue {
     override val boolean: Boolean get() = value as Boolean

@@ -2,19 +2,17 @@ package com.clyo.core.android
 
 import android.content.Context
 import android.view.View
-import com.eliascoelho911.clyo.data.component.ComponentData
-import kotlin.reflect.KClass
+import com.eliascoelho911.clyo.data.ComponentData
 
 class ViewProvider(
-    val componentViewCreators: Map<KClass<out ComponentData>, ComponentViewCreator<*>>
+    val componentViewCreators: Set<ComponentViewCreator>
 ) {
-
-    @Suppress("UNCHECKED_CAST")
-    inline fun <reified DATA : ComponentData> provide(
+    fun provide(
         context: Context,
-        componentData: DATA
+        componentData: ComponentData
     ): View {
-        val creator = componentViewCreators[DATA::class] as ComponentViewCreator<DATA>? ?: error("")
-        return creator.create(context, componentData)
+        return componentViewCreators
+            .findCreatorToComponent(componentData.name)
+            .validateAndCreate(context, componentData)
     }
 }

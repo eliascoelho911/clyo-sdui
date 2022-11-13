@@ -1,5 +1,6 @@
 package com.eliascoelho911.clyo.android.components
 
+import com.eliascoelho911.clyo.android.AndroidScreenRenderer
 import com.eliascoelho911.clyo.startClyo
 import com.eliascoelho911.clyo.test.component.MockComponentData
 import com.eliascoelho911.clyo.test.component.MockPropertyValue
@@ -9,11 +10,7 @@ import org.junit.Test
 class ButtonDataTest {
     @Test
     fun `SHOULD convert by data WHEN all required properties are declared`() {
-        startClyo {
-            addComponentProvider(
-                ButtonData::class to ButtonDataCreator
-            )
-        }
+        startClyo(AndroidScreenRenderer(mockk()))
         val componentData = MockComponentData(
             name = "android.button",
             properties = mapOf(
