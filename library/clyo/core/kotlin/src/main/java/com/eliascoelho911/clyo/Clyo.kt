@@ -23,3 +23,5 @@ fun stopClyo() {
 }
 
 fun getClyoEngine(): ClyoEngine = Clyo.engine ?: error("Clyo is not started")
+
+fun clyoEngine(): Lazy<ClyoEngine> = lazy { Clyo.engine ?: error("Clyo is not started") }
