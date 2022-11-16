@@ -10,7 +10,7 @@ import com.eliascoelho911.clyo.ComponentProperties
 internal class ButtonComponentViewFactory : ComponentViewFactory<Button>() {
     override fun create(context: Context, properties: ComponentProperties): Button {
         return Button(context).apply {
-            text = properties["text"]?.content
+            text = properties.get("text")
         }
     }
 }

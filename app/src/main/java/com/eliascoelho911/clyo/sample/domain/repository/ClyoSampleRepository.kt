@@ -1,7 +1,7 @@
 package com.eliascoelho911.clyo.sample.domain.repository
 
-import com.eliascoelho911.clyo.sample.domain.model.ClyoSampleScreenContent
+import com.eliascoelho911.clyo.ScreenData
 
 internal interface ClyoSampleRepository {
-    fun getScreenContent(): ClyoSampleScreenContent
+    fun getScreenContent(): ScreenData
 }

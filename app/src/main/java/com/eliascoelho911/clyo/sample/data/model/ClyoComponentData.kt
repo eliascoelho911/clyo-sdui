@@ -1,15 +1,10 @@
 package com.eliascoelho911.clyo.sample.data.model
 
-import com.clyo.serializers.kotlinx.serialization.ComponentDataKS
-import com.clyo.serializers.kotlinx.serialization.PropertyValueKS
+import com.eliascoelho911.clyo.ComponentData
 import com.eliascoelho911.clyo.ComponentName
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.eliascoelho911.clyo.ComponentProperties
 
-@Serializable
 internal data class ClyoComponentData(
-    @SerialName("name")
     override val name: ComponentName,
-    @SerialName("properties")
-    override val properties: Map<ComponentName, PropertyValueKS>
-) : ComponentDataKS
+    override val properties: ComponentProperties
+) : ComponentData

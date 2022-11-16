@@ -1,40 +1,29 @@
 package com.eliascoelho911.clyo
 
-interface ScreenData {
+data class ScreenData(
     val content: ComponentData
-}
-
-typealias ComponentName = String
-
-typealias ComponentProperties = Map<String, PropertyValue>
+)
 
 interface ComponentData {
     val name: ComponentName
     val properties: ComponentProperties
 }
 
-interface PropertyValue {
-    val boolean: Boolean
+typealias ComponentName = String
 
-    val booleanOrNull: Boolean?
+class ComponentProperties(
+    private val properties: Map<String, Any>
+) {
+    fun <T> get(key: String): T {
+        val value = properties[key]
+        requireNotNull(value)
 
-    val float: Float
+        return getOrNull(key)
+            ?: throw ClassCastException("cannot cast property $key because it is of type ${value::class.java.simpleName}")
+    }
 
-    val floatOrNull: Float?
-
-    val double: Double
-
-    val doubleOrNull: Double?
-
-    val int: Int
-
-    val intOrNull: Int?
-
-    val long: Long
-
-    val longOrNull: Long?
-
-    val content: String
-
-    val contentOrNull: String?
+    @Suppress("UNCHECKED_CAST")
+    fun <T> getOrNull(key: String): T? {
+        return properties[key] as? T
+    }
 }
