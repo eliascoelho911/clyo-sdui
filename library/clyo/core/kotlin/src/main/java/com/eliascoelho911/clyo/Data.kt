@@ -1,8 +1,12 @@
 package com.eliascoelho911.clyo
 
 data class ScreenData(
-    val content: ComponentData
+    val content: LayoutData
 )
+
+interface LayoutData : ComponentData {
+    val content: List<ComponentData>
+}
 
 interface ComponentData {
     val name: ComponentName
@@ -11,8 +15,9 @@ interface ComponentData {
 
 typealias ComponentName = String
 
+//Todo Facilitar a instanciação
 class ComponentProperties(
-    private val properties: Map<String, Any>
+    private val properties: Map<String, Any> = emptyMap()
 ) {
     fun <T> get(key: String): T {
         val value = properties[key]

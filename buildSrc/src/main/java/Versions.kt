@@ -9,6 +9,7 @@ object Versions {
     const val androidCoreKtx = "1.9.0"
     const val lifecycle = "2.5.1"
     const val appCompat = "1.5.1"
+    const val recyclerView = "1.2.1"
 
     // JUnit
     const val junit = "4.13.2"

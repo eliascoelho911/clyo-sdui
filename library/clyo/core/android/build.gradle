@@ -14,6 +14,7 @@ dependencies {
 
     // Android
     implementation Libs.appCompat
+    implementation Libs.recyclerView
 
     // Kotlin
     implementation Libs.kotlinReflect

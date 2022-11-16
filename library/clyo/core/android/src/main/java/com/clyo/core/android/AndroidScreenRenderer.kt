@@ -11,7 +11,7 @@ class AndroidScreenRenderer(
     override fun render(data: ScreenData) {
         val view = viewProvider.provide(
             context = rootView.context,
-            componentData = data.content
+            data = data.content
         )
         rootView.addView(view)
     }
