@@ -1,14 +1,14 @@
 package com.eliascoelho911.clyo.sample.data.service
 
 import androidx.appcompat.widget.LinearLayoutCompat
-import com.clyo.serializers.kotlinx.serialization.ComponentDataKS
-import com.clyo.serializers.kotlinx.serialization.LayoutDataKS
-import com.eliascoelho911.clyo.ComponentProperties
-import com.eliascoelho911.clyo.ScreenData
+import com.clyo.core.data.ComponentProperties
+import com.clyo.core.data.ScreenData
+import com.clyo.core.data.kotlinx.serialization.data.ComponentData
+import com.clyo.core.data.kotlinx.serialization.data.LayoutData
 
 internal class GetClyoSampleScreenContent {
     operator fun invoke() = ScreenData(
-        content = LayoutDataKS(
+        content = LayoutData(
             name = "column",
             properties = ComponentProperties(
                 mapOf(
@@ -16,7 +16,7 @@ internal class GetClyoSampleScreenContent {
                 )
             ),
             content = listOf(
-                ComponentDataKS(
+                ComponentData(
                     name = "button",
                     properties = ComponentProperties(
                         mapOf(
@@ -24,7 +24,7 @@ internal class GetClyoSampleScreenContent {
                         )
                     )
                 ),
-                ComponentDataKS(
+                ComponentData(
                     name = "button",
                     properties = ComponentProperties(
                         mapOf(

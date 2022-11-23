@@ -1,6 +1,6 @@
 package com.eliascoelho911.clyo.sample.data.repository
 
-import com.eliascoelho911.clyo.ScreenData
+import com.clyo.core.data.ScreenData
 import com.eliascoelho911.clyo.sample.data.service.GetClyoSampleScreenContent
 import com.eliascoelho911.clyo.sample.domain.repository.ClyoSampleRepository
 

@@ -2,9 +2,9 @@ package com.clyo.android.containers
 
 import android.content.Context
 import androidx.appcompat.widget.LinearLayoutCompat
-import com.clyo.core.android.ContainerFactory
-import com.clyo.core.android.annotation.DeclareComponentFactory
-import com.eliascoelho911.clyo.ComponentProperties
+import com.clyo.core.component.ContainerFactory
+import com.clyo.core.component.DeclareComponentFactory
+import com.clyo.core.data.ComponentProperties
 
 @DeclareComponentFactory("column")
 internal class ColumnComponentFactory : ContainerFactory() {

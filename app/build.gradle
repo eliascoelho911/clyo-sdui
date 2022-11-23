@@ -37,7 +37,7 @@ dependencies {
 
     // Clyo
     implementation project(LocalLibs.clyoCore)
-    implementation project(LocalLibs.clyoKotlinxSerialization)
+    implementation project(LocalLibs.clyoDataKotlinxSerialization)
     implementation project(LocalLibs.clyoMaterial3Components)
     implementation project(LocalLibs.clyoContainers)
 

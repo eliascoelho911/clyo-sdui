@@ -10,8 +10,6 @@ android {
 dependencies {
     // LocalLibs
     api project(LocalLibs.clyoCore)
-    api project(LocalLibs.clyoCoreAndroid)
-    testImplementation project(LocalLibs.clyoTest)
 
     // Android
     implementation Libs.appCompat

@@ -1,9 +1,9 @@
 package com.clyo.android.material.components
 
 import android.content.Context
-import com.clyo.core.android.ComponentViewFactory
-import com.clyo.core.android.annotation.DeclareComponentFactory
-import com.eliascoelho911.clyo.ComponentProperties
+import com.clyo.core.component.ComponentViewFactory
+import com.clyo.core.component.DeclareComponentFactory
+import com.clyo.core.data.ComponentProperties
 import com.google.android.material.button.MaterialButton
 
 @DeclareComponentFactory("button")
