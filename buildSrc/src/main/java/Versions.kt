@@ -10,6 +10,7 @@ object Versions {
     const val lifecycle = "2.5.1"
     const val appCompat = "1.5.1"
     const val recyclerView = "1.2.1"
+    const val material3 = "1.7.0"
 
     // JUnit
     const val junit = "4.13.2"

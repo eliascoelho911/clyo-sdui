@@ -4,7 +4,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 apply from: "$rootDir/plugins/android.gradle"
 
 android {
-    namespace 'com.eliascoelho911.clyo.android'
+    namespace 'com.clyo.android.material.components'
 }
 
 dependencies {
@@ -14,5 +14,5 @@ dependencies {
     testImplementation project(LocalLibs.clyoTest)
 
     // Android
-    implementation Libs.appCompat
+    implementation Libs.material3
 }

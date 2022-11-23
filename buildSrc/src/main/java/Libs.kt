@@ -10,6 +10,7 @@ object Libs {
         "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.lifecycle}"
     const val lifecycleCommon = "androidx.lifecycle:lifecycle-common:${Versions.lifecycle}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
+    const val material3 = "com.google.android.material:material:${Versions.material3}"
 
     // Kotlin
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"

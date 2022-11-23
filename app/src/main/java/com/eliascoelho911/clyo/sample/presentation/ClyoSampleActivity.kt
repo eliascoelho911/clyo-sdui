@@ -2,9 +2,10 @@ package com.eliascoelho911.clyo.sample.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.clyo.android.containers.AndroidContainerViewFactories
+import com.clyo.android.material.components.AndroidMaterial3ViewFactories
 import com.clyo.core.android.ComponentFactoryModule
 import com.clyo.core.android.startAndroidClyo
-import com.eliascoelho911.clyo.android.components.AndroidComponentViewFactories
 import com.eliascoelho911.clyo.clyoEngine
 import com.eliascoelho911.clyo.sample.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,7 +16,10 @@ internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sam
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ComponentFactoryModule.set(AndroidComponentViewFactories)
+        ComponentFactoryModule.apply {
+            add(AndroidContainerViewFactories)
+            add(AndroidMaterial3ViewFactories)
+        }
         startAndroidClyo(rootId = R.id.root)
 
         viewModel.screenContent.observe(this) {

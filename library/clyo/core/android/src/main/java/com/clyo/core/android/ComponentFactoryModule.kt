@@ -9,6 +9,10 @@ import kotlin.reflect.full.findAnnotation
 object ComponentFactoryModule {
     private val classes: MutableSet<KClass<out ComponentFactory<*>>> = mutableSetOf()
 
+    fun add(classes: Set<KClass<out ComponentFactory<*>>>) {
+        this.classes.addAll(classes)
+    }
+
     fun set(classes: Set<KClass<out ComponentFactory<*>>>) {
         this.classes.apply {
             clear()

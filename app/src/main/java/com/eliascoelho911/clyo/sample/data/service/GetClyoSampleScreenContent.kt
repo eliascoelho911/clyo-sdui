@@ -9,15 +9,15 @@ import com.eliascoelho911.clyo.ScreenData
 internal class GetClyoSampleScreenContent {
     operator fun invoke() = ScreenData(
         content = LayoutDataKS(
-            name = "layout.column",
+            name = "column",
             properties = ComponentProperties(
                 mapOf(
-                    "orientation" to LinearLayoutCompat.VERTICAL
+                    "orientation" to LinearLayoutCompat.HORIZONTAL
                 )
             ),
             content = listOf(
                 ComponentDataKS(
-                    name = "android.button",
+                    name = "button",
                     properties = ComponentProperties(
                         mapOf(
                             "text" to "Bora fazer a melhor lib de SDUI do MUNDO????"
@@ -25,7 +25,7 @@ internal class GetClyoSampleScreenContent {
                     )
                 ),
                 ComponentDataKS(
-                    name = "android.button",
+                    name = "button",
                     properties = ComponentProperties(
                         mapOf(
                             "text" to "BORA DEMAAAAIS!"

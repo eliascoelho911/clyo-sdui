@@ -1,4 +1,4 @@
-package com.eliascoelho911.clyo.android.containers
+package com.clyo.android.containers
 
 import android.content.Context
 import androidx.appcompat.widget.LinearLayoutCompat
@@ -6,7 +6,7 @@ import com.clyo.core.android.ContainerFactory
 import com.clyo.core.android.annotation.DeclareComponentFactory
 import com.eliascoelho911.clyo.ComponentProperties
 
-@DeclareComponentFactory("layout.column")
+@DeclareComponentFactory("column")
 internal class ColumnComponentFactory : ContainerFactory() {
     override fun createInstance(context: Context) = LinearLayoutCompat(context)
 

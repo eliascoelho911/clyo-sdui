@@ -1,0 +1,18 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+apply from: "$rootDir/plugins/android.gradle"
+
+android {
+    namespace 'com.clyo.android.containers'
+}
+
+dependencies {
+    // LocalLibs
+    api project(LocalLibs.clyoCore)
+    api project(LocalLibs.clyoCoreAndroid)
+    testImplementation project(LocalLibs.clyoTest)
+
+    // Android
+    implementation Libs.appCompat
+}
