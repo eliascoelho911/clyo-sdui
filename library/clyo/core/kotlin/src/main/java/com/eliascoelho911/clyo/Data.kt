@@ -15,7 +15,6 @@ interface ComponentData {
 
 typealias ComponentName = String
 
-//Todo Facilitar a instanciação
 class ComponentProperties(
     private val properties: Map<String, Any> = emptyMap()
 ) {

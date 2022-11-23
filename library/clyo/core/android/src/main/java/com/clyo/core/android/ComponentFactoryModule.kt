@@ -16,7 +16,6 @@ object ComponentFactoryModule {
         }
     }
 
-    //Todo Procurar uma forma mais eficiente de fazer isso
     @Suppress("UNCHECKED_CAST")
     fun findAndInstantiateByData(data: ComponentData): ComponentFactory<*> =
         classes.firstOrNull {

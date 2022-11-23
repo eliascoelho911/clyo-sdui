@@ -30,7 +30,6 @@ abstract class ComponentViewFactory<T : View> : ComponentFactory<T>() {
     )
 }
 
-// TODO Melhorar para RecyclerView depois
 abstract class ContainerFactory : ComponentFactory<LinearLayoutCompat>() {
     override val layoutParams: LayoutParams = LayoutParams(
         LayoutParams.MATCH_PARENT,
