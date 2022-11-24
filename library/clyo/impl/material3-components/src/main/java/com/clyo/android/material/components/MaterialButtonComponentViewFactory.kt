@@ -11,6 +11,6 @@ internal class MaterialButtonComponentViewFactory : ComponentViewFactory<Materia
     override fun createInstance(context: Context) = MaterialButton(context)
 
     override fun MaterialButton.bind(properties: ComponentProperties): MaterialButton = apply {
-        text = properties.get("text")
+        text = properties.getStringOrNull("text")
     }
 }

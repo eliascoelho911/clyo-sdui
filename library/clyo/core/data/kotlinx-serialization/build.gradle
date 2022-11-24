@@ -6,4 +6,7 @@ apply from: "$rootDir/plugins/kotlin.gradle"
 dependencies {
     implementation Libs.kotlinSerializationJson
     implementation project(LocalLibs.clyoData)
+
+    testImplementation TestLibs.junit
+    testImplementation TestLibs.kotlinTestJunit
 }

@@ -1,8 +1,8 @@
 package com.clyo.core.data
 
-data class ScreenData(
+interface ScreenData {
     val content: LayoutData
-)
+}
 
 interface LayoutData : ComponentData {
     val content: List<ComponentData>
@@ -15,19 +15,16 @@ interface ComponentData {
 
 typealias ComponentName = String
 
-class ComponentProperties(
-    private val properties: Map<String, Any> = emptyMap()
-) {
-    fun <T> get(key: String): T {
-        val value = properties[key]
-        requireNotNull(value)
+interface ComponentProperties {
+    fun getStringOrNull(key: String): String?
 
-        return getOrNull(key)
-            ?: throw ClassCastException("cannot cast property $key because it is of type ${value::class.java.simpleName}")
-    }
+    fun getBooleanOrNull(key: String): Boolean?
 
-    @Suppress("UNCHECKED_CAST")
-    fun <T> getOrNull(key: String): T? {
-        return properties[key] as? T
-    }
+    fun getDoubleOrNull(key: String): Double?
+
+    fun getFloatOrNull(key: String): Float?
+
+    fun getIntOrNull(key: String): Int?
+
+    fun getLongOrNull(key: String): Long?
 }

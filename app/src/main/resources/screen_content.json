@@ -1,0 +1,13 @@
+{
+  "content": {
+    "name": "column",
+    "content": [
+      {
+        "name": "button",
+        "properties": {
+          "text": "Botão"
+        }
+      }
+    ]
+  }
+}

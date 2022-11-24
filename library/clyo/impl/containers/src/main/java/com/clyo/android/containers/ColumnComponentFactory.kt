@@ -11,6 +11,6 @@ internal class ColumnComponentFactory : ContainerFactory() {
     override fun createInstance(context: Context) = LinearLayoutCompat(context)
 
     override fun LinearLayoutCompat.bind(properties: ComponentProperties) = apply {
-        orientation = properties.get("orientation")
+        orientation = properties.getIntOrNull("orientation") ?: 1
     }
 }
