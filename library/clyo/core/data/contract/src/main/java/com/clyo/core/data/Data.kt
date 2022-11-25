@@ -1,14 +1,16 @@
 package com.clyo.core.data
 
 interface ScreenData {
-    val content: LayoutData
+    val content: ContainerData
 }
 
-interface LayoutData : ComponentData {
-    val content: List<ComponentData>
+interface ContainerData : ComponentData {
+    val content: List<WidgetData>
 }
 
-interface ComponentData {
+interface WidgetData: ComponentData
+
+sealed interface ComponentData {
     val name: ComponentName
     val properties: ComponentProperties
 }

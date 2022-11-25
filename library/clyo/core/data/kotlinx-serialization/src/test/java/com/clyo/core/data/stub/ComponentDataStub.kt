@@ -1,7 +1,7 @@
 package com.clyo.core.data.stub
 
-import com.clyo.core.data.kotlinx.serialization.data.ComponentDataKS
 import com.clyo.core.data.kotlinx.serialization.data.ComponentPropertiesKS
+import com.clyo.core.data.kotlinx.serialization.data.WidgetDataKS
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -23,7 +23,7 @@ internal object ComponentDataStub {
         }
     """.trimIndent()
 
-    val componentDataKS = ComponentDataKS(
+    val viewDataKS = WidgetDataKS(
         name = "component",
         properties = ComponentPropertiesKS(
             JsonObject(

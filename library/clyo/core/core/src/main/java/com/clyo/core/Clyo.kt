@@ -1,20 +1,26 @@
 package com.clyo.core
 
 object Clyo {
-    var engine: ClyoEngine? = null
-        private set
+    private var mEngine: ClyoEngine? = null
 
-    fun start(screenRenderer: AndroidScreenRenderer) {
-        engine = ClyoEngine(screenRenderer)
+    val engine: ClyoEngine
+        get() {
+            if (mEngine == null) notStartedError()
+            return mEngine!!
+        }
+
+    fun start(screenRenderer: ScreenRenderer) {
+        mEngine = ClyoEngine(screenRenderer)
     }
 
     fun stop() {
-        engine = null
+        mEngine?.close()
+        mEngine = null
+    }
+
+    private fun notStartedError() {
+        error("Clyo is not started")
     }
 }
 
-fun stopClyo() {
-    Clyo.stop()
-}
-
-fun getClyoEngine(): Lazy<ClyoEngine> = lazy { Clyo.engine ?: error("Clyo is not started") }
+fun getClyoEngine(): Lazy<ClyoEngine> = lazy { Clyo.engine }

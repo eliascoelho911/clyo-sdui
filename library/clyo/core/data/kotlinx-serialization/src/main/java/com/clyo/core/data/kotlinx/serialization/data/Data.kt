@@ -1,8 +1,10 @@
 package com.clyo.core.data.kotlinx.serialization.data
 
 import com.clyo.core.data.ComponentName
-import com.clyo.core.data.LayoutData
+import com.clyo.core.data.ComponentProperties
+import com.clyo.core.data.ContainerData
 import com.clyo.core.data.ScreenData
+import com.clyo.core.data.WidgetData
 import com.clyo.core.data.kotlinx.serialization.data.serializer.ComponentPropertiesAsJsonObjectSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -18,21 +20,23 @@ import kotlinx.serialization.json.longOrNull
 @Serializable
 data class ScreenDataKS(
     @SerialName("content")
-    override val content: LayoutDataKS
+    override val content: ContainerDataKS
 ) : ScreenData
 
 @Serializable
-data class ComponentDataKS(
+data class ContainerDataKS(
     @SerialName("name")
     override val name: ComponentName,
     @SerialName("properties")
-    override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf()))
-) : com.clyo.core.data.ComponentData
+    override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf())),
+    @SerialName("content")
+    override val content: List<WidgetDataKS> = emptyList()
+) : ContainerData
 
 @Serializable(with = ComponentPropertiesAsJsonObjectSerializer::class)
 data class ComponentPropertiesKS(
     val jsonObject: JsonObject
-) : com.clyo.core.data.ComponentProperties {
+) : ComponentProperties {
     override fun getStringOrNull(key: String): String? = get(key)?.contentOrNull
 
     override fun getBooleanOrNull(key: String): Boolean? = get(key)?.booleanOrNull
@@ -49,11 +53,9 @@ data class ComponentPropertiesKS(
 }
 
 @Serializable
-data class LayoutDataKS(
+data class WidgetDataKS(
     @SerialName("name")
     override val name: ComponentName,
     @SerialName("properties")
-    override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf())),
-    @SerialName("content")
-    override val content: List<ComponentDataKS> = emptyList()
-) : LayoutData
+    override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf()))
+) : WidgetData

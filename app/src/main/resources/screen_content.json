@@ -5,7 +5,13 @@
       {
         "name": "button",
         "properties": {
-          "text": "Botão"
+          "text": "Botão 1"
+        }
+      },
+      {
+        "name": "button",
+        "properties": {
+          "text": "Botão 2"
         }
       }
     ]

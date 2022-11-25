@@ -1,22 +1,20 @@
 package com.clyo.core
 
 import android.app.Activity
-import android.view.ViewGroup
-import androidx.annotation.IdRes
-import androidx.fragment.app.Fragment
+import com.clyo.core.component.renderer.ComponentRendererProvider
 
-fun Activity.startClyo(@IdRes rootId: Int) {
+fun Activity.startClyo(componentRendererProvider: ComponentRendererProvider) {
     Clyo.start(
-        screenRenderer = AndroidScreenRenderer(
-            rootView = findViewById(rootId)
+        screenRenderer = ScreenRenderer(
+            componentRendererProvider
         )
     )
 }
-
-fun Fragment.startClyo() {
-    Clyo.start(
-        screenRenderer = AndroidScreenRenderer(
-            rootView = requireView() as? ViewGroup ?: error("The root view must be a ViewGroup")
-        )
-    )
-}
+//
+//fun Fragment.startClyo() {
+//    Clyo.start(
+//        screenRenderer = ScreenRenderer(
+//            rootView = requireView() as? ViewGroup ?: error("The root view must be a ViewGroup")
+//        )
+//    )
+//}
