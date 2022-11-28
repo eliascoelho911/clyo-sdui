@@ -5,6 +5,4 @@ import android.view.ViewGroup
 
 typealias Component = View
 
-typealias Widget = View
-
 typealias Container = ViewGroup

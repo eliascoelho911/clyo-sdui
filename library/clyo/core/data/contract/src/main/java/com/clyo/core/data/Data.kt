@@ -5,12 +5,10 @@ interface ScreenData {
 }
 
 interface ContainerData : ComponentData {
-    val content: List<WidgetData>
+    val content: List<ComponentData>
 }
 
-interface WidgetData: ComponentData
-
-sealed interface ComponentData {
+interface ComponentData {
     val name: ComponentName
     val properties: ComponentProperties
 }

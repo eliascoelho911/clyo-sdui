@@ -1,15 +1,28 @@
 package com.clyo.core
 
+import android.content.Context
 import android.view.ViewGroup
+import com.clyo.core.component.Component
+import com.clyo.core.component.ComponentModule
+import com.clyo.core.data.ComponentData
 import com.clyo.core.data.ScreenData
-import java.io.Closeable
 
-class ClyoEngine(val screenRenderer: ScreenRenderer): Closeable {
+class ClyoEngine(
+    private val screenRenderer: ScreenRenderer = ScreenRenderer(),
+    componentModule: ComponentModule = ComponentModule()
+) {
+    private val _componentModule = componentModule
+
+    internal val componentModule get() = _componentModule
+
     fun showScreen(data: ScreenData, parent: ViewGroup) {
         screenRenderer.render(data, parent)
     }
 
-    override fun close() {
-        screenRenderer.close()
+    fun close() {
+        _componentModule.clear()
     }
 }
+
+fun <DATA : ComponentData> provideComponent(context: Context, data: DATA): Component =
+    Clyo.engine.componentModule.get(context, data)

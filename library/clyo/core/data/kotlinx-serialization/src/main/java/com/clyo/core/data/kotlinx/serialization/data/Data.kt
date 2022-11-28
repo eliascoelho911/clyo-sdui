@@ -1,10 +1,10 @@
 package com.clyo.core.data.kotlinx.serialization.data
 
+import com.clyo.core.data.ComponentData
 import com.clyo.core.data.ComponentName
 import com.clyo.core.data.ComponentProperties
 import com.clyo.core.data.ContainerData
 import com.clyo.core.data.ScreenData
-import com.clyo.core.data.WidgetData
 import com.clyo.core.data.kotlinx.serialization.data.serializer.ComponentPropertiesAsJsonObjectSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -30,8 +30,17 @@ data class ContainerDataKS(
     @SerialName("properties")
     override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf())),
     @SerialName("content")
-    override val content: List<WidgetDataKS> = emptyList()
+    override val content: List<ComponentDataKS> = emptyList()
 ) : ContainerData
+
+
+@Serializable
+data class ComponentDataKS(
+    @SerialName("name")
+    override val name: ComponentName,
+    @SerialName("properties")
+    override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf()))
+) : ComponentData
 
 @Serializable(with = ComponentPropertiesAsJsonObjectSerializer::class)
 data class ComponentPropertiesKS(
@@ -51,11 +60,3 @@ data class ComponentPropertiesKS(
 
     private fun get(key: String) = jsonObject[key]?.jsonPrimitive
 }
-
-@Serializable
-data class WidgetDataKS(
-    @SerialName("name")
-    override val name: ComponentName,
-    @SerialName("properties")
-    override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf()))
-) : WidgetData
