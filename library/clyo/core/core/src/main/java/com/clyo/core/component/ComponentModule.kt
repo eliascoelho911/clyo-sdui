@@ -20,7 +20,7 @@ class ComponentModule(initialModule: Map<ComponentName, ComponentProvider<*, *>>
         context: Context,
         data: DATA
     ): COMPONENT {
-        val provider = module[data.name] ?: TODO("ERRO PROVIDER NÃO ENCONTRADO")
+        val provider = module[data.name] ?: error("Provider for component ${data.name} not found")
         provider as ComponentProvider<DATA, COMPONENT>
         return provider.provide(context, data)
     }

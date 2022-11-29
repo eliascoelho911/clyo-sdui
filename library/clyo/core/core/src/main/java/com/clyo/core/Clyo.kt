@@ -15,7 +15,6 @@ object Clyo {
         mEngine = ClyoEngine(componentModule = componentModule)
     }
 
-    //TODO Deve parar sincronizado com o ciclo de vida da Activity
     fun stop() {
         mEngine?.close()
         mEngine = null
