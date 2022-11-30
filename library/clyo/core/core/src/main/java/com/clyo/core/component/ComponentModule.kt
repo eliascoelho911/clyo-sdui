@@ -1,28 +1,29 @@
 package com.clyo.core.component
 
 import android.content.Context
-import com.clyo.core.component.provider.ComponentProvider
-import com.clyo.core.data.ComponentData
+import android.view.View
+import android.view.ViewGroup
 import com.clyo.core.data.ComponentName
+import com.clyo.core.data.ComponentProperties
 
-class ComponentModule(initialModule: Map<ComponentName, ComponentProvider<*, *>> = emptyMap()) {
+class ComponentModule(initialModule: Map<ComponentName, ComponentBuilder<*>> = emptyMap()) {
     private val module = HashMap(initialModule)
 
-    fun add(name: ComponentName, provider: ComponentProvider<*, *>) {
-        module[name] = provider
+    fun add(name: ComponentName, builder: ComponentBuilder<*>) {
+        module[name] = builder
     }
 
     operator fun plus(other: ComponentModule): ComponentModule =
         ComponentModule(module + other.module)
 
     @Suppress("UNCHECKED_CAST")
-    fun <DATA : ComponentData, COMPONENT : Component> get(
+    fun <COMPONENT : Component<*>> get(
         context: Context,
-        data: DATA
+        name: ComponentName,
+        properties: ComponentProperties
     ): COMPONENT {
-        val provider = module[data.name] ?: error("Provider for component ${data.name} not found")
-        provider as ComponentProvider<DATA, COMPONENT>
-        return provider.provide(context, data)
+        val builder = module[name] ?: error("Builder for component $name not found")
+        return builder.build(context, properties) as COMPONENT
     }
 
     fun remove(name: ComponentName) {
@@ -37,3 +38,20 @@ class ComponentModule(initialModule: Map<ComponentName, ComponentProvider<*, *>>
 fun componentModule(
     module: ComponentModule.() -> Unit
 ) = ComponentModule().apply(module)
+
+fun <T : View> ComponentModule.component(
+    name: ComponentName,
+    componentBuilderBlock: ComponentBuilder<T>.() -> ComponentBuilder<T>
+) {
+    val componentBuilder = ComponentBuilder<T>().componentBuilderBlock()
+    add(name, componentBuilder)
+}
+
+fun <T : ViewGroup> ComponentModule.container(
+    name: ComponentName,
+    content: List<Component<*>>,
+    componentBuilderBlock: ComponentBuilder<T>.() -> ComponentBuilder<T>
+): Container<T> =
+    Container(viewGroup).apply {
+        bind(block)
+    }

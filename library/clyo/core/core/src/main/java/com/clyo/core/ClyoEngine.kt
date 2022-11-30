@@ -24,5 +24,5 @@ class ClyoEngine(
     }
 }
 
-fun <DATA : ComponentData> provideComponent(context: Context, data: DATA): Component =
-    Clyo.engine.componentModule.get(context, data)
+fun <DATA : ComponentData> buildComponent(context: Context, data: DATA): Component<*> =
+    Clyo.engine.componentModule.get(context, name = data.name, properties = data.properties)

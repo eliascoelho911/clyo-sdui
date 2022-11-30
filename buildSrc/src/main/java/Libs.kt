@@ -19,7 +19,6 @@ object Libs {
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val kotlinSerializationJson =
         "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinSerialization}"
-    const val kotlinKSP = "com.google.devtools.ksp:symbol-processing-api:${Versions.kotlinKSP}"
 
     // Koin
     const val koin = "io.insert-koin:koin-android:${Versions.koin}"

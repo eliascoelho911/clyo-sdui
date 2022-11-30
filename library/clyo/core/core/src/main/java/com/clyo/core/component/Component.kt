@@ -1,8 +1,13 @@
 package com.clyo.core.component
 
 import android.view.View
-import android.view.ViewGroup
+import com.clyo.core.data.ComponentProperties
 
-typealias Component = View
-
-typealias Container = ViewGroup
+open class Component<VIEW : View> internal constructor(
+    val view: VIEW,
+    val properties: ComponentProperties
+) {
+    fun bind(block: VIEW.(properties: ComponentProperties) -> Unit) {
+        view.block(properties)
+    }
+}
