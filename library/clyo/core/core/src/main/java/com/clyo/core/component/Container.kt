@@ -5,14 +5,9 @@ import com.clyo.core.data.ComponentProperties
 
 class Container<T : ViewGroup>(
     viewGroup: T,
-    properties: ComponentProperties,
-    content: List<Component<*>>
+    properties: ComponentProperties
 ) : Component<T>(viewGroup, properties) {
-    init {
-        submitContent(content)
-    }
-
-    private fun submitContent(content: List<Component<*>>) {
+    fun addContent(content: List<Component<*>>) {
         content.forEach { component ->
             bind {
                 addView(component.view)

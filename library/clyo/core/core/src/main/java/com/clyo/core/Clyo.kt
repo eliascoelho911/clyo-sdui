@@ -16,7 +16,6 @@ object Clyo {
     }
 
     fun stop() {
-        mEngine?.close()
         mEngine = null
     }
 

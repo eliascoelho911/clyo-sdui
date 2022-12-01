@@ -1,37 +1,27 @@
 package com.clyo.core.component
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import com.clyo.core.data.ComponentName
-import com.clyo.core.data.ComponentProperties
 
-class ComponentModule(initialModule: Map<ComponentName, ComponentBuilder<*>> = emptyMap()) {
-    private val module = HashMap(initialModule)
-
+//Todo Encontrar uma forma mais performatica de manipular e somar módulos
+@JvmInline
+value class ComponentModule(
+    private val _map: MutableMap<ComponentName, ComponentBuilder<*>> = mutableMapOf()
+) {
     fun add(name: ComponentName, builder: ComponentBuilder<*>) {
-        module[name] = builder
+        _map[name] = builder
     }
 
-    operator fun plus(other: ComponentModule): ComponentModule =
-        ComponentModule(module + other.module)
-
-    @Suppress("UNCHECKED_CAST")
-    fun <COMPONENT : Component<*>> get(
-        context: Context,
-        name: ComponentName,
-        properties: ComponentProperties
-    ): COMPONENT {
-        val builder = module[name] ?: error("Builder for component $name not found")
-        return builder.build(context, properties) as COMPONENT
+    operator fun plus(other: ComponentModule): ComponentModule {
+        val map = _map.apply { putAll(other._map) }
+        return ComponentModule(map)
     }
+
+    operator fun get(name: ComponentName) = _map[name]
 
     fun remove(name: ComponentName) {
-        module.remove(name)
-    }
-
-    internal fun clear() {
-        module.clear()
+        _map.remove(name)
     }
 }
 
@@ -41,17 +31,20 @@ fun componentModule(
 
 fun <T : View> ComponentModule.component(
     name: ComponentName,
-    componentBuilderBlock: ComponentBuilder<T>.() -> ComponentBuilder<T>
+    componentBuilder: ComponentBuilder<T>.() -> Unit
 ) {
-    val componentBuilder = ComponentBuilder<T>().componentBuilderBlock()
-    add(name, componentBuilder)
+    add(
+        name = name,
+        builder = ComponentBuilder<T>().apply(componentBuilder)
+    )
 }
 
 fun <T : ViewGroup> ComponentModule.container(
     name: ComponentName,
-    content: List<Component<*>>,
-    componentBuilderBlock: ComponentBuilder<T>.() -> ComponentBuilder<T>
-): Container<T> =
-    Container(viewGroup).apply {
-        bind(block)
-    }
+    containerBuilder: ComponentBuilder<T>.() -> Unit
+) {
+    add(
+        name = name,
+        builder = ContainerBuilder<T>().apply(containerBuilder)
+    )
+}
