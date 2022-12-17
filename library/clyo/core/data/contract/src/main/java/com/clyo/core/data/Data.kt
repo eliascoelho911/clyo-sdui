@@ -1,21 +1,21 @@
 package com.clyo.core.data
 
 interface ScreenData {
-    val content: ContainerData
+    val content: LayoutData
 }
 
-interface ContainerData : ComponentData {
-    val content: List<ComponentData>
+interface LayoutData : ViewData {
+    val content: List<ViewData>
 }
 
-interface ComponentData {
-    val name: ComponentName
-    val properties: ComponentProperties
+interface ViewData {
+    val name: ViewName
+    val properties: ViewProperties
 }
 
-typealias ComponentName = String
+typealias ViewName = String
 
-interface ComponentProperties {
+interface ViewProperties {
     fun getStringOrNull(key: String): String?
 
     fun getBooleanOrNull(key: String): Boolean?

@@ -1,10 +1,10 @@
 package com.clyo.core.data.kotlinx.serialization.data
 
-import com.clyo.core.data.ComponentData
-import com.clyo.core.data.ComponentName
-import com.clyo.core.data.ComponentProperties
-import com.clyo.core.data.ContainerData
+import com.clyo.core.data.LayoutData
 import com.clyo.core.data.ScreenData
+import com.clyo.core.data.ViewData
+import com.clyo.core.data.ViewName
+import com.clyo.core.data.ViewProperties
 import com.clyo.core.data.kotlinx.serialization.data.serializer.ComponentPropertiesAsJsonObjectSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -20,32 +20,32 @@ import kotlinx.serialization.json.longOrNull
 @Serializable
 data class ScreenDataKS(
     @SerialName("content")
-    override val content: ContainerDataKS
+    override val content: LayoutDataKS
 ) : ScreenData
 
 @Serializable
-data class ContainerDataKS(
+data class LayoutDataKS(
     @SerialName("name")
-    override val name: ComponentName,
+    override val name: ViewName,
     @SerialName("properties")
-    override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf())),
+    override val properties: ViewPropertiesKS = ViewPropertiesKS(JsonObject(mapOf())),
     @SerialName("content")
-    override val content: List<ComponentDataKS> = emptyList()
-) : ContainerData
+    override val content: List<ViewDataKS> = emptyList()
+) : LayoutData
 
 
 @Serializable
-data class ComponentDataKS(
+data class ViewDataKS(
     @SerialName("name")
-    override val name: ComponentName,
+    override val name: ViewName,
     @SerialName("properties")
-    override val properties: ComponentPropertiesKS = ComponentPropertiesKS(JsonObject(mapOf()))
-) : ComponentData
+    override val properties: ViewPropertiesKS = ViewPropertiesKS(JsonObject(mapOf()))
+) : ViewData
 
 @Serializable(with = ComponentPropertiesAsJsonObjectSerializer::class)
-data class ComponentPropertiesKS(
+data class ViewPropertiesKS(
     val jsonObject: JsonObject
-) : ComponentProperties {
+) : ViewProperties {
     override fun getStringOrNull(key: String): String? = get(key)?.contentOrNull
 
     override fun getBooleanOrNull(key: String): Boolean? = get(key)?.booleanOrNull

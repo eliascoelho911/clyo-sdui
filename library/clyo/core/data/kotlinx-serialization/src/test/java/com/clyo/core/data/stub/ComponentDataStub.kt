@@ -1,6 +1,6 @@
 package com.clyo.core.data.stub
 
-import com.clyo.core.data.kotlinx.serialization.data.ComponentPropertiesKS
+import com.clyo.core.data.kotlinx.serialization.data.ViewPropertiesKS
 import com.clyo.core.data.kotlinx.serialization.data.WidgetDataKS
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -25,7 +25,7 @@ internal object ComponentDataStub {
 
     val viewDataKS = WidgetDataKS(
         name = "component",
-        properties = ComponentPropertiesKS(
+        properties = ViewPropertiesKS(
             JsonObject(
                 mapOf(
                     "value" to JsonPrimitive(0),
