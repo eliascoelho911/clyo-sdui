@@ -1,18 +1,18 @@
-package com.clyo.core.data.stub
+package com.clyo.core.data.kotlinx.serialization.stub
 
-import com.clyo.core.data.kotlinx.serialization.data.LayoutDataKS
-import com.clyo.core.data.kotlinx.serialization.data.ViewPropertiesKS
+import com.clyo.core.data.kotlinx.serialization.LayoutData
+import com.clyo.core.data.kotlinx.serialization.ViewProperties
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 
-internal object LayoutDataKSStub {
+internal object LayoutDataStub {
 
     val jsonValue = """
         {
           "name": "layout",
           "content": [
-            ${ComponentDataStub.jsonValue}
+            ${ViewDataStub.jsonValue}
           ],
           "properties": {
             "value": 0,
@@ -27,9 +27,9 @@ internal object LayoutDataKSStub {
         }
     """.trimIndent()
 
-    val layoutDataKS = LayoutDataKS(
+    val layoutData = LayoutData(
         name = "layout",
-        properties = ViewPropertiesKS(
+        properties = ViewProperties(
             JsonObject(
                 mapOf(
                     "value" to JsonPrimitive(0), "array" to JsonArray(
@@ -44,7 +44,7 @@ internal object LayoutDataKSStub {
                 )
             )
         ), content = listOf(
-            ComponentDataStub.viewDataKS
+            ViewDataStub.viewData
         )
     )
 }

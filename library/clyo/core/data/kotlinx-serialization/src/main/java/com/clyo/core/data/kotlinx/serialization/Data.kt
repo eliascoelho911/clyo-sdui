@@ -1,11 +1,7 @@
-package com.clyo.core.data.kotlinx.serialization.data
+package com.clyo.core.data.kotlinx.serialization
 
-import com.clyo.core.data.LayoutData
-import com.clyo.core.data.ScreenData
-import com.clyo.core.data.ViewData
 import com.clyo.core.data.ViewName
-import com.clyo.core.data.ViewProperties
-import com.clyo.core.data.kotlinx.serialization.data.serializer.ComponentPropertiesAsJsonObjectSerializer
+import com.clyo.core.data.kotlinx.serialization.serializer.ViewPropertiesAsJsonObjectSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -16,36 +12,40 @@ import kotlinx.serialization.json.floatOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
+import com.clyo.core.data.LayoutData as LayoutDataContract
+import com.clyo.core.data.ScreenData as ScreenDataContract
+import com.clyo.core.data.ViewData as ViewDataContract
+import com.clyo.core.data.ViewProperties as ViewPropertiesContract
 
 @Serializable
-data class ScreenDataKS(
+data class ScreenData(
     @SerialName("content")
-    override val content: LayoutDataKS
-) : ScreenData
+    override val content: LayoutDataContract
+) : ScreenDataContract
 
 @Serializable
-data class LayoutDataKS(
+data class LayoutData(
     @SerialName("name")
     override val name: ViewName,
     @SerialName("properties")
-    override val properties: ViewPropertiesKS = ViewPropertiesKS(JsonObject(mapOf())),
+    override val properties: ViewPropertiesContract = ViewProperties(JsonObject(mapOf())),
     @SerialName("content")
-    override val content: List<ViewDataKS> = emptyList()
-) : LayoutData
+    override val content: List<ViewDataContract> = emptyList()
+) : LayoutDataContract
 
 
 @Serializable
-data class ViewDataKS(
+data class ViewData(
     @SerialName("name")
     override val name: ViewName,
     @SerialName("properties")
-    override val properties: ViewPropertiesKS = ViewPropertiesKS(JsonObject(mapOf()))
-) : ViewData
+    override val properties: ViewPropertiesContract = ViewProperties(JsonObject(mapOf()))
+) : ViewDataContract
 
-@Serializable(with = ComponentPropertiesAsJsonObjectSerializer::class)
-data class ViewPropertiesKS(
+@Serializable(with = ViewPropertiesAsJsonObjectSerializer::class)
+data class ViewProperties(
     val jsonObject: JsonObject
-) : ViewProperties {
+) : ViewPropertiesContract {
     override fun getStringOrNull(key: String): String? = get(key)?.contentOrNull
 
     override fun getBooleanOrNull(key: String): Boolean? = get(key)?.booleanOrNull
