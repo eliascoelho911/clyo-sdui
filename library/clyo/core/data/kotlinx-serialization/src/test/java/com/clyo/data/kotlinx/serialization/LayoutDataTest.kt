@@ -1,6 +1,7 @@
 package com.clyo.core.data.kotlinx.serialization
 
 import com.clyo.core.data.kotlinx.serialization.stub.LayoutDataStub
+import com.clyo.data.kotlinx.serialization.LayoutData
 import kotlin.test.assertEquals
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json

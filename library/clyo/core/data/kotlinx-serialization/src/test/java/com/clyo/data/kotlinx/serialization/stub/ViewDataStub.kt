@@ -1,7 +1,7 @@
 package com.clyo.core.data.kotlinx.serialization.stub
 
-import com.clyo.core.data.kotlinx.serialization.ViewData
-import com.clyo.core.data.kotlinx.serialization.ViewProperties
+import com.clyo.data.kotlinx.serialization.ViewData
+import com.clyo.data.kotlinx.serialization.ViewProperties
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive

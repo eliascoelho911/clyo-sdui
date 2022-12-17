@@ -1,7 +1,7 @@
-package com.clyo.core.data.kotlinx.serialization
+package com.clyo.data.kotlinx.serialization
 
-import com.clyo.core.data.kotlinx.serialization.serializer.ViewPropertiesAsJsonObjectSerializer
 import com.clyo.data.ViewName
+import com.clyo.data.kotlinx.serialization.serializer.ViewPropertiesAsJsonObjectSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject

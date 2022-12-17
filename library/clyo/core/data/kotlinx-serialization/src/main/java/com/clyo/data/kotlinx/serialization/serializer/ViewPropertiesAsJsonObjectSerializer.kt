@@ -1,6 +1,6 @@
-package com.clyo.core.data.kotlinx.serialization.serializer
+package com.clyo.data.kotlinx.serialization.serializer
 
-import com.clyo.core.data.kotlinx.serialization.ViewProperties
+import com.clyo.data.kotlinx.serialization.ViewProperties
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor

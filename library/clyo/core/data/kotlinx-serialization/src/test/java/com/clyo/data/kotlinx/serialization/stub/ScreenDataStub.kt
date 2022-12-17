@@ -1,6 +1,6 @@
 package com.clyo.core.data.kotlinx.serialization.stub
 
-import com.clyo.core.data.kotlinx.serialization.ScreenData
+import com.clyo.data.kotlinx.serialization.ScreenData
 
 internal object ScreenDataStub {
 
