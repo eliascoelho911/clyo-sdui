@@ -1,4 +1,4 @@
-package com.clyo.core.util
+package com.clyo.util
 
 import android.content.res.Resources
 import android.util.TypedValue

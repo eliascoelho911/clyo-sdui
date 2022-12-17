@@ -1,6 +1,6 @@
-package com.clyo.core
+package com.clyo
 
-import com.clyo.core.component.ComponentModule
+import com.clyo.component.ComponentModule
 
 object Clyo {
     private var mEngine: ClyoEngine? = null

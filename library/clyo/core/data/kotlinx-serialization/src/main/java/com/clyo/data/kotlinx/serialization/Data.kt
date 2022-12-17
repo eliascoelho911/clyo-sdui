@@ -1,7 +1,7 @@
 package com.clyo.core.data.kotlinx.serialization
 
-import com.clyo.core.data.ViewName
 import com.clyo.core.data.kotlinx.serialization.serializer.ViewPropertiesAsJsonObjectSerializer
+import com.clyo.data.ViewName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -12,10 +12,10 @@ import kotlinx.serialization.json.floatOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
-import com.clyo.core.data.LayoutData as LayoutDataContract
-import com.clyo.core.data.ScreenData as ScreenDataContract
-import com.clyo.core.data.ViewData as ViewDataContract
-import com.clyo.core.data.ViewProperties as ViewPropertiesContract
+import com.clyo.data.LayoutData as LayoutDataContract
+import com.clyo.data.ScreenData as ScreenDataContract
+import com.clyo.data.ViewData as ViewDataContract
+import com.clyo.data.ViewProperties as ViewPropertiesContract
 
 @Serializable
 data class ScreenData(

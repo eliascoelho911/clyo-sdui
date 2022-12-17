@@ -1,11 +1,11 @@
-package com.clyo.core.component
+package com.clyo.component
 
 import android.view.ViewGroup
-import com.clyo.core.data.ComponentProperties
+import com.clyo.data.ViewProperties
 
 class Container<T : ViewGroup>(
     viewGroup: T,
-    properties: ComponentProperties
+    properties: ViewProperties
 ) : Component<T>(viewGroup, properties) {
     fun addContent(content: List<Component<*>>) {
         content.forEach { component ->

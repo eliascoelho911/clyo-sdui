@@ -4,7 +4,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 apply from: "$rootDir/plugins/android.gradle"
 
 android {
-    namespace 'com.clyo.core'
+    namespace 'com.clyo'
 }
 
 dependencies {

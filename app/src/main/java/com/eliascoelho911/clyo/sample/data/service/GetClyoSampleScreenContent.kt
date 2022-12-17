@@ -1,16 +1,15 @@
 package com.eliascoelho911.clyo.sample.data.service
 
-import com.clyo.core.data.ScreenData
-import com.clyo.core.data.kotlinx.serialization.data.ScreenDataKS
+import com.clyo.core.data.kotlinx.serialization.ScreenData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 private const val SCREEN_CONTENT_PATH = "screen_content.json"
 
 internal class GetClyoSampleScreenContent {
-    operator fun invoke(): ScreenData {
+    operator fun invoke(): com.clyo.data.ScreenData {
         val jsonContent = readContent()
-        return Json.decodeFromString<ScreenDataKS>(jsonContent)
+        return Json.decodeFromString<ScreenData>(jsonContent)
     }
 
     private fun readContent(): String =

@@ -1,15 +1,15 @@
-package com.clyo.core.component
+package com.clyo.component
 
 import android.view.View
 import android.view.ViewGroup
-import com.clyo.core.data.ComponentName
+import com.clyo.data.ViewName
 
 //Todo Encontrar uma forma mais performatica de manipular e somar módulos
 @JvmInline
 value class ComponentModule(
-    private val _map: MutableMap<ComponentName, ComponentBuilder<*>> = mutableMapOf()
+    private val _map: MutableMap<ViewName, ComponentBuilder<*>> = mutableMapOf()
 ) {
-    fun add(name: ComponentName, builder: ComponentBuilder<*>) {
+    fun add(name: ViewName, builder: ComponentBuilder<*>) {
         _map[name] = builder
     }
 
@@ -18,9 +18,9 @@ value class ComponentModule(
         return ComponentModule(map)
     }
 
-    operator fun get(name: ComponentName) = _map[name]
+    operator fun get(name: ViewName) = _map[name]
 
-    fun remove(name: ComponentName) {
+    fun remove(name: ViewName) {
         _map.remove(name)
     }
 }
@@ -30,7 +30,7 @@ fun componentModule(
 ) = ComponentModule().apply(module)
 
 fun <T : View> ComponentModule.component(
-    name: ComponentName,
+    name: ViewName,
     componentBuilder: ComponentBuilder<T>.() -> Unit
 ) {
     add(
@@ -40,7 +40,7 @@ fun <T : View> ComponentModule.component(
 }
 
 fun <T : ViewGroup> ComponentModule.container(
-    name: ComponentName,
+    name: ViewName,
     containerBuilder: ComponentBuilder<T>.() -> Unit
 ) {
     add(

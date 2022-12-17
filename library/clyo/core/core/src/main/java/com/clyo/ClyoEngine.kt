@@ -1,18 +1,17 @@
-package com.clyo.core
+package com.clyo
 
 import android.content.Context
 import android.view.ViewGroup
-import com.clyo.core.component.Component
-import com.clyo.core.component.ComponentModule
-import com.clyo.core.component.Container
-import com.clyo.core.component.ContainerBuilder
-import com.clyo.core.data.ComponentData
-import com.clyo.core.data.ComponentName
-import com.clyo.core.data.ComponentProperties
-import com.clyo.core.data.ContainerData
-import com.clyo.core.data.ScreenData
+import com.clyo.component.ComponentModule
+import com.clyo.component.Container
+import com.clyo.component.ContainerBuilder
+import com.clyo.data.LayoutData
+import com.clyo.data.ScreenData
+import com.clyo.data.ViewData
+import com.clyo.data.ViewName
+import com.clyo.data.ViewProperties
 
-class ClyoEngine(
+internal class ClyoEngine(
     private val componentModule: ComponentModule = ComponentModule(),
 ) {
     fun showScreen(data: ScreenData, parent: ViewGroup) {
@@ -25,8 +24,8 @@ class ClyoEngine(
 
     private fun buildComponent(
         context: Context,
-        data: ComponentData
-    ): Component<*> = if (data is ContainerData) {
+        data: ViewData
+    ): Component<*> = if (data is LayoutData) {
         buildContainer(
             context,
             name = data.name,
@@ -39,9 +38,9 @@ class ClyoEngine(
 
     private fun buildContainer(
         context: Context,
-        name: ComponentName,
-        properties: ComponentProperties,
-        content: List<ComponentData>
+        name: ViewName,
+        properties: ViewProperties,
+        content: List<ViewData>
     ): Container<*> {
         val builder = componentModule[name] ?: error("ContainerBuilder to $name not found")
         builder as ContainerBuilder<*>
@@ -53,8 +52,8 @@ class ClyoEngine(
 
     private fun buildComponent(
         context: Context,
-        name: ComponentName,
-        properties: ComponentProperties,
+        name: ViewName,
+        properties: ViewProperties,
     ): Component<*> {
         val builder = componentModule[name] ?: error("ComponentBuilder to $name not found")
         return builder.build(context, properties)

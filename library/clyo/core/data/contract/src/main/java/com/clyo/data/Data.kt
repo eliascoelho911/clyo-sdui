@@ -1,4 +1,4 @@
-package com.clyo.core.data
+package com.clyo.data
 
 interface ScreenData {
     val content: LayoutData
