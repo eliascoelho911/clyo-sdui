@@ -1,16 +1,13 @@
 package com.clyo.data
 
 interface ScreenData {
-    val content: LayoutData
+    val content: ViewData
 }
 
-interface LayoutData : ViewData {
-    val content: List<ViewData>
-}
-
-interface ViewData {
+interface ViewData{
     val name: ViewName
     val properties: ViewProperties
+    val content: List<ViewData>
 }
 
 typealias ViewName = String

@@ -1,4 +1,4 @@
-package com.clyo.core.data.kotlinx.serialization.stub
+package com.clyo.data.kotlinx.serialization.stub
 
 import com.clyo.data.kotlinx.serialization.ScreenData
 
@@ -11,6 +11,6 @@ internal object ScreenDataStub {
     """.trimIndent()
 
     val screenData = ScreenData(
-        content = LayoutDataStub.layoutData
+        content = LayoutDataStub.viewData
     )
 }

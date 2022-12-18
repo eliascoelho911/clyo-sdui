@@ -12,7 +12,6 @@ import kotlinx.serialization.json.floatOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
-import com.clyo.data.LayoutData as LayoutDataContract
 import com.clyo.data.ScreenData as ScreenDataContract
 import com.clyo.data.ViewData as ViewDataContract
 import com.clyo.data.ViewProperties as ViewPropertiesContract
@@ -20,27 +19,19 @@ import com.clyo.data.ViewProperties as ViewPropertiesContract
 @Serializable
 data class ScreenData(
     @SerialName("content")
-    override val content: LayoutDataContract
+    override val content: ViewDataContract
 ) : ScreenDataContract
-
-@Serializable
-data class LayoutData(
-    @SerialName("name")
-    override val name: ViewName,
-    @SerialName("properties")
-    override val properties: ViewPropertiesContract = ViewProperties(JsonObject(mapOf())),
-    @SerialName("content")
-    override val content: List<ViewDataContract> = emptyList()
-) : LayoutDataContract
-
 
 @Serializable
 data class ViewData(
     @SerialName("name")
     override val name: ViewName,
     @SerialName("properties")
-    override val properties: ViewPropertiesContract = ViewProperties(JsonObject(mapOf()))
+    override val properties: ViewPropertiesContract = ViewProperties(JsonObject(mapOf())),
+    @SerialName("content")
+    override val content: List<ViewDataContract> = emptyList()
 ) : ViewDataContract
+
 
 @Serializable(with = ViewPropertiesAsJsonObjectSerializer::class)
 data class ViewProperties(

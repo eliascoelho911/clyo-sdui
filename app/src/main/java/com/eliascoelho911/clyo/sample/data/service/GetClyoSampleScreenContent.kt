@@ -1,6 +1,6 @@
 package com.eliascoelho911.clyo.sample.data.service
 
-import com.clyo.core.data.kotlinx.serialization.ScreenData
+import com.clyo.data.kotlinx.serialization.ScreenData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 

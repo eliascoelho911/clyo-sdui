@@ -1,6 +1,6 @@
-package com.clyo.core.data.kotlinx.serialization.stub
+package com.clyo.data.kotlinx.serialization.stub
 
-import com.clyo.data.kotlinx.serialization.LayoutData
+import com.clyo.data.kotlinx.serialization.ViewData
 import com.clyo.data.kotlinx.serialization.ViewProperties
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -27,7 +27,7 @@ internal object LayoutDataStub {
         }
     """.trimIndent()
 
-    val layoutData = LayoutData(
+    val viewData = ViewData(
         name = "layout",
         properties = ViewProperties(
             JsonObject(

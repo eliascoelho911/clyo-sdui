@@ -1,7 +1,6 @@
-package com.clyo.core.data.kotlinx.serialization
+package com.clyo.data.kotlinx.serialization
 
-import com.clyo.core.data.kotlinx.serialization.stub.ScreenDataStub
-import com.clyo.data.kotlinx.serialization.ScreenData
+import com.clyo.data.kotlinx.serialization.stub.ScreenDataStub
 import kotlin.test.assertEquals
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json

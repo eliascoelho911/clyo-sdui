@@ -1,9 +1,10 @@
 package com.clyo
 
-class Clyo internal constructor(
-) {
-
-    fun stop() {
-        // TODO Not yet implemented
-    }
+/**
+ * Painel de controle do Clyo
+ */
+class Clyo {
+//    fun createEngine()
+//
+    fun stop() = Unit
 }
