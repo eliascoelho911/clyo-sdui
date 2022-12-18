@@ -1,0 +1,8 @@
+apply plugin: 'org.jetbrains.kotlin.jvm'
+
+apply from: "$rootDir/plugins/kotlin.gradle"
+
+dependencies {
+    // LocalLibs
+    implementation project(LocalLibs.clyoData)
+}
