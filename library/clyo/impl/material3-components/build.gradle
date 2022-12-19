@@ -10,6 +10,7 @@ android {
 dependencies {
     // LocalLibs
     api project(LocalLibs.clyoCore)
+    api project(LocalLibs.clyoUi)
 
     // Android
     implementation Libs.material3

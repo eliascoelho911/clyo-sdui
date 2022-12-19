@@ -1,16 +1,10 @@
 package com.clyo.android.containers
 
 import androidx.appcompat.widget.LinearLayoutCompat
-import com.clyo.component.componentModule
-import com.clyo.component.container
-import com.clyo.component.modifications.updateSizeByProperties
+import com.clyo.ui.dsl.viewBinders
 
-val AndroidContainerModule = componentModule {
-    container<LinearLayoutCompat>("column") {
-        view { LinearLayoutCompat(it) }
-        bind { properties ->
-            updateSizeByProperties(properties)
-            orientation = LinearLayoutCompat.VERTICAL
-        }
+val ContainersBinders = viewBinders {
+    binder<LinearLayoutCompat>("column") { properties ->
+        orientation = LinearLayoutCompat.VERTICAL
     }
 }
