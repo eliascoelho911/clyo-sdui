@@ -1,6 +1,6 @@
-package com.clyo.ui.internal.cache
+package com.clyo.ui.internal.module
 
-internal abstract class LocalCache<K, V> {
+internal abstract class LocalModule<K, V> {
     private val map: MutableMap<K, V> = mutableMapOf()
 
     fun put(key: K, value: V) {

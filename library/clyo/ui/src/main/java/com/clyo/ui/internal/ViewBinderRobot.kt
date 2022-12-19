@@ -4,13 +4,13 @@ import android.view.View
 import com.clyo.data.ViewName
 import com.clyo.data.ViewProperties
 import com.clyo.ui.ViewBinder
-import com.clyo.ui.internal.cache.ViewBinderCache
+import com.clyo.ui.internal.module.ViewBinderModule
 
 /**
  * Robô que faz a vinculação de todas as [ViewProperties] em uma [View]
  */
 internal class ViewBinderRobot(
-    private val viewBinderCache: ViewBinderCache
+    private val viewBinderCache: ViewBinderModule
 ) {
     fun <T : View> bind(view: T, name: ViewName, properties: ViewProperties): T {
         val viewBinder = viewBinderCache[name]

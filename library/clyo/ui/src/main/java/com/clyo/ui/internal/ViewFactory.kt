@@ -5,14 +5,14 @@ import android.view.View
 import com.clyo.data.ViewData
 import com.clyo.data.ViewName
 import com.clyo.data.ViewProperties
-import com.clyo.ui.internal.cache.ViewClassCache
+import com.clyo.ui.internal.module.ViewClassModule
 import kotlin.reflect.KClass
 
 /**
  * Terá a responsabilidade de criar uma instância de [View] baseado no [ViewData]
  */
 internal class ViewFactory(
-    private val viewClassCache: ViewClassCache,
+    private val viewClassCache: ViewClassModule,
     private val viewBinderRobot: ViewBinderRobot
 ) {
 
