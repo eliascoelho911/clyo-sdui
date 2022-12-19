@@ -10,7 +10,7 @@ import kotlin.reflect.KClass
  * Terá a responsabilidade de criar uma instância de [View] baseado no [ViewData]
  */
 internal class ViewFactory(
-    private val viewClassProvider: ViewClassProvider,
+    private val viewClassCache: ViewClassCache,
     private val viewBinderManager: ViewBinderManager
 ) {
 
@@ -20,7 +20,7 @@ internal class ViewFactory(
     fun create(data: ViewData, context: Context): View = createAndBindView(data, context)
 
     private fun createAndBindView(data: ViewData, context: Context): View {
-        val viewKlass: KClass<out View> = viewClassProvider.provide(data.name)
+        val viewKlass: KClass<out View> = viewClassCache.provide(data.name)
         return createAndBindView(data.properties, viewKlass, context)
     }
 
