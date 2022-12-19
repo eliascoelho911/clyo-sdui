@@ -3,6 +3,7 @@ package com.clyo.ui.internal
 import android.content.Context
 import android.view.View
 import com.clyo.data.ViewData
+import com.clyo.data.ViewName
 import com.clyo.data.ViewProperties
 import kotlin.reflect.KClass
 
@@ -11,7 +12,7 @@ import kotlin.reflect.KClass
  */
 internal class ViewFactory(
     private val viewClassCache: ViewClassCache,
-    private val viewBinderManager: ViewBinderManager
+    private val viewBinderRobot: ViewBinderRobot
 ) {
 
     /**
@@ -19,17 +20,17 @@ internal class ViewFactory(
      */
     fun create(data: ViewData, context: Context): View = createAndBindView(data, context)
 
-    private fun createAndBindView(data: ViewData, context: Context): View {
-        val viewKlass: KClass<out View> = viewClassCache.provide(data.name)
-        return createAndBindView(data.properties, viewKlass, context)
+    private fun createAndBindView(viewData: ViewData, context: Context): View {
+        val viewKlass: KClass<out View> = viewClassCache.provide(viewData.name)
+        return createAndBindView(viewData, viewKlass, context)
     }
 
     private fun createAndBindView(
-        properties: ViewProperties,
+        viewData: ViewData,
         viewClass: KClass<out View>,
         context: Context
     ): View {
-        return createViewInstance(viewClass, context).bind(properties)
+        return createViewInstance(viewClass, context).bind(viewData.name, viewData.properties)
     }
 
     private fun createViewInstance(viewClass: KClass<out View>, context: Context): View {
@@ -40,7 +41,7 @@ internal class ViewFactory(
         }.getOrElse { error(it) }
     }
 
-    private fun View.bind(properties: ViewProperties) = apply {
-        viewBinderManager.bind(this, properties)
+    private fun View.bind(viewName: ViewName, viewProperties: ViewProperties) = apply {
+        viewBinderRobot.bind(this, viewName, viewProperties)
     }
 }
