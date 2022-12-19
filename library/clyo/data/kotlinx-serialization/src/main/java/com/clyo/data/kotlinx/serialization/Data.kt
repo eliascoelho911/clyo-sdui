@@ -12,15 +12,15 @@ import kotlinx.serialization.json.floatOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
-import com.clyo.data.ScreenData as ScreenDataContract
+import com.clyo.data.ClyoData as ClyoDataContract
 import com.clyo.data.ViewData as ViewDataContract
 import com.clyo.data.ViewProperties as ViewPropertiesContract
 
 @Serializable
-data class ScreenData(
+data class ClyoData(
     @SerialName("content")
     override val content: ViewDataContract
-) : ScreenDataContract
+) : ClyoDataContract
 
 @Serializable
 data class ViewData(

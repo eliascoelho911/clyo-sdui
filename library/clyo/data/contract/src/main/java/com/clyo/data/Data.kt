@@ -1,6 +1,6 @@
 package com.clyo.data
 
-interface ScreenData {
+interface ClyoData {
     val content: ViewData
 }
 

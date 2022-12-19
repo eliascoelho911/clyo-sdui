@@ -6,10 +6,10 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.junit.Test
 
-class ScreenDataTest {
+class ClyoDataTest {
     @Test
     fun `Should deserialize ScreenData`() {
-        val deserializedValue = Json.decodeFromString<ScreenData>(ScreenDataStub.jsonValue)
+        val deserializedValue = Json.decodeFromString<ClyoData>(ScreenDataStub.jsonValue)
         val expected = ScreenDataStub.screenData
 
         assertEquals(expected, deserializedValue)
