@@ -4,15 +4,16 @@ import android.view.View
 import com.clyo.data.ViewName
 import com.clyo.data.ViewProperties
 import com.clyo.ui.ViewBinder
+import com.clyo.ui.internal.cache.ViewBinderCache
 
 /**
  * Robô que faz a vinculação de todas as [ViewProperties] em uma [View]
  */
-internal class ViewBinderRobot {
-    private val module: MutableMap<ViewName, ViewBinder<*>> = mutableMapOf()
-
+internal class ViewBinderRobot(
+    private val viewBinderCache: ViewBinderCache
+) {
     fun <T : View> bind(view: T, name: ViewName, properties: ViewProperties): T {
-        val viewBinder = module[name] ?: error("ViewBinder for the $name was not registered")
+        val viewBinder = viewBinderCache[name]
         return viewBinder.bind(view, properties)
     }
 

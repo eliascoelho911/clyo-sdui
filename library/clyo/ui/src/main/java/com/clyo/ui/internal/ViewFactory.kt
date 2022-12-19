@@ -5,6 +5,7 @@ import android.view.View
 import com.clyo.data.ViewData
 import com.clyo.data.ViewName
 import com.clyo.data.ViewProperties
+import com.clyo.ui.internal.cache.ViewClassCache
 import kotlin.reflect.KClass
 
 /**
@@ -21,7 +22,7 @@ internal class ViewFactory(
     fun create(data: ViewData, context: Context): View = createAndBindView(data, context)
 
     private fun createAndBindView(viewData: ViewData, context: Context): View {
-        val viewKlass: KClass<out View> = viewClassCache.provide(viewData.name)
+        val viewKlass: KClass<out View> = viewClassCache[viewData.name]
         return createAndBindView(viewData, viewKlass, context)
     }
 
