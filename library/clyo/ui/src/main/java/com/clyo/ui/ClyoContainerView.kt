@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.clyo.data.ClyoData
+import com.clyo.ui.internal.renderView
 
 class ClyoContainerView @JvmOverloads constructor(
     context: Context,
@@ -12,7 +13,7 @@ class ClyoContainerView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
 
-    fun submitData(data: ClyoData) {
-        findClyoEngine()
+    fun render(data: ClyoData) {
+        renderView(data = data.content, context)
     }
 }

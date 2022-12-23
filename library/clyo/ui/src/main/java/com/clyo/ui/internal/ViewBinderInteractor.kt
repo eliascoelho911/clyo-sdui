@@ -9,11 +9,11 @@ import com.clyo.ui.internal.module.ViewBinderModule
 /**
  * Robô que faz a vinculação de todas as [ViewProperties] em uma [View]
  */
-internal class ViewBinderRobot(
-    private val viewBinderCache: ViewBinderModule
+internal class ViewBinderInteractor(
+    private val viewBinderModule: ViewBinderModule
 ) {
     fun <T : View> bind(view: T, name: ViewName, properties: ViewProperties): T {
-        val viewBinder = viewBinderCache[name]
+        val viewBinder = viewBinderModule[name]
         return viewBinder.bind(view, properties)
     }
 
