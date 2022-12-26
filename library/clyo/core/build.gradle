@@ -1,8 +1,17 @@
-apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
 
-apply from: "$rootDir/plugins/kotlin.gradle"
+apply from: "$rootDir/plugins/android.gradle"
+
+android {
+    namespace 'com.clyo.core'
+}
 
 dependencies {
     // LocalLibs
     implementation project(LocalLibs.clyoData)
+    implementation Libs.kotlinReflect
+
+    // Android
+    implementation Libs.appCompat
 }
