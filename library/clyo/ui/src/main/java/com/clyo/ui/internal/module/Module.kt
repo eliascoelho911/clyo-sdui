@@ -9,6 +9,10 @@ open class Module<K, V> internal constructor(map: Map<K, InstanceFactory<V>> = e
         map[key] = value
     }
 
+    fun declare(module: Module<K, V>) {
+        map.putAll(module.map)
+    }
+
     fun remove(key: K) {
         map.remove(key)
     }
