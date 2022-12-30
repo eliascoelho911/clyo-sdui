@@ -1,4 +1,4 @@
-package com.clyo.viewbinder
+package com.clyo.android.view
 
 import android.view.View
 import com.clyo.data.ViewProperties

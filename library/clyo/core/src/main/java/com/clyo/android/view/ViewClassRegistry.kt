@@ -1,4 +1,4 @@
-package com.clyo.viewclass
+package com.clyo.android.view
 
 import android.view.View
 import com.clyo.data.ViewName

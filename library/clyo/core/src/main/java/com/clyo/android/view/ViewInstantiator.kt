@@ -1,11 +1,11 @@
-package com.clyo.viewclass
+package com.clyo.android.view
 
 import android.content.Context
 import android.view.View
 import com.clyo.data.ViewName
 import kotlin.reflect.KClass
 
-internal class ViewClassInstantiator(
+internal class ViewInstantiator(
     private val viewClassModule: ViewClassModule
 ) {
     fun newInstance(context: Context, viewName: ViewName): View {

@@ -3,8 +3,8 @@ package com.clyo.android
 import android.app.Activity
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.clyo.viewbinder.ViewBinderRegistry
-import com.clyo.viewclass.ViewClassRegistry
+import com.clyo.android.view.ViewBinderRegistry
+import com.clyo.android.view.ViewClassRegistry
 
 //Todo Implementar cache (para evitar processamento desnecessário causado pelo ciclo de vida)
 internal fun Activity.findClyoAndroid(): Lazy<ClyoAndroid> = lazy {

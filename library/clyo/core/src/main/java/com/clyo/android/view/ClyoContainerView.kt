@@ -1,8 +1,9 @@
-package com.clyo.android
+package com.clyo.android.view
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import com.clyo.android.ClyoAndroid
 import com.clyo.data.ClyoData
 
 class ClyoContainerView @JvmOverloads constructor(

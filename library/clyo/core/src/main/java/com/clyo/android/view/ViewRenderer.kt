@@ -1,16 +1,14 @@
-package com.clyo.util
+package com.clyo.android.view
 
 import android.content.Context
 import android.view.View
 import com.clyo.data.ViewData
-import com.clyo.viewbinder.ViewBinderInteractor
-import com.clyo.viewclass.ViewClassInstantiator
 
 /**
  * Terá a responsabilidade de criar e renderizar uma [View] com os dados do [ViewData]
  */
 internal class ViewRenderer(
-    private val viewClassInstantiator: ViewClassInstantiator,
+    private val viewInstantiator: ViewInstantiator,
     private val viewBinderInteractor: ViewBinderInteractor
 ) {
 
@@ -18,7 +16,7 @@ internal class ViewRenderer(
      * @return [View] com todos as propriedades já atribuidas
      */
     fun render(context: Context, data: ViewData): View {
-        return viewClassInstantiator.newInstance(context, viewName = data.name).also {
+        return viewInstantiator.newInstance(context, viewName = data.name).also {
             it.bind(data)
         }
     }

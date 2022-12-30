@@ -2,15 +2,15 @@ package com.clyo.android
 
 import android.content.Context
 import android.view.View
+import com.clyo.android.view.ViewBinderInteractor
+import com.clyo.android.view.ViewBinderModule
+import com.clyo.android.view.ViewBinderRegistry
+import com.clyo.android.view.ViewClassModule
+import com.clyo.android.view.ViewClassRegistry
+import com.clyo.android.view.ViewInstantiator
+import com.clyo.android.view.ViewRenderer
 import com.clyo.data.ViewData
 import com.clyo.global.ClyoApplication
-import com.clyo.util.ViewRenderer
-import com.clyo.viewbinder.ViewBinderInteractor
-import com.clyo.viewbinder.ViewBinderModule
-import com.clyo.viewbinder.ViewBinderRegistry
-import com.clyo.viewclass.ViewClassInstantiator
-import com.clyo.viewclass.ViewClassModule
-import com.clyo.viewclass.ViewClassRegistry
 
 internal abstract class ClyoAndroid : ClyoApplication<View>()
 
@@ -21,7 +21,7 @@ internal class ClyoAndroidImpl(
 ) : ClyoAndroid() {
 
     private val viewRenderer: ViewRenderer = ViewRenderer(
-        viewClassInstantiator = ViewClassInstantiator(viewClassRegistry.module),
+        viewInstantiator = ViewInstantiator(viewClassRegistry.module),
         viewBinderInteractor = ViewBinderInteractor(viewBinderRegistry.module)
     )
 
