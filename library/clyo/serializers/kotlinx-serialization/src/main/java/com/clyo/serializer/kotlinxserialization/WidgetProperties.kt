@@ -1,8 +1,7 @@
 package com.clyo.serializer.kotlinxserialization
 
-import com.clyo.core.data.ViewName
-import com.clyo.serializer.kotlinxserialization.serializer.ViewPropertiesAsJsonObjectSerializer
-import kotlinx.serialization.SerialName
+import com.clyo.core.data.WidgetProperties
+import com.clyo.serializer.kotlinxserialization.serializer.WidgetPropertiesAsJsonObjectSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.booleanOrNull
@@ -12,31 +11,11 @@ import kotlinx.serialization.json.floatOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
-import com.clyo.core.data.ClyoData as IClyoData
-import com.clyo.core.data.ViewData as IViewData
-import com.clyo.core.data.ViewProperties as IViewProperties
 
-@Serializable
-data class ClyoData(
-    @SerialName("content")
-    override val content: IViewData
-) : IClyoData
-
-@Serializable
-data class ViewData(
-    @SerialName("name")
-    override val name: ViewName,
-    @SerialName("properties")
-    override val properties: IViewProperties = ViewProperties(JsonObject(mapOf())),
-    @SerialName("content")
-    override val content: List<IViewData> = emptyList()
-) : IViewData
-
-
-@Serializable(with = ViewPropertiesAsJsonObjectSerializer::class)
-data class ViewProperties(
+@Serializable(with = WidgetPropertiesAsJsonObjectSerializer::class)
+data class WidgetProperties(
     val jsonObject: JsonObject
-) : IViewProperties {
+) : WidgetProperties {
     override fun getStringOrNull(key: String): String? = get(key)?.contentOrNull
 
     override fun getBooleanOrNull(key: String): Boolean? = get(key)?.booleanOrNull

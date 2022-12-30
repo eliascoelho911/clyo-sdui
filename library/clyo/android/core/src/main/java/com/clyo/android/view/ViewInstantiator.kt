@@ -2,14 +2,14 @@ package com.clyo.android.view
 
 import android.content.Context
 import android.view.View
-import com.clyo.core.data.ViewName
+import com.clyo.core.data.WidgetName
 import kotlin.reflect.KClass
 
 internal class ViewInstantiator(
     private val viewClassModule: ViewClassModule
 ) {
-    fun newInstance(context: Context, viewName: ViewName): View {
-        return newInstance(context, viewClassModule[viewName])
+    fun newInstance(context: Context, widgetName: WidgetName): View {
+        return newInstance(context, viewClassModule[widgetName])
     }
 
     // Todo Nova solução com um módulo ViewClass -> fun(): View

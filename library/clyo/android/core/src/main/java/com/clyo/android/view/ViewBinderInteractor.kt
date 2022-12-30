@@ -1,16 +1,16 @@
 package com.clyo.android.view
 
 import android.view.View
-import com.clyo.core.data.ViewName
-import com.clyo.core.data.ViewProperties
+import com.clyo.core.data.WidgetName
+import com.clyo.core.data.WidgetProperties
 
 /**
- * Robô que faz a vinculação de todas as [ViewProperties] em uma [View]
+ * Robô que faz a vinculação de todas as [WidgetProperties] em uma [View]
  */
 internal class ViewBinderInteractor(
     private val viewBinderModule: ViewBinderModule
 ) {
-    fun <T : View> bind(view: T, name: ViewName, properties: ViewProperties): T {
+    fun <T : View> bind(view: T, name: WidgetName, properties: WidgetProperties): T {
         val viewBinder = viewBinderModule[name]
         return viewBinder.bind(view, properties)
     }
@@ -18,7 +18,7 @@ internal class ViewBinderInteractor(
     @Suppress("UNCHECKED_CAST")
     private fun <T : View> ViewBinder<*>.bind(
         view: T,
-        properties: ViewProperties
+        properties: WidgetProperties
     ): T {
         this as ViewBinder<T>
         return view.also { bind(it, properties) }

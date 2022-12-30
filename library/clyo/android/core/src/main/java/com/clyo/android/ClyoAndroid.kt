@@ -9,7 +9,7 @@ import com.clyo.android.view.ViewClassModule
 import com.clyo.android.view.ViewClassRegistry
 import com.clyo.android.view.ViewInstantiator
 import com.clyo.android.view.ViewRenderer
-import com.clyo.core.data.ViewData
+import com.clyo.core.data.WidgetData
 import com.clyo.core.global.ClyoApplication
 
 internal abstract class ClyoAndroid : ClyoApplication<View>()
@@ -26,7 +26,7 @@ internal class ClyoAndroidImpl(
         viewBinderInteractor = ViewBinderInteractor(viewBinderRegistry.module)
     )
 
-    override fun render(data: ViewData): View {
+    override fun render(data: WidgetData): View {
         return viewRenderer.render(context, data)
     }
 

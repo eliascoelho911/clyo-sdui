@@ -1,6 +1,6 @@
 package com.clyo.serializer.kotlinxserialization.serializer
 
-import com.clyo.serializer.kotlinxserialization.ViewProperties
+import com.clyo.serializer.kotlinxserialization.WidgetProperties
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -8,7 +8,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonObject
 
-internal class ViewPropertiesAsJsonObjectSerializer : KSerializer<ViewProperties> {
+internal class WidgetPropertiesAsJsonObjectSerializer : KSerializer<WidgetProperties> {
     private val delegateSerializer = JsonObject.serializer()
 
     @OptIn(ExperimentalSerializationApi::class)
@@ -17,12 +17,12 @@ internal class ViewPropertiesAsJsonObjectSerializer : KSerializer<ViewProperties
         original = delegateSerializer.descriptor
     )
 
-    override fun serialize(encoder: Encoder, value: ViewProperties) {
+    override fun serialize(encoder: Encoder, value: WidgetProperties) {
         encoder.encodeSerializableValue(delegateSerializer, value.jsonObject)
     }
 
-    override fun deserialize(decoder: Decoder): ViewProperties {
+    override fun deserialize(decoder: Decoder): WidgetProperties {
         val jsonObject = decoder.decodeSerializableValue(delegateSerializer)
-        return ViewProperties(jsonObject)
+        return WidgetProperties(jsonObject)
     }
 }

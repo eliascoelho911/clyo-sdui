@@ -6,10 +6,10 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.junit.Test
 
-class ViewDataTest {
+class WidgetDataTest {
     @Test
     fun `Should deserialize ViewData`() {
-        val deserializedValue = Json.decodeFromString<ViewData>(ViewDataStub.jsonValue)
+        val deserializedValue = Json.decodeFromString<WidgetData>(ViewDataStub.jsonValue)
         val expected = ViewDataStub.viewData
 
         assertEquals(expected, deserializedValue)
