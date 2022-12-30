@@ -1,0 +1,12 @@
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'kotlinx-serialization'
+
+apply from: "$rootDir/plugins/kotlin.gradle"
+
+dependencies {
+    implementation Libs.kotlinSerializationJson
+    implementation project(LocalLibs.clyoCore)
+
+    testImplementation TestLibs.junit
+    testImplementation TestLibs.kotlinTestJunit
+}

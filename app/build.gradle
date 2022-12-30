@@ -33,8 +33,8 @@ dependencies {
 
     // Clyo
 //    implementation project(LocalLibs.clyoCore)
-    implementation project(LocalLibs.clyoDataKotlinxSerialization)
-    implementation project(LocalLibs.clyoMaterial3Components)
+    implementation project(LocalLibs.clyoKotlinxSerialization)
+    implementation project(LocalLibs.clyoMaterial3)
     implementation project(LocalLibs.clyoContainers)
 
     // Koin

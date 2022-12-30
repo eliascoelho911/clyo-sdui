@@ -1,17 +1,9 @@
-apply plugin: 'com.android.library'
-apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'kotlinx-serialization'
 
-apply from: "$rootDir/plugins/android.gradle"
-
-android {
-    namespace 'com.clyo.core'
-}
+apply from: "$rootDir/plugins/kotlin.gradle"
 
 dependencies {
     // LocalLibs
-    implementation project(LocalLibs.clyoData)
     implementation Libs.kotlinReflect
-
-    // Android
-    implementation Libs.appCompat
 }

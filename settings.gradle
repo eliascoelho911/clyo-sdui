@@ -13,9 +13,9 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "notate-android"
-include ':app'
-include ':library:clyo:data:kotlinx-serialization'
-include ':library:clyo:impl:containers'
-include ':library:clyo:impl:material3-components'
-include ':library:clyo:data:contract'
+//include ':app'
+include ':library:clyo:serializers:kotlinx-serialization'
+include ':library:clyo:android:containers'
+include ':library:clyo:android:widgets:material3'
 include ':library:clyo:core'
+include ':library:clyo:android:core'
