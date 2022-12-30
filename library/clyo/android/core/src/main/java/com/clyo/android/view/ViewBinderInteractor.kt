@@ -21,6 +21,6 @@ internal class ViewBinderInteractor(
         properties: WidgetProperties
     ): T {
         this as ViewBinder<T>
-        return view.also { bind(it, properties) }
+        return bind(view, properties)
     }
 }
