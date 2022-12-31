@@ -5,5 +5,7 @@ apply from: "$rootDir/plugins/kotlin.gradle"
 
 dependencies {
     // LocalLibs
+    implementation project(LocalLibs.clyoCommon)
+
     implementation Libs.kotlinReflect
 }

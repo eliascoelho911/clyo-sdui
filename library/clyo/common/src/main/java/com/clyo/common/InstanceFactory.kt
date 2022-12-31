@@ -1,3 +1,3 @@
-package com.clyo.core.util
+package com.clyo.common
 
 typealias InstanceFactory<T> = () -> T

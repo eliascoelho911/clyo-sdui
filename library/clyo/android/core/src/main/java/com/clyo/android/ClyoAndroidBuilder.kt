@@ -3,8 +3,7 @@ package com.clyo.android
 import android.app.Activity
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.clyo.android.view.ViewBinderRegistry
-import com.clyo.android.view.ViewClassRegistry
+import com.clyo.android.view.AndroidRegistry
 
 //Todo Implementar cache (para evitar processamento desnecessário causado pelo ciclo de vida)
 internal fun Activity.findClyoAndroid(): Lazy<ClyoAndroid> = lazy {
@@ -16,14 +15,12 @@ internal fun Fragment.findClyoAndroid(): Lazy<ClyoAndroid> = lazy {
 }
 
 private fun findClyoAndroid(context: Context): ClyoAndroid {
-    val viewBinderRegistry = ViewBinderRegistry()
-    val viewClassRegistry = ViewClassRegistry()
+    val androidRegistry = AndroidRegistry()
 
-    return findClyoAndroid(context, viewBinderRegistry, viewClassRegistry)
+    return findClyoAndroid(context, androidRegistry)
 }
 
 private fun findClyoAndroid(
     context: Context,
-    viewBinderRegistry: ViewBinderRegistry,
-    viewClassRegistry: ViewClassRegistry
-) = ClyoAndroidImpl(context, viewBinderRegistry, viewClassRegistry)
+    androidRegistry: AndroidRegistry,
+) = ClyoAndroid(context, androidRegistry)

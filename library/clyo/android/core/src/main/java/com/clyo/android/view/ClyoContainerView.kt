@@ -13,9 +13,9 @@ class ClyoContainerView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
 
-    private var clyoAndroid: ClyoAndroid? = null
+    var clyo: ClyoAndroid? = null
 
     fun render(data: ClyoData) {
-        clyoAndroid?.let { addView(it.render(data.content)) }
+        clyo?.viewRenderer?.render(data.content)
     }
 }
