@@ -1,4 +1,4 @@
-package com.clyo.android.view
+package com.clyo.android.view.renderer
 
 import android.view.View
 import com.clyo.core.data.WidgetProperties

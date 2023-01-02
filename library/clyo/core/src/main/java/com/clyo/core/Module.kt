@@ -20,9 +20,23 @@ value class Module<K, V>(
         instanceFactories.remove(key)
     }
 
+    fun clear() {
+        instanceFactories.clear()
+    }
+
     operator fun get(key: K): V {
         return instanceFactories[key]?.invoke() ?: error("Error on get to $key")
     }
 
     fun getAll(): Map<K, InstanceFactory<V>> = instanceFactories
+}
+
+fun <K, V> Collection<Module<K, V>>.singleModule(): Module<K, V> {
+    val reference = first()
+
+    forEach {
+        if (reference != it) reference.declare(it)
+    }
+
+    return reference
 }

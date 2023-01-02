@@ -1,6 +1,6 @@
 package com.clyo.core.tools
 
-import com.clyo.core.global.ClyoId
+import com.clyo.core.ClyoId
 import java.util.UUID
 
 internal object ClyoExternalTools {
@@ -9,3 +9,4 @@ internal object ClyoExternalTools {
 
     fun generateClyoId(): ClyoId = UUID.randomUUID().toString()
 }
+

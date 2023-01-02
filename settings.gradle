@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "notate-android"
-//include ':app'
+include ':app'
 include ':library:clyo:serializers:kotlinx-serialization'
 include ':library:clyo:android:containers'
 include ':library:clyo:android:widgets:material3'
