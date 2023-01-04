@@ -26,6 +26,6 @@ class ClyoAndroid internal constructor(
     )
 
     override fun render(data: ClyoData) {
-        viewRenderer.render(data.content)
+        viewRenderer.render(data.root)
     }
 }

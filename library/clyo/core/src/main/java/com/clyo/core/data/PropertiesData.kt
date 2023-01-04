@@ -1,6 +1,6 @@
 package com.clyo.core.data
 
-interface WidgetProperties {
+interface PropertiesData {
     fun getStringOrNull(key: String): String?
 
     fun getBooleanOrNull(key: String): Boolean?

@@ -1,5 +1,5 @@
 package com.clyo.android
 
-import com.clyo.core.data.WidgetName
+import com.clyo.core.data.ClyoId
 
-typealias ViewName = WidgetName
+typealias ViewName = ClyoId

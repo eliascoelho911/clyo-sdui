@@ -15,12 +15,12 @@ internal class ViewRenderer(
 ): ClyoRenderer<View>() {
 
     override fun render(data: WidgetData): View {
-        return viewInstantiator.newInstance(context, widgetName = data.name).also {
+        return viewInstantiator.newInstance(context, clyoId = data.id).also {
             it.bind(data)
         }
     }
 
     private fun View.bind(data: WidgetData) {
-        viewBinderInteractor.bind(this, name = data.name, properties = data.properties)
+        viewBinderInteractor.bind(this, name = data.id, properties = data.properties)
     }
 }

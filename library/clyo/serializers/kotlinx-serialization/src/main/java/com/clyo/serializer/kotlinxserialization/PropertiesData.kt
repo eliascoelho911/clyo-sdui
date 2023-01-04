@@ -1,7 +1,7 @@
 package com.clyo.serializer.kotlinxserialization
 
-import com.clyo.core.data.WidgetProperties
-import com.clyo.serializer.kotlinxserialization.serializer.WidgetPropertiesAsJsonObjectSerializer
+import com.clyo.core.data.PropertiesData
+import com.clyo.serializer.kotlinxserialization.serializer.PropertiesAsJsonObjectSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.booleanOrNull
@@ -12,10 +12,10 @@ import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
 
-@Serializable(with = WidgetPropertiesAsJsonObjectSerializer::class)
-data class WidgetProperties(
+@Serializable(with = PropertiesAsJsonObjectSerializer::class)
+data class PropertiesData(
     val jsonObject: JsonObject
-) : WidgetProperties {
+) : PropertiesData {
     override fun getStringOrNull(key: String): String? = get(key)?.contentOrNull
 
     override fun getBooleanOrNull(key: String): Boolean? = get(key)?.booleanOrNull

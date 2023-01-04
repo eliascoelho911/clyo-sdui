@@ -1,7 +1,7 @@
 package com.clyo.core.widget
 
-import com.clyo.core.data.WidgetProperties
+import com.clyo.core.data.PropertiesData
 
 interface WidgetBinder<Widget> {
-    fun bind(widget: Widget, properties: WidgetProperties): Widget
+    fun bind(widget: Widget, properties: PropertiesData): Widget
 }
