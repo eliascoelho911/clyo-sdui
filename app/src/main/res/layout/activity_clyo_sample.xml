@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clyo.android.view.ClyoView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.clyo.android.ClyoView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/clyoContainerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</com.clyo.android.view.ClyoView>
+</com.clyo.android.ClyoView>

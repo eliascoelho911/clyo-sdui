@@ -1,12 +1,11 @@
 package com.clyo.serializer.kotlinxserialization
 
-import com.clyo.core.data.ClyoData
-import com.clyo.core.data.ContainerData
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import com.clyo.data.ClyoData as IClyoData
 
 @Serializable
 data class ClyoData(
-    @SerialName("root")
-    override val root: ContainerData
-) : ClyoData
+    @SerialName("container")
+    override val container: ComponentData
+) : IClyoData

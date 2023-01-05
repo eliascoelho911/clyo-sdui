@@ -1,27 +1,10 @@
 {
-  "content": {
-    "name": "column",
+  "root": {
+    "id": "button",
     "properties": {
-      "width": -1,
-      "height": -1
-    },
-    "content": [
-      {
-        "name": "button",
-        "properties": {
-          "width": -2,
-          "height": 200,
-          "text": "Botão 1"
-        }
-      },
-      {
-        "name": "button",
-        "properties": {
-          "width": -1,
-          "height": 200,
-          "text": "Botão 2"
-        }
-      }
-    ]
+      "width": -2,
+      "height": 200,
+      "text": "Botão 1"
+    }
   }
 }

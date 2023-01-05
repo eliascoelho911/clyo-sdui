@@ -11,6 +11,6 @@ internal object ScreenDataStub {
     """.trimIndent()
 
     val screenData = ClyoData(
-        root = LayoutDataStub.viewData
+        container = LayoutDataStub.viewData
     )
 }

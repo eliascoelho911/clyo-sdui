@@ -1,5 +1,5 @@
 object LocalLibs {
-    const val clyoCore = ":library:clyo:core"
+    const val clyoData = ":library:clyo:data"
     const val clyoCommon = ":library:clyo:common"
     const val clyoAndroid = ":library:clyo:android:core"
     const val clyoKotlinxSerialization = ":library:clyo:serializers:kotlinx-serialization"

@@ -9,7 +9,7 @@ android {
 
 dependencies {
     // LocalLibs
-    api project(LocalLibs.clyoCore)
+//    api project(LocalLibs.clyoCore)
     api project(LocalLibs.clyoAndroid)
 
     // Android

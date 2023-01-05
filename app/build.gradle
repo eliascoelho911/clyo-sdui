@@ -27,6 +27,7 @@ dependencies {
     implementation Libs.lifecycleViewModelKtx
     implementation Libs.livedataKtx
     implementation Libs.appCompat
+    implementation Libs.material3
 
     // Kotlin
     implementation Libs.kotlinSerializationJson
@@ -34,8 +35,9 @@ dependencies {
     // Clyo
 //    implementation project(LocalLibs.clyoCore)
     implementation project(LocalLibs.clyoKotlinxSerialization)
-    implementation project(LocalLibs.clyoMaterial3)
-    implementation project(LocalLibs.clyoContainers)
+    implementation project(LocalLibs.clyoAndroid)
+//    implementation project(LocalLibs.clyoMaterial3)
+//    implementation project(LocalLibs.clyoContainers)
 
     // Koin
     implementation Libs.koin

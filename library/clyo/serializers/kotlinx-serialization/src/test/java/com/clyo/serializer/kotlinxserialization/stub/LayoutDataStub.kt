@@ -1,7 +1,7 @@
 package com.clyo.serializer.kotlinxserialization.stub
 
+import com.clyo.serializer.kotlinxserialization.ComponentData
 import com.clyo.serializer.kotlinxserialization.PropertiesData
-import com.clyo.serializer.kotlinxserialization.WidgetData
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -27,8 +27,8 @@ internal object LayoutDataStub {
         }
     """.trimIndent()
 
-    val viewData = WidgetData(
-        id = "layout",
+    val viewData = ComponentData(
+        name = "layout",
         properties = PropertiesData(
             JsonObject(
                 mapOf(

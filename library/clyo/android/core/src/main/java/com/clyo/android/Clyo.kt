@@ -1,31 +1,20 @@
 package com.clyo.android
 
 import android.content.Context
-import com.clyo.android.view.renderer.ViewBinderInteractor
-import com.clyo.android.view.renderer.ViewBinderModule
-import com.clyo.android.view.renderer.ViewClassModule
-import com.clyo.android.view.renderer.ViewInstantiator
-import com.clyo.android.view.renderer.ViewRenderer
-import com.clyo.core.Clyo
-import com.clyo.core.ClyoComponent
-import com.clyo.core.data.ClyoData
+import com.clyo.android.component.ComponentFactoryImpl
+import com.clyo.android.module.Module
+import com.clyo.data.ClyoData
 
-/**
- * Representa a aplicação de Clyo no Android. Instancia deve ser criada dentro de um [ClyoComponent]
- */
-class ClyoAndroid internal constructor(
-    context: Context,
-    viewBinderModule: ViewBinderModule = ViewBinderModule(),
-    viewClassModule: ViewClassModule = ViewClassModule()
-) : Clyo {
+class Clyo internal constructor(context: Context, module: Module) {
 
-    private val viewRenderer: ViewRenderer = ViewRenderer(
-        context = context,
-        viewInstantiator = ViewInstantiator(viewClassModule),
-        viewBinderInteractor = ViewBinderInteractor(viewBinderModule)
-    )
+    private val componentFactory = ComponentFactoryImpl(context, module)
 
-    override fun render(data: ClyoData) {
-        viewRenderer.render(data.root)
+    fun render(data: ClyoData, container: ClyoView) {
+        val root = data.container
+        val widget = componentFactory.create(root.name)
+
+        widget.bind(root.properties)
+
+        container.addView(widget.view)
     }
 }

@@ -3,7 +3,7 @@ package com.eliascoelho911.clyo.sample.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.clyo.core.data.ClyoData
+import com.clyo.serializer.kotlinxserialization.ClyoData
 import com.eliascoelho911.clyo.sample.domain.repository.ClyoSampleRepository
 
 internal class ClyoSampleViewModel(
