@@ -2,15 +2,15 @@ package com.clyo.serializer.kotlinxserialization.stub
 
 import com.clyo.serializer.kotlinxserialization.ClyoData
 
-internal object ScreenDataStub {
+internal object ClyoDataStub {
 
     val jsonValue = """
         {
-            "content": ${LayoutDataStub.jsonValue}
+            "container": ${ComponentDataStub.jsonValue}
         }
     """.trimIndent()
 
-    val screenData = ClyoData(
-        container = LayoutDataStub.viewData
+    val clyoData = ClyoData(
+        container = ComponentDataStub.componentData
     )
 }

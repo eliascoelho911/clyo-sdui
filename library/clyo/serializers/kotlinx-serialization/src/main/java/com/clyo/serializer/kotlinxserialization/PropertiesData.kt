@@ -14,7 +14,7 @@ import kotlinx.serialization.json.longOrNull
 
 @Serializable(with = PropertiesAsJsonObjectSerializer::class)
 data class PropertiesData(
-    val jsonObject: JsonObject
+    internal val jsonObject: JsonObject
 ) : PropertiesData {
     override fun getStringOrNull(key: String): String? = get(key)?.contentOrNull
 
