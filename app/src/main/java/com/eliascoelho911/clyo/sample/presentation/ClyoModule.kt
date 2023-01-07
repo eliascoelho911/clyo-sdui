@@ -1,8 +1,8 @@
 package com.eliascoelho911.clyo.sample.presentation
 
-//import com.clyo.android.containers.ContainersBinders
-//import com.clyo.android.material3.ClyoMaterial3
-//
-//internal val ClyoSampleModule = clyoModule {
-//    module(module)
-//}
+import com.clyo.android.module.dsl.clyoModule
+import com.clyo.android.widgets.material3.ClyoMaterial3Module
+
+internal val ClyoSampleModule = clyoModule {
+    add(ClyoMaterial3Module)
+}

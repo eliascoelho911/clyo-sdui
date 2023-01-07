@@ -3,19 +3,21 @@ package com.clyo.android
 import android.content.Context
 import com.clyo.android.component.ComponentFactoryImpl
 import com.clyo.android.module.Module
+import com.clyo.android.util.ClyoRenderer
 import com.clyo.data.ClyoData
 
-class Clyo internal constructor(context: Context, module: Module) {
-
-    private val componentFactory = ComponentFactoryImpl(context, module)
+class Clyo internal constructor(
+    private val context: Context,
+    private val module: Module,
+    private val clyoRenderer: ClyoRenderer = createClyoRenderer(context, module)
+) {
 
     fun render(data: ClyoData, container: ClyoView) {
-        //Todo Exportar todo esse comportamento para outra classe (ClyoRenderer)
-        val root = data.container
-        val component = componentFactory.create(root.name)
-
-        component.bind(root.properties)
-
-        container.addView(component.view)
+        clyoRenderer.render(data, container)
     }
 }
+
+private fun createClyoRenderer(
+    context: Context,
+    module: Module
+) = ClyoRenderer(ComponentFactoryImpl(context, module))

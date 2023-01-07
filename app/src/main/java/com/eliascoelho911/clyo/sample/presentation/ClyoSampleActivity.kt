@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.clyo.android.ClyoContext
 import com.clyo.android.clyo
-import com.clyo.android.widgets.material3.ClyoMaterial3Module
 import com.eliascoelho911.clyo.sample.R
 import com.eliascoelho911.clyo.sample.databinding.ActivityClyoSampleBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,7 +20,7 @@ internal class ClyoSampleActivity :
         ActivityClyoSampleBinding.bind(root)
     }
 
-    private val clyo by clyo(ClyoMaterial3Module)
+    private val clyo by clyo(ClyoSampleModule)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

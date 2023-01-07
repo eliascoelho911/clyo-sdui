@@ -15,7 +15,7 @@ internal class ComponentFactoryImpl(
     private val module: Module
 ) : ComponentFactory {
 
-    override fun create(name: ComponentName): Component<View> {
+    override fun create(name: ComponentName): Component<out View> {
         val viewClass = module.viewKClass(name)
         return create(name, viewClass.createViewInstance(context))
     }
