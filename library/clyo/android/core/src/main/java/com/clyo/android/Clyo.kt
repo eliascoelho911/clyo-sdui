@@ -10,11 +10,12 @@ class Clyo internal constructor(context: Context, module: Module) {
     private val componentFactory = ComponentFactoryImpl(context, module)
 
     fun render(data: ClyoData, container: ClyoView) {
+        //Todo Exportar todo esse comportamento para outra classe (ClyoRenderer)
         val root = data.container
-        val widget = componentFactory.create(root.name)
+        val component = componentFactory.create(root.name)
 
-        widget.bind(root.properties)
+        component.bind(root.properties)
 
-        container.addView(widget.view)
+        container.addView(component.view)
     }
 }

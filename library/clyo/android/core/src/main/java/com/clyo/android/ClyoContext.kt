@@ -1,5 +1,6 @@
 package com.clyo.android
 
+import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.view.View
@@ -19,6 +20,7 @@ private fun ClyoContext.getContextOrError(): Context {
     return when (this) {
         is View -> context
         is Fragment -> requireContext()
+        is Activity -> this
         is ContextWrapper -> baseContext
         else -> error("Context not found")
     }

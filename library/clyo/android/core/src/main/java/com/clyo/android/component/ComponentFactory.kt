@@ -15,19 +15,15 @@ internal class ComponentFactoryImpl(
     private val module: Module
 ) : ComponentFactory {
 
-    @Suppress("UNCHECKED_CAST")
     override fun create(name: ComponentName): Component<View> {
+        //Todo O comportamento de instanciar a view deve estar em outra classe, para facilitar o teste
         val viewClass = module.viewKClass(name)
         return create(name, viewInstance(context, viewClass))
     }
 
     private fun <T : View> create(name: ComponentName, view: T): Component<T> {
-        val componentBinder = getComponentBinder<T>(name)
-        return Component(view, componentBinder)
-    }
-
-    private fun <T : View> getComponentBinder(name: ComponentName): ComponentBinder<T> {
-        TODO("Not yet implemented")
+        val viewBinder = module.viewBinder<T>(name)
+        return Component(view, viewBinder)
     }
 }
 

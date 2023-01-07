@@ -1,6 +1,6 @@
 {
-  "root": {
-    "id": "button",
+  "container": {
+    "name": "button",
     "properties": {
       "width": -2,
       "height": 200,

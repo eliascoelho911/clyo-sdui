@@ -5,10 +5,10 @@ import com.clyo.data.PropertiesData
 
 internal data class Component<T : View>(
     val view: T,
-    val componentBinder: ComponentBinder<T>
+    val binder: ViewBinder<T>
 ) {
     fun bind(properties: PropertiesData): T {
-        componentBinder.assign(properties, view)
+        binder.assign(properties, view)
         return view
     }
 }

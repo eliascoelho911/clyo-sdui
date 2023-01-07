@@ -10,7 +10,7 @@ android {
 dependencies {
     // LocalLibs
     implementation Libs.kotlinReflect
-    implementation project(LocalLibs.clyoData)
+    api project(LocalLibs.clyoData)
 
     // Android
     implementation Libs.appCompat

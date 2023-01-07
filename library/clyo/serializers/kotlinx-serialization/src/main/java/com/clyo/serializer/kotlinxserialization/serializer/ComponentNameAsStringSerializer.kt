@@ -1,9 +1,10 @@
 package com.clyo.serializer.kotlinxserialization.serializer
 
 import com.clyo.data.ComponentName
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
@@ -11,10 +12,9 @@ import kotlinx.serialization.encoding.Encoder
 internal class ComponentNameAsStringSerializer : KSerializer<ComponentName> {
     private val delegateSerializer = String.serializer()
 
-    @OptIn(ExperimentalSerializationApi::class)
-    override val descriptor: SerialDescriptor = SerialDescriptor(
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(
         serialName = "ComponentName",
-        original = delegateSerializer.descriptor
+        kind = PrimitiveKind.STRING
     )
 
     override fun serialize(encoder: Encoder, value: ComponentName) {
