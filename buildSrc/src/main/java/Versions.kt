@@ -19,4 +19,7 @@ object Versions {
 
     // Koin
     const val koin = "3.2.2"
+
+    // Mockk
+    const val mockk = "1.13.3"
 }

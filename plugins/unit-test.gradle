@@ -1,3 +1,5 @@
 dependencies {
     testImplementation(TestLibs.junit)
+    testImplementation(TestLibs.kotlinTestJunit)
+    testImplementation(TestLibs.mockk)
 }
