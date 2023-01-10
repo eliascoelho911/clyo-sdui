@@ -15,6 +15,7 @@ internal class ComponentFactoryImpl(
     private val module: Module
 ) : ComponentFactory {
 
+    // Erro quando modulo possui um view class registrado mas não tem view binder para o name
     override fun create(name: ComponentName): Component<out View> {
         val viewClass = module.viewKClass(name)
         return create(name, viewClass.createViewInstance(context))
