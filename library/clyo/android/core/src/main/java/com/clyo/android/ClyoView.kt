@@ -3,7 +3,7 @@ package com.clyo.android
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import com.clyo.android.component.Component
+import com.clyo.android.container.Container
 
 class ClyoView @JvmOverloads constructor(
     context: Context,
@@ -11,7 +11,8 @@ class ClyoView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
     defStyleRes: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
-    internal fun addComponent(component: Component<*>) {
-        addView(component.view)
+
+    internal fun show(container: Container<*>) {
+        addView(container.viewGroup)
     }
 }
