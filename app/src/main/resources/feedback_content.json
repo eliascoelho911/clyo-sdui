@@ -1,0 +1,57 @@
+{
+  "root": {
+    "container_name": "feedback",
+    "properties": {
+      "type": "fullscreen",
+      "content": [
+        {
+          "name": "image",
+          "layout_properties": {
+            "position": "illustration"
+          },
+          "properties": {
+            "image_url": "https://url.com"
+          }
+        },
+        {
+          "name": "text",
+          "layout_properties": {
+            "position": "title"
+          },
+          "properties": {
+            "text": "Esse é o título do feedback",
+            "style": "title"
+          }
+        },
+        {
+          "name": "text",
+          "layout_properties": {
+            "position": "body"
+          },
+          "properties": {
+            "text": "Esse é o conteúdo do feedback",
+            "style": "body"
+          }
+        },
+        {
+          "name": "button",
+          "layout_properties": {
+            "position": "primary_button"
+          },
+          "properties": {
+            "text": "Botão primário"
+          }
+        },
+        {
+          "name": "button",
+          "layout_properties": {
+            "position": "secondary_button"
+          },
+          "properties": {
+            "text": "Botão secondário"
+          }
+        }
+      ]
+    }
+  }
+}

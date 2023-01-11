@@ -11,6 +11,6 @@ internal object ClyoDataStub {
     """.trimIndent()
 
     val clyoData = ClyoData(
-        container = ComponentDataStub.componentData
+        root = ComponentDataStub.componentData
     )
 }

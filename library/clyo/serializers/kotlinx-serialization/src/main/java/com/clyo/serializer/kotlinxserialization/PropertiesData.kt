@@ -28,5 +28,5 @@ data class PropertiesData(
 
     override fun getLongOrNull(key: String): Long? = get(key)?.longOrNull
 
-    private fun get(key: String) = jsonObject[key]?.jsonPrimitive
+    fun get(key: String) = jsonObject[key]?.jsonPrimitive
 }

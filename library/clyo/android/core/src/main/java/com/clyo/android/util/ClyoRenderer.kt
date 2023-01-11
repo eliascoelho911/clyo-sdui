@@ -8,7 +8,7 @@ internal class ClyoRenderer(
     private val componentFactory: ComponentFactory
 ) {
     fun render(data: ClyoData, container: ClyoView) {
-        val containerData = data.container
+        val containerData = data.root
 
         return componentFactory.create(containerData.name).also {
             it.bind(containerData.properties)

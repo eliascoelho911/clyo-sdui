@@ -7,5 +7,5 @@ import com.clyo.data.ClyoData as IClyoData
 @Serializable
 data class ClyoData(
     @SerialName("container")
-    override val container: ComponentData
+    override val root: ComponentData
 ) : IClyoData

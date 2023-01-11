@@ -1,0 +1,16 @@
+{
+  "root": {
+    "container_name": "horizontal_list",
+    "properties": {
+      "content": [
+        {
+          "name": "text",
+          "properties": {
+            "text": "Esse é um título",
+            "style": "title"
+          }
+        }
+      ]
+    }
+  }
+}
