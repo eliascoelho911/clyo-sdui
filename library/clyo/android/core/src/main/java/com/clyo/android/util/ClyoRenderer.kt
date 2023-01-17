@@ -12,6 +12,6 @@ internal class ClyoRenderer(
 
         return componentFactory.create(containerData.name).also {
             it.bind(containerData.properties)
-        }.let { container.addComponent(it) }
+        }.let { container.show(it) }
     }
 }

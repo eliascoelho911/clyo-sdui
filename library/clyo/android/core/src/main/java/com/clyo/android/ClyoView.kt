@@ -3,7 +3,7 @@ package com.clyo.android
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import com.clyo.android.container.Container
+import com.clyo.android.component.Component
 
 class ClyoView @JvmOverloads constructor(
     context: Context,
