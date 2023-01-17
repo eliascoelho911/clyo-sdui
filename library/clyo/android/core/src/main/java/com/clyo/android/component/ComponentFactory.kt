@@ -6,6 +6,7 @@ import com.clyo.android.module.Module
 import com.clyo.android.util.createViewInstance
 import com.clyo.data.ComponentName
 
+//Todo [Melhoria] Criar uma abstração para compartilhar comportamento com [ContainerFactory]
 internal interface ComponentFactory {
     fun create(name: ComponentName): Component<out View>
 }
