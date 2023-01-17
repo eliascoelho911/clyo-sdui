@@ -1,23 +1,21 @@
 {
   "root": {
     "container_name": "article",
-    "properties": {
-      "content": {
-        "header_image": {
-          "image_url": "https://url.com"
-        },
-        "title": {
-          "text": "Esse é o título do artigo",
-          "style": "title"
-        },
-        "subtitle": {
-          "text": "Esse é o subtítulo do artigo",
-          "style": "subtitle"
-        },
-        "body": {
-          "text": "Esse é o conteúdo do artigo",
-          "style": "body"
-        }
+    "content": {
+      "header_image": {
+        "image_url": "https://url.com"
+      },
+      "title": {
+        "text": "Esse é o título do artigo",
+        "style": "title"
+      },
+      "subtitle": {
+        "text": "Esse é o subtítulo do artigo",
+        "style": "subtitle"
+      },
+      "body": {
+        "text": "Esse é o conteúdo do artigo",
+        "style": "body"
       }
     }
   }
