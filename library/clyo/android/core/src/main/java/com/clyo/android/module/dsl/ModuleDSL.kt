@@ -2,9 +2,9 @@ package com.clyo.android.module.dsl
 
 import android.view.View
 import com.clyo.android.annotation.ClyoInternalAPI
+import com.clyo.android.component.ComponentName
 import com.clyo.android.module.Module
 import com.clyo.android.module.emptyModule
-import com.clyo.data.ComponentName
 
 @OptIn(ClyoInternalAPI::class)
 class ModuleDSL(

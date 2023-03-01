@@ -1,6 +1,6 @@
-package com.clyo.serializer.kotlinxserialization.stub
+package com.clyo.android.stub
 
-import com.clyo.serializer.kotlinxserialization.ClyoData
+import com.clyo.android.ClyoData
 
 internal object ClyoDataStub {
 

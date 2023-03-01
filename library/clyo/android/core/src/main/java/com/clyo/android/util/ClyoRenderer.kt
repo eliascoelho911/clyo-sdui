@@ -1,8 +1,8 @@
 package com.clyo.android.util
 
+import com.clyo.android.ClyoData
 import com.clyo.android.ClyoView
 import com.clyo.android.component.ComponentFactory
-import com.clyo.data.ClyoData
 
 internal class ClyoRenderer(
     private val componentFactory: ComponentFactory

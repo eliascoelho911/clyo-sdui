@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.View
 import com.clyo.android.module.Module
 import com.clyo.android.util.createViewInstance
-import com.clyo.data.ComponentName
 
 //Todo [Melhoria] Criar uma abstração para compartilhar comportamento com [ContainerFactory]
 internal interface ComponentFactory {

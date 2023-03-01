@@ -2,10 +2,10 @@ package com.clyo.android.module.dsl
 
 import android.view.View
 import com.clyo.android.annotation.ClyoInternalAPI
+import com.clyo.android.component.ComponentName
 import com.clyo.android.component.GenericViewBinder
 import com.clyo.android.module.Module
-import com.clyo.data.ComponentName
-import com.clyo.data.PropertiesData
+import com.clyo.android.properties.AbstractPropertiesData
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
@@ -23,7 +23,7 @@ internal class ComponentDeclarationDSLTest {
         val module = mockk<Module>(relaxed = true)
         val componentName = ComponentName("myComponent")
         val componentDeclarationDSL = ComponentDeclarationDSL<View>(componentName, module)
-        val block: View.(properties: PropertiesData) -> Unit = {
+        val block: View.(properties: AbstractPropertiesData) -> Unit = {
             // do nothing
         }
         val slot = slot<() -> GenericViewBinder<View>>()

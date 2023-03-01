@@ -33,11 +33,8 @@ dependencies {
     implementation Libs.kotlinSerializationJson
 
     // Clyo
-//    implementation project(LocalLibs.clyoCore)
-    implementation project(LocalLibs.clyoKotlinxSerialization)
     implementation project(LocalLibs.clyoAndroid)
     implementation project(LocalLibs.clyoMaterial3)
-//    implementation project(LocalLibs.clyoContainers)
 
     // Koin
     implementation Libs.koin

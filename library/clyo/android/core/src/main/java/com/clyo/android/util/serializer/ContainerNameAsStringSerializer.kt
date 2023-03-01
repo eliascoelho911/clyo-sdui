@@ -1,6 +1,6 @@
-package com.clyo.serializer.kotlinxserialization.serializer
+package com.clyo.android.util.serializer
 
-import com.clyo.data.ContainerName
+import com.clyo.android.container.ContainerName
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.PrimitiveKind

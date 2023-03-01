@@ -4,7 +4,6 @@ import android.content.Context
 import com.clyo.android.component.ComponentFactoryImpl
 import com.clyo.android.module.Module
 import com.clyo.android.util.ClyoRenderer
-import com.clyo.data.ClyoData
 
 class Clyo internal constructor(
     private val context: Context,

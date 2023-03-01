@@ -1,6 +1,6 @@
-package com.clyo.serializer.kotlinxserialization.stub
+package com.clyo.android.stub
 
-import com.clyo.serializer.kotlinxserialization.PropertiesData
+import com.clyo.android.properties.PropertiesData
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive

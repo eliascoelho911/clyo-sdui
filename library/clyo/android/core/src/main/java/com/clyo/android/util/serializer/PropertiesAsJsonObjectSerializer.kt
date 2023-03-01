@@ -1,6 +1,6 @@
-package com.clyo.serializer.kotlinxserialization.serializer
+package com.clyo.android.util.serializer
 
-import com.clyo.serializer.kotlinxserialization.PropertiesData
+import com.clyo.android.properties.PropertiesData
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor

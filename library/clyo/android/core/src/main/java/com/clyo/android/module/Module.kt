@@ -1,9 +1,9 @@
 package com.clyo.android.module
 
 import android.view.View
+import com.clyo.android.component.ComponentName
 import com.clyo.android.component.ViewBinder
 import com.clyo.android.tools.ClyoExternalTools.safeMutableMapOf
-import com.clyo.data.ComponentName
 import kotlin.reflect.KClass
 
 class Module {

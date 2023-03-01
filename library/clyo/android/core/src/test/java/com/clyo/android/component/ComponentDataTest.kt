@@ -1,6 +1,6 @@
-package com.clyo.serializer.kotlinxserialization
+package com.clyo.android.component
 
-import com.clyo.serializer.kotlinxserialization.stub.ComponentDataStub
+import com.clyo.android.stub.ComponentDataStub
 import kotlin.test.assertEquals
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json

@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.View
 import com.clyo.android.module.Module
 import com.clyo.android.util.createViewInstance
-import com.clyo.data.ComponentName
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
