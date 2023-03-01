@@ -9,8 +9,8 @@ import com.clyo.android.component.ComponentModule
 
 interface ClyoContext
 
-fun ClyoContext.clyo(componentModule: ComponentModule): Lazy<Clyo> = lazy {
-    Clyo(
+fun ClyoContext.clyo(componentModule: ComponentModule): Lazy<ClyoEngine> = lazy {
+    ClyoEngine(
         context = getContextOrError(),
         componentModule = componentModule
     )

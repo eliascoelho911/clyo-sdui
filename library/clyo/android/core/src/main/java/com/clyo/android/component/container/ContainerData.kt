@@ -1,4 +1,4 @@
-package com.clyo.android.container
+package com.clyo.android.component.container
 
 import com.clyo.android.properties.AbstractPropertiesData
 import com.clyo.android.properties.PropertiesData
