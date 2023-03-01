@@ -9,9 +9,9 @@ import org.junit.Test
 internal class ComponentTest {
     private val view = mockk<View>(relaxed = true)
 
-    private val viewBinder = mockk<ViewBinder<View>>(relaxed = true)
+    private val componentBinder = mockk<ComponentBinder<View>>(relaxed = true)
 
-    private val component = Component(view, viewBinder)
+    private val component = Component(view, componentBinder)
 
     @Test
     fun `bind properties to view`() {
@@ -22,6 +22,6 @@ internal class ComponentTest {
         component.bind(propertiesData)
 
         // Then
-        verify { viewBinder.assign(propertiesData, view) }
+        verify { componentBinder.assign(propertiesData, view) }
     }
 }

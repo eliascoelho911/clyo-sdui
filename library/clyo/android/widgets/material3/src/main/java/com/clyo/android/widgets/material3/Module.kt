@@ -1,6 +1,6 @@
 package com.clyo.android.widgets.material3
 
-import com.clyo.android.module.dsl.clyoModule
+import com.clyo.android.component.dsl.clyoModule
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textview.MaterialTextView
 

@@ -2,9 +2,10 @@ package com.clyo.android.module.dsl
 
 import android.view.View
 import com.clyo.android.annotation.ClyoInternalAPI
+import com.clyo.android.component.ComponentModule
 import com.clyo.android.component.ComponentName
-import com.clyo.android.component.GenericViewBinder
-import com.clyo.android.module.Module
+import com.clyo.android.component.ViewBinder
+import com.clyo.android.component.dsl.ComponentDeclarationDSL
 import com.clyo.android.properties.AbstractPropertiesData
 import io.mockk.Runs
 import io.mockk.every
@@ -20,16 +21,16 @@ internal class ComponentDeclarationDSLTest {
     @Test
     fun `binder declare GenericViewBinder`() {
         // Given
-        val module = mockk<Module>(relaxed = true)
+        val componentModule = mockk<ComponentModule>(relaxed = true)
         val componentName = ComponentName("myComponent")
-        val componentDeclarationDSL = ComponentDeclarationDSL<View>(componentName, module)
+        val componentDeclarationDSL = ComponentDeclarationDSL<View>(componentName, componentModule)
         val block: View.(properties: AbstractPropertiesData) -> Unit = {
             // do nothing
         }
-        val slot = slot<() -> GenericViewBinder<View>>()
-        val expected = GenericViewBinder(block)
+        val slot = slot<() -> ViewBinder<View>>()
+        val expected = ViewBinder(block)
 
-        every { module.declare(componentName, viewBinder = capture(slot)) } just Runs
+        every { componentModule.declare(componentName, viewBinder = capture(slot)) } just Runs
 
         // When
         componentDeclarationDSL.binder(block)

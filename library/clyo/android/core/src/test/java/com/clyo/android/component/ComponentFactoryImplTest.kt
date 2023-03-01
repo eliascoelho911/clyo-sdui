@@ -2,7 +2,6 @@ package com.clyo.android.component
 
 import android.content.Context
 import android.view.View
-import com.clyo.android.module.Module
 import com.clyo.android.util.createViewInstance
 import io.mockk.every
 import io.mockk.mockk
@@ -15,21 +14,21 @@ import org.junit.Test
 internal class ComponentFactoryImplTest {
     private val context: Context = mockk(relaxed = true)
 
-    private val module: Module = mockk()
+    private val componentModule: ComponentModule = mockk()
 
-    private val componentFactory = ComponentFactoryImpl(context, module)
+    private val componentFactory = ComponentFactoryImpl(context, componentModule)
 
     @Test
     fun `create component when Module contains all params`() {
         // Given
         val name = ComponentName("component")
-        val viewBinder = mockk<ViewBinder<View>>()
+        val componentBinder = mockk<ComponentBinder<View>>()
         val viewKClass = View::class
         val viewInstance = mockk<View>()
-        val expected = Component(viewInstance, viewBinder)
+        val expected = Component(viewInstance, componentBinder)
 
-        every { module.viewKClass(name) } returns viewKClass
-        every { module.viewBinder<View>(name) } returns viewBinder
+        every { componentModule.viewKClass(name) } returns viewKClass
+        every { componentModule.viewBinder<View>(name) } returns componentBinder
         viewKClass.mockCreateViewInstance(returns = viewInstance)
 
         // When
@@ -44,7 +43,7 @@ internal class ComponentFactoryImplTest {
         // Given
         val name = ComponentName("component")
 
-        every { module.viewKClass(name) } throws IllegalArgumentException()
+        every { componentModule.viewKClass(name) } throws IllegalArgumentException()
 
         // Then
         assertFailsWith(IllegalArgumentException::class) {
@@ -59,8 +58,8 @@ internal class ComponentFactoryImplTest {
         val viewKClass = View::class
         val viewInstance = mockk<View>()
 
-        every { module.viewKClass(name) } returns viewKClass
-        every { module.viewBinder<View>(name) } throws IllegalArgumentException()
+        every { componentModule.viewKClass(name) } returns viewKClass
+        every { componentModule.viewBinder<View>(name) } throws IllegalArgumentException()
         viewKClass.mockCreateViewInstance(returns = viewInstance)
 
         // Then

@@ -4,12 +4,12 @@ import android.view.View
 import com.clyo.android.properties.AbstractPropertiesData
 import com.clyo.android.properties.PropertiesAssignor
 
-interface ViewBinder<T : View> : PropertiesAssignor<T>
+interface ComponentBinder<T: View> : PropertiesAssignor<T>
 
 @JvmInline
-value class GenericViewBinder<T : View>(
+value class ViewBinder<T : View>(
     val binderBlock: T.(properties: AbstractPropertiesData) -> Unit
-) : ViewBinder<T> {
+) : ComponentBinder<T> {
     override fun assign(properties: AbstractPropertiesData, destination: T) {
         destination.binderBlock(properties)
     }

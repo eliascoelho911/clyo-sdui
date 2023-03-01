@@ -5,14 +5,14 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.clyo.android.module.Module
+import com.clyo.android.component.ComponentModule
 
 interface ClyoContext
 
-fun ClyoContext.clyo(module: Module = Module()): Lazy<Clyo> = lazy {
+fun ClyoContext.clyo(componentModule: ComponentModule): Lazy<Clyo> = lazy {
     Clyo(
         context = getContextOrError(),
-        module = module
+        componentModule = componentModule
     )
 }
 

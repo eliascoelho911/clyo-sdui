@@ -6,7 +6,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Test
 
-internal class GenericViewBinderTest {
+internal class ViewBinderTest {
 
     @Test
     fun `test assign`() {
@@ -14,7 +14,7 @@ internal class GenericViewBinderTest {
         val view = mockk<View>(relaxed = true)
         val propertiesData = mockk<AbstractPropertiesData>()
         val binderBlock = mockk<(View, properties: AbstractPropertiesData) -> Unit>(relaxed = true)
-        val viewBinder = GenericViewBinder(binderBlock)
+        val viewBinder = ViewBinder(binderBlock)
 
         // When
         viewBinder.assign(propertiesData, view)

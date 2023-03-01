@@ -1,6 +1,6 @@
 package com.eliascoelho911.clyo.sample.data.service
 
-import com.clyo.serializer.kotlinxserialization.ClyoData
+import com.clyo.android.ClyoData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
