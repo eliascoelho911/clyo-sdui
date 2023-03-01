@@ -6,7 +6,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Test
 
-internal class ViewBinderTest {
+internal class WidgetBinderTest {
 
     @Test
     fun `test assign`() {

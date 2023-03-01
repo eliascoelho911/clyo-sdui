@@ -1,0 +1,9 @@
+{
+  "root": {
+    "name": "text",
+    "properties": {
+      "text": "Esse é um título",
+      "style": "title"
+    }
+  }
+}

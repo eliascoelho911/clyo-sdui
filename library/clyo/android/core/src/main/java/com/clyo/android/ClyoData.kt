@@ -1,7 +1,7 @@
 package com.clyo.android
 
 import com.clyo.android.component.AbstractComponentData
-import com.clyo.android.component.ComponentData
+import com.clyo.android.component.widget.WidgetData
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,5 +12,5 @@ interface AbstractClyoData {
 @Serializable
 data class ClyoData(
     @SerialName("root")
-    override val root: ComponentData
+    override val root: WidgetData
 ) : AbstractClyoData
