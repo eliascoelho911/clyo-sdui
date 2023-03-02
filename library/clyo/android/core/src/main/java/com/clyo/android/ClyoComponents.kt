@@ -7,4 +7,4 @@ class ClyoComponents internal constructor(
     val componentModule: ComponentModule = emptyComponentModule()
 )
 
-fun emptyClyoComponents() = ClyoComponents()
+internal fun emptyClyoComponents() = ClyoComponents()

@@ -12,14 +12,14 @@ class ClyoComponentsDSL @PublishedApi internal constructor() {
 
     inline fun <reified T : View> widget(
         name: String,
-        block: ComponentDeclarationDSL<T>.() -> Unit
+        block: ComponentDeclarationDSL<T>.() -> Unit = {}
     ) {
         component(name, block)
     }
 
     inline fun <reified T : ViewGroup> container(
         name: String,
-        block: ComponentDeclarationDSL<T>.() -> Unit
+        block: ComponentDeclarationDSL<T>.() -> Unit = {}
     ) {
         component(name, block)
     }

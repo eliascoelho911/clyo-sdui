@@ -62,4 +62,4 @@ internal class ComponentModuleImpl : ComponentModule {
     }
 }
 
-fun emptyComponentModule(): ComponentModule = ComponentModuleImpl()
+internal fun emptyComponentModule(): ComponentModule = ComponentModuleImpl()
