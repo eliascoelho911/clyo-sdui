@@ -3,7 +3,7 @@ package com.clyo.android.module.dsl
 import android.view.View
 import com.clyo.android.component.ComponentName
 import com.clyo.android.component.ViewBinder
-import com.clyo.android.component.widget.dsl.WidgetDeclarationDSL
+import com.clyo.android.component.container.dsl.ContainerDeclarationDSL
 import com.clyo.android.properties.AbstractPropertiesData
 import io.mockk.Runs
 import io.mockk.every
@@ -13,7 +13,7 @@ import io.mockk.slot
 import kotlin.test.assertEquals
 import org.junit.Test
 
-internal class WidgetDeclarationDSLTest {
+internal class ContainerDeclarationDSLTest {
 
     @OptIn(ClyoInternalAPI::class)
     @Test
@@ -21,7 +21,7 @@ internal class WidgetDeclarationDSLTest {
         // Given
         val componentModule = mockk<ComponentModule>(relaxed = true)
         val componentName = ComponentName("myComponent")
-        val widgetDeclarationDSL = WidgetDeclarationDSL<View>(componentName, componentModule)
+        val containerDeclarationDSL = ContainerDeclarationDSL<View>(componentName, componentModule)
         val block: View.(properties: AbstractPropertiesData) -> Unit = {
             // do nothing
         }
@@ -31,7 +31,7 @@ internal class WidgetDeclarationDSLTest {
         every { componentModule.declare(componentName, viewBinder = capture(slot)) } just Runs
 
         // When
-        widgetDeclarationDSL.binder(block)
+        containerDeclarationDSL.binder(block)
 
         // Then
         val result = slot.captured.invoke()

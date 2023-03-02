@@ -1,5 +1,6 @@
 package com.clyo.android
 
+import com.clyo.android.component.container.ContainerFactory
 import com.clyo.android.component.widget.WidgetFactory
 
 interface ClyoContext
@@ -9,7 +10,8 @@ fun ClyoContext.clyo(clyoComponents: ClyoComponents = emptyClyoComponents()): La
         ClyoEngine(
             clyoComponents = clyoComponents,
             clyoRenderer = ClyoRenderer(
-                widgetFactory = WidgetFactory(clyoComponents.widgetModule)
+                widgetFactory = WidgetFactory(clyoComponents.widgetModule),
+                containerFactory = ContainerFactory(clyoComponents.containerModule)
             )
         )
     }

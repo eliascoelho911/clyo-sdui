@@ -1,6 +1,7 @@
 package com.clyo.android
 
 import android.content.Context
+import android.view.ViewGroup
 import com.clyo.android.koin.ClyoKoinContext
 
 class ClyoEngine internal constructor(
@@ -11,7 +12,7 @@ class ClyoEngine internal constructor(
         ClyoKoinContext.initKoin(context)
     }
 
-    fun render(data: ClyoData, container: ClyoView) {
+    fun render(data: ClyoData, container: ViewGroup) {
         clyoRenderer.render(data, container)
     }
 }

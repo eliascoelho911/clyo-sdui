@@ -6,8 +6,4 @@ import com.clyo.android.properties.AbstractPropertiesData
 
 class ContainerBinder<T : ViewGroup>(
     override val binderBlock: T.(properties: AbstractPropertiesData) -> Unit
-) : ComponentBinder<T>() {
-    fun addWidget() {
-
-    }
-}
+) : ComponentBinder<T>()

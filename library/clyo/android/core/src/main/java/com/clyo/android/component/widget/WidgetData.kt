@@ -8,7 +8,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
-interface AbstractWidgetData : AbstractComponentData
+interface AbstractWidgetData : AbstractComponentData {
+    val layoutProperties: PropertiesData
+}
 
 @Serializable
 data class WidgetData(
@@ -16,5 +18,7 @@ data class WidgetData(
     @Serializable(with = ComponentNameAsStringSerializer::class)
     override val name: ComponentName,
     @SerialName("properties")
-    override val properties: PropertiesData = PropertiesData(JsonObject(mapOf()))
+    override val properties: PropertiesData = PropertiesData(JsonObject(mapOf())),
+    @SerialName("layout_properties")
+    override val layoutProperties: PropertiesData
 ) : AbstractWidgetData
