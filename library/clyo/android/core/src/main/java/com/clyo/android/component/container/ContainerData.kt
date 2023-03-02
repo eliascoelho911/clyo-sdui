@@ -7,6 +7,7 @@ import com.clyo.android.properties.PropertiesData
 import com.clyo.android.util.serializer.ComponentNameAsStringSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
 
 interface AbstractContainerData: AbstractComponentData {
     val content: List<WidgetData>
@@ -18,7 +19,7 @@ data class ContainerData(
     @Serializable(ComponentNameAsStringSerializer::class)
     override val name: ComponentName,
     @SerialName("properties")
-    override val properties: PropertiesData,
+    override val properties: PropertiesData = PropertiesData(JsonObject(mapOf())),
     @SerialName("content")
-    override val content: List<WidgetData>
+    override val content: List<WidgetData> = listOf()
 ) : AbstractContainerData

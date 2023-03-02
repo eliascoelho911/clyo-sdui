@@ -36,6 +36,7 @@ class ClyoComponentsDSL @PublishedApi internal constructor() {
 
     fun add(components: ClyoComponents) {
         clyoComponents.widgetModule.putAll(components.widgetModule)
+        clyoComponents.containerModule.putAll(components.containerModule)
     }
 }
 

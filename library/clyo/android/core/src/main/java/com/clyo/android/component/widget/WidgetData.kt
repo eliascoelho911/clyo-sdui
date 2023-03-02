@@ -20,5 +20,5 @@ data class WidgetData(
     @SerialName("properties")
     override val properties: PropertiesData = PropertiesData(JsonObject(mapOf())),
     @SerialName("layout_properties")
-    override val layoutProperties: PropertiesData
+    override val layoutProperties: PropertiesData = PropertiesData(JsonObject(mapOf()))
 ) : AbstractWidgetData

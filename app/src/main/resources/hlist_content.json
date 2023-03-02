@@ -1,11 +1,21 @@
 {
   "root": {
-    "container_name": "horizontal_list",
+    "container_name": "column",
     "content": [
       {
         "name": "text",
         "properties": {
-          "text": "Esse é um título",
+          "text": "Esse é o primeiro texto",
+          "style": "title"
+        }
+      },
+      {
+        "name": "text",
+        "layout_properties": {
+          "margin_top": 24
+        },
+        "properties": {
+          "text": "Esse é o segundo texto",
           "style": "title"
         }
       }

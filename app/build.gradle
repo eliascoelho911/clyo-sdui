@@ -34,6 +34,7 @@ dependencies {
 
     // Clyo
     implementation project(LocalLibs.clyoAndroid)
+    implementation project(LocalLibs.clyoContainers)
     implementation project(LocalLibs.clyoMaterial3)
 
     // Koin
