@@ -11,9 +11,9 @@ internal class Container<T : ViewGroup>(
     override val binder: ComponentBinder<T>
 ) : Component<T>() {
 
-    private val clyoContainerView = view as ClyoContainerView
+    private val clyoContainer = view as ClyoContainer
 
     fun addWidget(widget: Widget<*>, layoutProperties: PropertiesData) {
-        clyoContainerView.addWidget(widget.view, layoutProperties)
+        clyoContainer.addWidget(widget.view, layoutProperties)
     }
 }
