@@ -1,7 +1,6 @@
 package com.clyo.android.module.dsl
 
 import android.view.View
-import com.clyo.android.component.ComponentModule
 import com.clyo.android.component.ComponentName
 import com.clyo.android.component.ViewBinder
 import com.clyo.android.component.widget.dsl.WidgetDeclarationDSL

@@ -2,6 +2,7 @@ package com.clyo.android.component
 
 import android.content.Context
 import android.view.View
+import com.clyo.android.component.widget.WidgetFactory
 import com.clyo.android.util.createViewInstance
 import io.mockk.every
 import io.mockk.mockk
@@ -11,12 +12,12 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import org.junit.Test
 
-internal class ComponentFactoryImplTest {
+internal class WidgetFactoryTest {
     private val context: Context = mockk(relaxed = true)
 
     private val componentModule: ComponentModule = mockk()
 
-    private val componentFactory = ComponentFactoryImpl(context, componentModule)
+    private val componentFactory = WidgetFactory(context, componentModule)
 
     @Test
     fun `create component when Module contains all params`() {

@@ -1,15 +1,15 @@
 package com.clyo.android
 
-import com.clyo.android.component.ComponentFactory
+import com.clyo.android.component.widget.WidgetFactory
 
 internal class ClyoRenderer(
-    private val componentFactory: ComponentFactory
+    private val widgetFactory: WidgetFactory
 ) {
-    fun render(data: ClyoData, container: ClyoView) {
+    fun render(data: ClyoData, parent: ClyoView) {
         val containerData = data.root
 
-        return componentFactory.create(containerData.name).also {
+        return widgetFactory.create(parent.context, containerData.name).also {
             it.bind(containerData.properties)
-        }.let { container.show(it) }
+        }.let { parent.show(it) }
     }
 }

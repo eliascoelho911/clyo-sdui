@@ -12,7 +12,6 @@ class ClyoView @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
 
-    //Todo [Melhoria] Receber a abstração criada e compartilhada entre [Container] e [Component]
     internal fun show(component: Component<*>) {
         addView(component.view)
     }

@@ -1,8 +1,8 @@
 package com.eliascoelho911.clyo.sample.presentation
 
-import com.clyo.android.dsl.clyoModule
+import com.clyo.android.dsl.clyoComponents
 import com.clyo.android.widgets.material3.ClyoMaterial3Module
 
-internal val ClyoSampleModule = clyoModule {
+internal val ClyoComponents = clyoComponents {
     add(ClyoMaterial3Module)
 }

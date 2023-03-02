@@ -20,7 +20,7 @@ internal class ClyoSampleActivity :
         ActivityClyoSampleBinding.bind(root)
     }
 
-    private val clyo by clyo(ClyoSampleModule)
+    private val clyo by clyo(ClyoComponents)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

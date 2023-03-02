@@ -1,24 +1,24 @@
 package com.clyo.android.component.container
 
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.component.AbstractComponentData
+import com.clyo.android.component.ComponentName
+import com.clyo.android.component.widget.WidgetData
 import com.clyo.android.properties.PropertiesData
-import com.clyo.android.util.serializer.ContainerNameAsStringSerializer
+import com.clyo.android.util.serializer.ComponentNameAsStringSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@JvmInline
-value class ContainerName(val name: String)
-
-interface AbstractContainerData {
-    val name: ContainerName
-    val properties: AbstractPropertiesData
+interface AbstractContainerData: AbstractComponentData {
+    val content: List<WidgetData>
 }
 
 @Serializable
 data class ContainerData(
     @SerialName("container_name")
-    @Serializable(ContainerNameAsStringSerializer::class)
-    override val name: ContainerName,
+    @Serializable(ComponentNameAsStringSerializer::class)
+    override val name: ComponentName,
     @SerialName("properties")
-    override val properties: PropertiesData
+    override val properties: PropertiesData,
+    @SerialName("content")
+    override val content: List<WidgetData>
 ) : AbstractContainerData

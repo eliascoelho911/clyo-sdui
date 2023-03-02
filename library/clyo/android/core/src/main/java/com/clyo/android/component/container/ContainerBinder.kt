@@ -1,9 +1,13 @@
-package com.clyo.android.component.widget
+package com.clyo.android.component.container
 
-import android.view.View
+import android.view.ViewGroup
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.properties.AbstractPropertiesData
 
-class WidgetBinder<T : View>(
+class ContainerBinder<T : ViewGroup>(
     override val binderBlock: T.(properties: AbstractPropertiesData) -> Unit
-) : ComponentBinder<T>()
+) : ComponentBinder<T>() {
+    fun addWidget() {
+
+    }
+}
