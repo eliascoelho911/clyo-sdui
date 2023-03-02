@@ -12,6 +12,7 @@ internal class ColumnContainerView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : LinearLayoutCompat(context, attrs, defStyleAttr), ClyoContainer {
+
     init {
         orientation = VERTICAL
     }

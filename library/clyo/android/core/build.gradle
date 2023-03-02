@@ -16,6 +16,4 @@ dependencies {
     // Kotlin
     implementation Libs.kotlinReflect
     implementation Libs.kotlinSerializationJson
-
-    implementation Libs.koin
 }

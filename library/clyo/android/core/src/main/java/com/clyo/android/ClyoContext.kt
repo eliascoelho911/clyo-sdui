@@ -8,7 +8,6 @@ interface ClyoContext
 fun ClyoContext.clyo(clyoComponents: ClyoComponents = emptyClyoComponents()): Lazy<ClyoEngine> =
     lazy {
         ClyoEngine(
-            clyoComponents = clyoComponents,
             clyoRenderer = ClyoRenderer(
                 widgetFactory = WidgetFactory(clyoComponents.componentModule),
                 containerFactory = ContainerFactory(clyoComponents.componentModule)
