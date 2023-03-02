@@ -1,4 +1,4 @@
-package com.clyo.android.component.dsl
+package com.clyo.android.dsl
 
 import android.view.View
 import com.clyo.android.component.ComponentModule
@@ -6,8 +6,12 @@ import com.clyo.android.component.ComponentName
 import com.clyo.android.component.emptyModule
 import com.clyo.android.component.widget.dsl.WidgetDeclarationDSL
 
-class ModuleDSL @PublishedApi internal constructor(val componentModule: ComponentModule = emptyModule()) {
-    inline fun <reified T : View> component(
+class ClyoModuleDSL @PublishedApi internal constructor() {
+
+    @PublishedApi
+    internal val componentModule: ComponentModule = emptyModule()
+
+    inline fun <reified T : View> widget(
         name: String,
         block: WidgetDeclarationDSL<T>.() -> Unit
     ) {
@@ -23,6 +27,6 @@ class ModuleDSL @PublishedApi internal constructor(val componentModule: Componen
     }
 }
 
-inline fun clyoModule(scope: ModuleDSL.() -> Unit): ComponentModule {
-    return ModuleDSL().apply(scope).componentModule
+inline fun clyoModule(scope: ClyoModuleDSL.() -> Unit): ComponentModule {
+    return ClyoModuleDSL().apply(scope).componentModule
 }
