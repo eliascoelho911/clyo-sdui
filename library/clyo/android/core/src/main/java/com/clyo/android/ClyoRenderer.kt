@@ -15,28 +15,19 @@ internal class ClyoRenderer(
         return render(parent, data.root)
     }
 
-    //Todo Simplificar código reduzindo duplicação
     private fun render(parent: ViewGroup, containerData: AbstractContainerData) {
-        val container = createContainer(parent, containerData)
+        val container = containerFactory.createAndBind(parent.context, containerData)
+
+        container.addAllWidgets(containerData.content)
+
         parent.addView(container.view)
-
-        containerData.content.forEach { widgetData ->
-            showWidget(container, widgetData)
-        }
     }
 
-    private fun createContainer(
-        parent: ViewGroup,
-        containerData: AbstractContainerData
-    ): Container<*> {
-        return containerFactory.create(parent.context, containerData.name).also {
-            it.bind(containerData.properties)
-        }
-    }
+    private fun Container<*>.addAllWidgets(content: List<AbstractWidgetData>) {
+        content.forEach { widgetData ->
+            val widget = widgetFactory.createAndBind(view.context, widgetData)
 
-    private fun showWidget(container: Container<*>, widgetData: AbstractWidgetData) {
-        widgetFactory.create(container.view.context, widgetData.name).also {
-            it.bind(widgetData.properties)
-        }.let { container.addWidget(it, widgetData.layoutProperties) }
+            addWidget(widget, widgetData.layoutProperties)
+        }
     }
 }

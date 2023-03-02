@@ -10,8 +10,8 @@ fun ClyoContext.clyo(clyoComponents: ClyoComponents = emptyClyoComponents()): La
         ClyoEngine(
             clyoComponents = clyoComponents,
             clyoRenderer = ClyoRenderer(
-                widgetFactory = WidgetFactory(clyoComponents.widgetModule),
-                containerFactory = ContainerFactory(clyoComponents.containerModule)
+                widgetFactory = WidgetFactory(clyoComponents.componentModule),
+                containerFactory = ContainerFactory(clyoComponents.componentModule)
             )
         )
     }

@@ -1,42 +1,41 @@
-package com.clyo.android.component.widget
+package com.clyo.android.component
 
 import android.view.View
-import com.clyo.android.component.ComponentName
 import kotlin.reflect.KClass
 
-interface WidgetModule {
+interface ComponentModule {
     fun putViewKClass(name: ComponentName, kClass: KClass<out View>)
 
-    fun putBinder(name: ComponentName, binder: () -> WidgetBinder<*>)
+    fun putBinder(name: ComponentName, binder: () -> ComponentBinder<*>)
 
-    fun putAll(module: WidgetModule)
+    fun putAll(module: ComponentModule)
 
     fun getViewKClassOrNull(name: ComponentName): KClass<out View>?
 
     fun getAllViewKClasses(): Map<ComponentName, KClass<out View>>
 
-    fun getBinderOrNull(name: ComponentName): WidgetBinder<*>?
+    fun getBinderOrNull(name: ComponentName): ComponentBinder<*>?
 
-    fun getAllBinders(): Map<ComponentName, () -> WidgetBinder<*>>
+    fun getAllBinders(): Map<ComponentName, () -> ComponentBinder<*>>
 
     fun clear()
 }
 
-internal class WidgetModuleImpl: WidgetModule {
+internal class ComponentModuleImpl : ComponentModule {
 
     private val viewKClassesMap = HashMap<ComponentName, KClass<out View>>()
 
-    private val componentBindersMap = HashMap<ComponentName, () -> WidgetBinder<*>>()
+    private val componentBindersMap = HashMap<ComponentName, () -> ComponentBinder<*>>()
 
     override fun putViewKClass(name: ComponentName, kClass: KClass<out View>) {
         viewKClassesMap[name] = kClass
     }
 
-    override fun putBinder(name: ComponentName, binder: () -> WidgetBinder<*>) {
+    override fun putBinder(name: ComponentName, binder: () -> ComponentBinder<*>) {
         componentBindersMap[name] = binder
     }
 
-    override fun putAll(module: WidgetModule) {
+    override fun putAll(module: ComponentModule) {
         viewKClassesMap.putAll(module.getAllViewKClasses())
         componentBindersMap.putAll(module.getAllBinders())
     }
@@ -49,11 +48,11 @@ internal class WidgetModuleImpl: WidgetModule {
         return viewKClassesMap
     }
 
-    override fun getBinderOrNull(name: ComponentName): WidgetBinder<*>? {
+    override fun getBinderOrNull(name: ComponentName): ComponentBinder<*>? {
         return componentBindersMap[name]?.invoke()
     }
 
-    override fun getAllBinders(): Map<ComponentName, () -> WidgetBinder<*>> {
+    override fun getAllBinders(): Map<ComponentName, () -> ComponentBinder<*>> {
         return componentBindersMap
     }
 
@@ -63,4 +62,4 @@ internal class WidgetModuleImpl: WidgetModule {
     }
 }
 
-fun emptyWidgetModule(): WidgetModule = WidgetModuleImpl()
+fun emptyComponentModule(): ComponentModule = ComponentModuleImpl()

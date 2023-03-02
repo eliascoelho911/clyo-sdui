@@ -2,29 +2,27 @@ package com.clyo.android.component.widget
 
 import android.content.Context
 import android.view.View
+import com.clyo.android.component.AbstractComponentData
 import com.clyo.android.component.ComponentFactory
+import com.clyo.android.component.ComponentModule
 import com.clyo.android.component.ComponentName
 import com.clyo.android.util.createViewInstance
 
 internal class WidgetFactory(
-    private val widgetModule: WidgetModule
-) : ComponentFactory {
+    override val componentModule: ComponentModule
+) : ComponentFactory() {
     override fun create(context: Context, name: ComponentName): Widget<*> {
-        val viewKClass = widgetModule.getViewKClassOrNull(name)
-
-        requireNotNull(viewKClass)
+        val viewKClass = componentModule.getViewKClassOrNull(name)
+            ?: error("Widget $name has not been declared")
 
         return create(name, viewKClass.createViewInstance(context))
     }
 
-    @Suppress("UNCHECKED_CAST")
+    override fun createAndBind(context: Context, data: AbstractComponentData): Widget<*> {
+        return super.createAndBind(context, data) as Widget<*>
+    }
+
     private fun <T : View> create(name: ComponentName, view: T): Widget<T> {
-        val binder = widgetModule.getBinderOrNull(name)
-
-        requireNotNull(binder)
-
-        binder as WidgetBinder<T>
-
-        return Widget(view, binder)
+        return Widget(view, getBinder(name))
     }
 }

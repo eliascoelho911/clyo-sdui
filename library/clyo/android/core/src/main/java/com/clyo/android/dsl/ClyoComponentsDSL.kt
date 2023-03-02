@@ -4,8 +4,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.clyo.android.ClyoComponents
 import com.clyo.android.component.ComponentName
-import com.clyo.android.component.container.dsl.ContainerDeclarationDSL
-import com.clyo.android.component.widget.dsl.WidgetDeclarationDSL
 
 class ClyoComponentsDSL @PublishedApi internal constructor() {
 
@@ -14,29 +12,32 @@ class ClyoComponentsDSL @PublishedApi internal constructor() {
 
     inline fun <reified T : View> widget(
         name: String,
-        block: WidgetDeclarationDSL<T>.() -> Unit
+        block: ComponentDeclarationDSL<T>.() -> Unit
     ) {
-        val componentName = ComponentName(name)
-
-        clyoComponents.widgetModule.putViewKClass(componentName, T::class)
-
-        WidgetDeclarationDSL<T>(componentName, clyoComponents.widgetModule).block()
+        component(name, block)
     }
 
-    inline fun <reified T: ViewGroup> container(
+    inline fun <reified T : ViewGroup> container(
         name: String,
-        block: ContainerDeclarationDSL<T>.() -> Unit
+        block: ComponentDeclarationDSL<T>.() -> Unit
+    ) {
+        component(name, block)
+    }
+
+    @PublishedApi
+    internal inline fun <reified T : View> component(
+        name: String,
+        block: ComponentDeclarationDSL<T>.() -> Unit
     ) {
         val componentName = ComponentName(name)
 
-        clyoComponents.containerModule.putViewKClass(componentName, T::class)
+        clyoComponents.componentModule.putViewKClass(componentName, T::class)
 
-        ContainerDeclarationDSL<T>(componentName, clyoComponents.containerModule).block()
+        ComponentDeclarationDSL<T>(componentName, clyoComponents.componentModule).block()
     }
 
     fun add(components: ClyoComponents) {
-        clyoComponents.widgetModule.putAll(components.widgetModule)
-        clyoComponents.containerModule.putAll(components.containerModule)
+        clyoComponents.componentModule.putAll(components.componentModule)
     }
 }
 

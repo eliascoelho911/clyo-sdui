@@ -1,13 +1,10 @@
 package com.clyo.android
 
-import com.clyo.android.component.container.ContainerModule
-import com.clyo.android.component.container.emptyContainerModule
-import com.clyo.android.component.widget.WidgetModule
-import com.clyo.android.component.widget.emptyWidgetModule
+import com.clyo.android.component.ComponentModule
+import com.clyo.android.component.emptyComponentModule
 
 class ClyoComponents internal constructor(
-    val widgetModule: WidgetModule = emptyWidgetModule(),
-    val containerModule: ContainerModule = emptyContainerModule()
+    val componentModule: ComponentModule = emptyComponentModule()
 )
 
 fun emptyClyoComponents() = ClyoComponents()

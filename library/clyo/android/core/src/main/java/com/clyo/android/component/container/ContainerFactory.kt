@@ -2,29 +2,27 @@ package com.clyo.android.component.container
 
 import android.content.Context
 import android.view.ViewGroup
+import com.clyo.android.component.AbstractComponentData
 import com.clyo.android.component.ComponentFactory
+import com.clyo.android.component.ComponentModule
 import com.clyo.android.component.ComponentName
 import com.clyo.android.util.createViewInstance
 
 internal class ContainerFactory(
-    private val containerModule: ContainerModule
-) : ComponentFactory {
+    override val componentModule: ComponentModule
+) : ComponentFactory() {
     override fun create(context: Context, name: ComponentName): Container<*> {
-        val viewKClass = containerModule.getViewKClassOrNull(name)
+        val viewKClass = componentModule.getViewKClassOrNull(name)
+            ?: error("Container $name has not been declared")
 
-        requireNotNull(viewKClass)
-
-        return create(name, viewKClass.createViewInstance(context))
+        return create(name, viewKClass.createViewInstance(context) as ViewGroup)
     }
 
-    @Suppress("UNCHECKED_CAST")
+    override fun createAndBind(context: Context, data: AbstractComponentData): Container<*> {
+        return super.createAndBind(context, data) as Container<*>
+    }
+
     private fun <T : ViewGroup> create(name: ComponentName, viewGroup: T): Container<T> {
-        val binder = containerModule.getBinderOrNull(name)
-
-        requireNotNull(binder)
-
-        binder as ContainerBinder<T>
-
-        return Container(viewGroup, binder)
+        return Container(viewGroup, getBinder(name))
     }
 }
