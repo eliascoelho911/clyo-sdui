@@ -18,7 +18,7 @@ internal class FeedbackContainerView @JvmOverloads constructor(
 ) : LinearLayoutCompat(context, attrs, defStyleAttr), ClyoContainer {
 
     init {
-        inflate(context, R.layout.view_feedback_contaner, this)
+        inflate(context, R.layout.view_feedback_container, this)
         orientation = VERTICAL
     }
 
@@ -33,15 +33,14 @@ private fun ClyoContainer.addWidgetOnTemplate(
     view: View,
     layoutProperties: AbstractPropertiesData
 ) {
-    val position = layoutProperties.getStringOrNull("position") ?: TODO("ERRO Position not found")
+    val position = layoutProperties.getStringOrNull("position") ?: error("position not found")
 
     container.children.forEach { childView ->
-        if (childView is WidgetContainerView) {
-            if (childView.positionId == position) {
-                childView.addView(view)
-                return
-            }
+        if (childView is WidgetContainerView && childView.positionId == position) {
+            childView.addView(view)
+            return
         }
     }
-    TODO("ERRO V")
+
+    error("No widget with position $position was declared in the template")
 }
