@@ -4,7 +4,7 @@ import com.clyo.android.ClyoData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-private const val SCREEN_CONTENT_PATH = "hlist_content.json"
+private const val SCREEN_CONTENT_PATH = "feedback_content.json"
 
 internal class GetClyoSampleScreenContent {
     operator fun invoke(): ClyoData {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:parentTag="androidx.appcompat.widget.LinearLayoutCompat">
+
+    <com.clyo.android.component.widget.WidgetContainerView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:position="illustration" />
+
+    <com.clyo.android.component.widget.WidgetContainerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:position="title" />
+
+    <com.clyo.android.component.widget.WidgetContainerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:position="subtitle" />
+
+    <com.clyo.android.component.widget.WidgetContainerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:position="first_button" />
+
+    <com.clyo.android.component.widget.WidgetContainerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:position="second_button" />
+
+</merge>
