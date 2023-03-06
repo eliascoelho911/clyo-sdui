@@ -1,39 +1,36 @@
 {
-  "on_init_actions": [
-    {
-      "name": "tracking",
-      "properties": {
-        "event_name": "Screen Viewed",
-        "screen_name": "FEEDBACK"
-      }
-    }
-  ],
   "root": {
     "container_name": "feedback",
     "content": [
       {
-        "name": "button",
+        "name": "image",
         "layout_properties": {
-          "position": "first_button"
+          "position": "illustration"
         },
         "properties": {
-          "style": "primary",
-          "text": "Ok, entendi"
+          "background_color": "#ff0000"
+        }
+      },
+      {
+        "name": "text",
+        "layout_properties": {
+          "position": "title"
         },
-        "on_click_actions": [
-          {
-            "name": "deeplink_navigation",
-            "properties": {
-              "destination": "picpay://picpay/any"
-            }
-          },
-          {
-            "name": "tracking",
-            "properties": {
-              "event_name": "Button Clicked"
-            }
-          }
-        ]
+        "properties": {
+          "background_color": "#000000",
+          "text": "Esse é o título do feedback",
+          "style": "title"
+        }
+      },
+      {
+        "name": "text",
+        "layout_properties": {
+          "position": "subtitle"
+        },
+        "properties": {
+          "text": "Esse é o conteúdo do feedback",
+          "style": "body"
+        }
       }
     ]
   }
