@@ -31,6 +31,16 @@
           "text": "Esse é o conteúdo do feedback",
           "style": "body"
         }
+      },
+      {
+        "name": "button",
+        "layout_properties": {
+          "position": "first_button"
+        },
+        "properties": {
+          "text": "Botão",
+          "style": "body"
+        }
       }
     ]
   }
