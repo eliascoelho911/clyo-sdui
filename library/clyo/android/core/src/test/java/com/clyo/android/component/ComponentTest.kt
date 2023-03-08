@@ -22,6 +22,6 @@ internal class ComponentTest {
         component.bind(propertiesData)
 
         // Then
-        verify { componentBinder.assign(propertiesData, view) }
+        verify { componentBinder.bind(propertiesData, view) }
     }
 }

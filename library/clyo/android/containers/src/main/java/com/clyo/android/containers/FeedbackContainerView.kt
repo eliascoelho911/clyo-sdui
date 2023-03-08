@@ -14,10 +14,10 @@ internal class FeedbackContainerView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayoutCompat(context, attrs, defStyleAttr), ClyoTemplateContainer {
 
+    override val viewGroup: ViewGroup = this
+
     init {
         initContainer(R.layout.view_feedback_container)
         orientation = VERTICAL
     }
-
-    override val viewGroup: ViewGroup = this
 }

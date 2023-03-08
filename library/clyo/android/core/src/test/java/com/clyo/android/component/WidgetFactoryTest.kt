@@ -15,9 +15,9 @@ import org.junit.Test
 internal class WidgetFactoryTest {
     private val context: Context = mockk(relaxed = true)
 
-    private val componentModule: ComponentModule = mockk()
+    private val clyoDeclarations: ClyoDeclarations = mockk()
 
-    private val componentFactory = WidgetFactory(context, componentModule)
+    private val componentFactory = WidgetFactory(context, clyoDeclarations)
 
     @Test
     fun `create component when Module contains all params`() {
@@ -28,8 +28,8 @@ internal class WidgetFactoryTest {
         val viewInstance = mockk<View>()
         val expected = Component(viewInstance, componentBinder)
 
-        every { componentModule.viewKClass(name) } returns viewKClass
-        every { componentModule.viewBinder<View>(name) } returns componentBinder
+        every { clyoDeclarations.viewKClass(name) } returns viewKClass
+        every { clyoDeclarations.viewBinder<View>(name) } returns componentBinder
         viewKClass.mockCreateViewInstance(returns = viewInstance)
 
         // When
@@ -44,7 +44,7 @@ internal class WidgetFactoryTest {
         // Given
         val name = ComponentName("component")
 
-        every { componentModule.viewKClass(name) } throws IllegalArgumentException()
+        every { clyoDeclarations.viewKClass(name) } throws IllegalArgumentException()
 
         // Then
         assertFailsWith(IllegalArgumentException::class) {
@@ -59,8 +59,8 @@ internal class WidgetFactoryTest {
         val viewKClass = View::class
         val viewInstance = mockk<View>()
 
-        every { componentModule.viewKClass(name) } returns viewKClass
-        every { componentModule.viewBinder<View>(name) } throws IllegalArgumentException()
+        every { clyoDeclarations.viewKClass(name) } returns viewKClass
+        every { clyoDeclarations.viewBinder<View>(name) } throws IllegalArgumentException()
         viewKClass.mockCreateViewInstance(returns = viewInstance)
 
         // Then

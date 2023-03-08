@@ -40,7 +40,21 @@
         "properties": {
           "text": "Botão",
           "style": "body"
-        }
+        },
+        "on_click_actions": [
+          {
+            "name": "test",
+            "properties": {
+              "test": "ISSO AI!"
+            }
+          },
+          {
+            "name": "test",
+            "properties": {
+              "test": "ISSO AI!2"
+            }
+          }
+        ]
       }
     ]
   }

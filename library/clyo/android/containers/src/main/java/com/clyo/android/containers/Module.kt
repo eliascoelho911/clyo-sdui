@@ -1,8 +1,8 @@
 package com.clyo.android.containers
 
-import com.clyo.android.dsl.clyoComponents
+import com.clyo.android.dsl.clyoDeclarations
 
-val ContainersModule = clyoComponents {
+val ContainersModule = clyoDeclarations {
     container<ColumnContainerView>("column")
     container<FeedbackContainerView>("feedback")
 }

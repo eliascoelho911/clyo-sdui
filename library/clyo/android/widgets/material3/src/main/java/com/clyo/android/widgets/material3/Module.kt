@@ -1,14 +1,17 @@
 package com.clyo.android.widgets.material3
 
+import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import com.clyo.android.action.Action
 import com.clyo.android.component.widget.binders.applyButtonViewProperties
 import com.clyo.android.component.widget.binders.applyTextViewProperties
 import com.clyo.android.component.widget.binders.applyViewProperties
-import com.clyo.android.dsl.clyoComponents
+import com.clyo.android.dsl.clyoDeclarations
+import com.clyo.android.properties.AbstractPropertiesData
 
-val ClyoWidgetsModule = clyoComponents {
+val ClyoWidgetsModule = clyoDeclarations {
     widget<AppCompatImageView>("image") {
         binder { properties ->
             applyViewProperties(properties)
@@ -24,6 +27,14 @@ val ClyoWidgetsModule = clyoComponents {
     widget<AppCompatButton>("button") {
         binder { properties ->
             applyButtonViewProperties(properties)
+        }
+    }
+
+    action("test") {
+        object : Action {
+            override fun invoke(properties: AbstractPropertiesData) {
+                Log.i("ACTION_TEST", "Funcionou ${properties.getString("test")}")
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ internal class ClyoRenderer(
     }
 
     private fun render(parent: ViewGroup, containerData: AbstractContainerData) {
-        val container = containerFactory.createAndBind(parent.context, containerData)
+        val container = containerFactory.setup(parent.context, containerData)
 
         container.addAllWidgets(containerData.content)
 
@@ -25,7 +25,10 @@ internal class ClyoRenderer(
 
     private fun Container<*>.addAllWidgets(content: List<AbstractWidgetData>) {
         content.forEach { widgetData ->
-            val widget = widgetFactory.createAndBind(view.context, widgetData)
+            val widget = widgetFactory.setup(
+                context = view.context,
+                data = widgetData
+            )
 
             addWidget(widget, widgetData.layoutProperties)
         }

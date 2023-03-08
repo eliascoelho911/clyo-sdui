@@ -1,16 +1,18 @@
 package com.clyo.android
 
+import com.clyo.android.component.ClyoDeclarations
 import com.clyo.android.component.container.ContainerFactory
+import com.clyo.android.component.emptyClyoDeclarations
 import com.clyo.android.component.widget.WidgetFactory
 
 interface ClyoContext
 
-fun ClyoContext.clyo(clyoComponents: ClyoComponents = emptyClyoComponents()): Lazy<ClyoEngine> =
+fun ClyoContext.clyo(clyoDeclarations: ClyoDeclarations = emptyClyoDeclarations()): Lazy<ClyoEngine> =
     lazy {
         ClyoEngine(
             clyoRenderer = ClyoRenderer(
-                widgetFactory = WidgetFactory(clyoComponents.componentModule),
-                containerFactory = ContainerFactory(clyoComponents.componentModule)
+                widgetFactory = WidgetFactory(clyoDeclarations),
+                containerFactory = ContainerFactory(clyoDeclarations)
             )
         )
     }

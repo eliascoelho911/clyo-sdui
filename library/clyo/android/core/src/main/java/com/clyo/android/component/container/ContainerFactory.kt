@@ -3,26 +3,32 @@ package com.clyo.android.component.container
 import android.content.Context
 import android.view.ViewGroup
 import com.clyo.android.component.AbstractComponentData
+import com.clyo.android.component.ClyoDeclarations
 import com.clyo.android.component.ComponentFactory
-import com.clyo.android.component.ComponentModule
-import com.clyo.android.component.ComponentName
 import com.clyo.android.util.createViewInstance
 
 internal class ContainerFactory(
-    override val componentModule: ComponentModule
+    override val clyoDeclarations: ClyoDeclarations
 ) : ComponentFactory() {
-    override fun create(context: Context, name: ComponentName): Container<*> {
-        val viewKClass = componentModule.getViewKClassOrNull(name)
-            ?: error("Container $name has not been declared")
+    override fun create(context: Context, data: AbstractComponentData): Container<*> {
+        val viewKClass = clyoDeclarations.getViewKClassOrNull(data.name)
+            ?: error("Container $data.name has not been declared")
 
-        return create(name, viewKClass.createViewInstance(context) as ViewGroup)
+        return create(
+            data = data,
+            viewGroup = viewKClass.createViewInstance(context) as ViewGroup
+        )
     }
 
-    override fun createAndBind(context: Context, data: AbstractComponentData): Container<*> {
-        return super.createAndBind(context, data) as Container<*>
+    override fun setup(context: Context, data: AbstractComponentData): Container<*> {
+        return super.setup(context, data) as Container<*>
     }
 
-    private fun <T : ViewGroup> create(name: ComponentName, viewGroup: T): Container<T> {
-        return Container(viewGroup, getBinder(name))
+    private fun <T : ViewGroup> create(data: AbstractComponentData, viewGroup: T): Container<T> {
+        return Container(
+            view = viewGroup,
+            binder = getBinder(data.name),
+            actionsAssignor = getActionsAssignor(data.onClickActions)
+        )
     }
 }

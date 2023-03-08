@@ -1,14 +1,17 @@
 package com.clyo.android.component
 
 import android.view.View
+import com.clyo.android.action.Action
 import kotlin.reflect.KClass
 
-interface ComponentModule {
+interface ClyoDeclarations {
     fun putViewKClass(name: ComponentName, kClass: KClass<out View>)
 
     fun putBinder(name: ComponentName, binder: () -> ComponentBinder<*>)
 
-    fun putAll(module: ComponentModule)
+    fun putAction(name: String, action: () -> Action)
+
+    fun putAll(module: ClyoDeclarations)
 
     fun getViewKClassOrNull(name: ComponentName): KClass<out View>?
 
@@ -18,14 +21,20 @@ interface ComponentModule {
 
     fun getAllBinders(): Map<ComponentName, () -> ComponentBinder<*>>
 
+    fun getActionOrNull(name: String): Action?
+
+    fun getAllActions(): Map<String, () -> Action>
+
     fun clear()
 }
 
-internal class ComponentModuleImpl : ComponentModule {
+internal class ClyoDeclarationsImpl : ClyoDeclarations {
 
     private val viewKClassesMap = HashMap<ComponentName, KClass<out View>>()
 
     private val componentBindersMap = HashMap<ComponentName, () -> ComponentBinder<*>>()
+
+    private val actionsMap = HashMap<String, () -> Action>()
 
     override fun putViewKClass(name: ComponentName, kClass: KClass<out View>) {
         viewKClassesMap[name] = kClass
@@ -35,9 +44,14 @@ internal class ComponentModuleImpl : ComponentModule {
         componentBindersMap[name] = binder
     }
 
-    override fun putAll(module: ComponentModule) {
+    override fun putAction(name: String, action: () -> Action) {
+        actionsMap[name] = action
+    }
+
+    override fun putAll(module: ClyoDeclarations) {
         viewKClassesMap.putAll(module.getAllViewKClasses())
         componentBindersMap.putAll(module.getAllBinders())
+        actionsMap.putAll(module.getAllActions())
     }
 
     override fun getViewKClassOrNull(name: ComponentName): KClass<out View>? {
@@ -56,10 +70,18 @@ internal class ComponentModuleImpl : ComponentModule {
         return componentBindersMap
     }
 
+    override fun getActionOrNull(name: String): Action? {
+        return actionsMap[name]?.invoke()
+    }
+
+    override fun getAllActions(): Map<String, () -> Action> {
+        return actionsMap
+    }
+
     override fun clear() {
         componentBindersMap.clear()
         viewKClassesMap.clear()
     }
 }
 
-internal fun emptyComponentModule(): ComponentModule = ComponentModuleImpl()
+internal fun emptyClyoDeclarations(): ClyoDeclarations = ClyoDeclarationsImpl()
