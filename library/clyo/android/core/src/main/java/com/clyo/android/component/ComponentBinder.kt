@@ -3,7 +3,6 @@ package com.clyo.android.component
 import android.view.View
 import com.clyo.android.properties.AbstractPropertiesData
 
-//Todo refatorar para a mesma estrutura das actions
 abstract class ComponentBinder<T : View> {
     protected abstract val binderBlock: T.(properties: AbstractPropertiesData) -> Unit
 
