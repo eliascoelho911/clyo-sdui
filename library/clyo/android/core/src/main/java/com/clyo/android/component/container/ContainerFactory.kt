@@ -2,8 +2,8 @@ package com.clyo.android.component.container
 
 import android.content.Context
 import android.view.ViewGroup
+import com.clyo.android.ClyoDeclarations
 import com.clyo.android.component.AbstractComponentData
-import com.clyo.android.component.ClyoDeclarations
 import com.clyo.android.component.ComponentFactory
 import com.clyo.android.util.createViewInstance
 

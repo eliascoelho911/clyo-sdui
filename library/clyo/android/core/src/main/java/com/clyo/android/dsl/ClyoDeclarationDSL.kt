@@ -2,9 +2,9 @@ package com.clyo.android.dsl
 
 import android.view.View
 import android.view.ViewGroup
+import com.clyo.android.ClyoDeclarations
+import com.clyo.android.ClyoDeclarationsImpl
 import com.clyo.android.action.Action
-import com.clyo.android.component.ClyoDeclarations
-import com.clyo.android.component.ClyoDeclarationsImpl
 import com.clyo.android.component.ComponentName
 
 class ClyoDeclarationDSL @PublishedApi internal constructor() {

@@ -2,6 +2,7 @@ package com.clyo.android.component
 
 import android.content.Context
 import android.view.View
+import com.clyo.android.ClyoDeclarations
 import com.clyo.android.component.widget.WidgetFactory
 import com.clyo.android.util.createViewInstance
 import io.mockk.every

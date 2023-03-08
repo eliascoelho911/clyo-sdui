@@ -1,7 +1,7 @@
 package com.clyo.android.dsl
 
 import android.view.View
-import com.clyo.android.component.ClyoDeclarations
+import com.clyo.android.ClyoDeclarations
 import com.clyo.android.component.ComponentBinderImpl
 import com.clyo.android.component.ComponentName
 import com.clyo.android.properties.AbstractPropertiesData

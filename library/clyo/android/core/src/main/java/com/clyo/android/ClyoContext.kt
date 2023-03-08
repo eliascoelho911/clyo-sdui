@@ -1,8 +1,6 @@
 package com.clyo.android
 
-import com.clyo.android.component.ClyoDeclarations
 import com.clyo.android.component.container.ContainerFactory
-import com.clyo.android.component.emptyClyoDeclarations
 import com.clyo.android.component.widget.WidgetFactory
 
 interface ClyoContext

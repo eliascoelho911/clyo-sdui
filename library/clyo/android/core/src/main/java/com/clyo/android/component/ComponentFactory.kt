@@ -2,6 +2,7 @@ package com.clyo.android.component
 
 import android.content.Context
 import android.view.View
+import com.clyo.android.ClyoDeclarations
 import com.clyo.android.action.AbstractActionData
 import com.clyo.android.action.ActionInvoker
 import com.clyo.android.action.ActionsAssignor

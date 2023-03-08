@@ -2,9 +2,9 @@ package com.clyo.android.component.widget
 
 import android.content.Context
 import android.view.View
+import com.clyo.android.ClyoDeclarations
 import com.clyo.android.action.AbstractActionData
 import com.clyo.android.component.AbstractComponentData
-import com.clyo.android.component.ClyoDeclarations
 import com.clyo.android.component.ComponentFactory
 import com.clyo.android.component.ComponentName
 import com.clyo.android.util.createViewInstance

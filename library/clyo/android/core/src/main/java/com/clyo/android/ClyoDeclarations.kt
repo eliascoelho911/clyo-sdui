@@ -1,7 +1,9 @@
-package com.clyo.android.component
+package com.clyo.android
 
 import android.view.View
 import com.clyo.android.action.Action
+import com.clyo.android.component.ComponentBinder
+import com.clyo.android.component.ComponentName
 import kotlin.reflect.KClass
 
 interface ClyoDeclarations {
