@@ -83,6 +83,7 @@ internal class ClyoDeclarationsImpl : ClyoDeclarations {
     override fun clear() {
         componentBindersMap.clear()
         viewKClassesMap.clear()
+        actionsMap.clear()
     }
 }
 
