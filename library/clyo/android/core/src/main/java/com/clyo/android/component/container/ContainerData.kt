@@ -1,6 +1,6 @@
 package com.clyo.android.component.container
 
-import com.clyo.android.action.ActionData
+import com.clyo.android.action.ActionsData
 import com.clyo.android.component.BaseComponentData
 import com.clyo.android.component.ComponentName
 import com.clyo.android.component.widget.WidgetData
@@ -23,6 +23,6 @@ data class ContainerData(
     override val properties: PropertiesData = PropertiesData(JsonObject(mapOf())),
     @SerialName("content")
     override val content: List<WidgetData> = emptyList(),
-    @SerialName("on_click_actions")
-    override val onClickActions: List<ActionData> = emptyList()
+    @SerialName("actions")
+    override val actions: ActionsData = ActionsData()
 ) : BaseContainerData

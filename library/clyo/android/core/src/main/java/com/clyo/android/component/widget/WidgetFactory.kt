@@ -3,10 +3,8 @@ package com.clyo.android.component.widget
 import android.content.Context
 import android.view.View
 import com.clyo.android.ClyoDeclarations
-import com.clyo.android.action.BaseActionData
 import com.clyo.android.component.BaseComponentData
 import com.clyo.android.component.ComponentFactory
-import com.clyo.android.component.ComponentName
 import com.clyo.android.util.createViewInstance
 
 internal class WidgetFactory(
@@ -18,8 +16,7 @@ internal class WidgetFactory(
 
         return create(
             view = viewKClass.createViewInstance(context),
-            componentName = data.name,
-            onClickActions = data.onClickActions
+            data = data,
         )
     }
 
@@ -30,15 +27,11 @@ internal class WidgetFactory(
         return super.setup(context, data) as Widget<*>
     }
 
-    private fun <T : View> create(
-        view: T,
-        componentName: ComponentName,
-        onClickActions: List<BaseActionData>
-    ): Widget<T> {
+    private fun <T : View> create(view: T, data: BaseComponentData): Widget<T> {
         return Widget(
             view = view,
-            binder = getBinder(componentName),
-            actionsAssignor = getActionsAssignor(onClickActions)
+            binder = getBinder(data.name),
+            actionsAssignors = getActionsAssignors(data.actions)
         )
     }
 }

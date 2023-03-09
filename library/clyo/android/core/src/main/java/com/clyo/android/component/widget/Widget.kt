@@ -8,5 +8,5 @@ import com.clyo.android.component.ComponentBinder
 internal class Widget<T : View>(
     override val view: T,
     override val binder: ComponentBinder<T>,
-    override val actionsAssignor: ActionsAssignor
+    override val actionsAssignors: List<ActionsAssignor>
 ) : Component<T>()

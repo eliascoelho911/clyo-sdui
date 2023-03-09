@@ -28,7 +28,7 @@ internal class ContainerFactory(
         return Container(
             view = viewGroup,
             binder = getBinder(data.name),
-            actionsAssignor = getActionsAssignor(data.onClickActions)
+            actionsAssignors = getActionsAssignors(data.actions)
         )
     }
 }

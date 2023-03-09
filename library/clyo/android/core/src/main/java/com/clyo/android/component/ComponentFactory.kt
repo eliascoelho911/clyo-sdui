@@ -5,7 +5,10 @@ import android.view.View
 import com.clyo.android.ClyoDeclarations
 import com.clyo.android.action.ActionInvoker
 import com.clyo.android.action.ActionsAssignor
-import com.clyo.android.action.BaseActionData
+import com.clyo.android.action.BaseActionContextData
+import com.clyo.android.action.BaseActionsData
+import com.clyo.android.action.OnClickActionsAssignor
+import com.clyo.android.action.OnInitActionsAssignor
 
 internal abstract class ComponentFactory {
     protected abstract val clyoDeclarations: ClyoDeclarations
@@ -15,14 +18,15 @@ internal abstract class ComponentFactory {
         return clyoDeclarations.getBinderOrNull(name).orEmpty() as ComponentBinder<T>
     }
 
-    protected fun getActionsAssignor(onClickActions: List<BaseActionData>): ActionsAssignor {
-        val actions = onClickActions.mapNotNull { actionData ->
-            val action = clyoDeclarations.getActionOrNull(actionData.name)
-            action?.let { ActionInvoker(action, actionData.properties) }
-        }
-        return ActionsAssignor(actions)
-    }
+    protected fun getActionsAssignors(actions: BaseActionsData): List<ActionsAssignor> {
+        val onClickActions = actions.onClick.actionInvokers(clyoDeclarations)
+        val onClickActionsAssignor = OnClickActionsAssignor(onClickActions)
 
+        val onInitActions = actions.onInit.actionInvokers(clyoDeclarations)
+        val onInitActionsAssignor = OnInitActionsAssignor(onInitActions)
+
+        return listOf(onClickActionsAssignor, onInitActionsAssignor)
+    }
 
     abstract fun create(context: Context, data: BaseComponentData): Component<out View>
 
@@ -30,6 +34,13 @@ internal abstract class ComponentFactory {
         return create(context, data).also {
             it.setup(properties = data.properties)
         }
+    }
+}
+
+private fun BaseActionContextData.actionInvokers(clyoDeclarations: ClyoDeclarations): List<ActionInvoker> {
+    return actions.mapNotNull { actionData ->
+        val action = clyoDeclarations.getActionOrNull(actionData.name)
+        action?.let { ActionInvoker(action, actionData.properties) }
     }
 }
 

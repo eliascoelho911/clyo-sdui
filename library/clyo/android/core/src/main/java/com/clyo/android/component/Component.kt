@@ -9,12 +9,14 @@ internal abstract class Component<T : View> {
 
     protected abstract val binder: ComponentBinder<T>
 
-    protected abstract val actionsAssignor: ActionsAssignor
+    protected abstract val actionsAssignors: List<ActionsAssignor>
 
     open fun setup(properties: BasePropertiesData): T {
         binder.bind(properties, view)
 
-        actionsAssignor.assign(view)
+        actionsAssignors.forEach {
+            it.assign(view)
+        }
 
         return view
     }

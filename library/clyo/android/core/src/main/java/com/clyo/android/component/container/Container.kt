@@ -10,7 +10,7 @@ import com.clyo.android.properties.BasePropertiesData
 internal class Container<T : ViewGroup>(
     override val view: T,
     override val binder: ComponentBinder<T>,
-    override val actionsAssignor: ActionsAssignor
+    override val actionsAssignors: List<ActionsAssignor>
 ) : Component<T>() {
 
     private val clyoContainer = view as ClyoContainer
