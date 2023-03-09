@@ -9,7 +9,7 @@ import com.clyo.android.component.widget.binders.applyButtonViewProperties
 import com.clyo.android.component.widget.binders.applyTextViewProperties
 import com.clyo.android.component.widget.binders.applyViewProperties
 import com.clyo.android.dsl.clyoDeclarations
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.properties.BasePropertiesData
 
 val ClyoWidgetsModule = clyoDeclarations {
     widget<AppCompatImageView>("image") {
@@ -32,7 +32,7 @@ val ClyoWidgetsModule = clyoDeclarations {
 
     action("test") {
         object : Action {
-            override fun invoke(properties: AbstractPropertiesData) {
+            override fun invoke(properties: BasePropertiesData) {
                 Log.i("ACTION_TEST", "Funcionou ${properties.getString("test")}")
             }
         }

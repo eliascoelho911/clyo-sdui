@@ -1,13 +1,13 @@
 package com.clyo.android.component.widget.binders
 
 import android.widget.Button
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.properties.BasePropertiesData
 
-fun Button.applyButtonViewProperties(properties: AbstractPropertiesData) {
+fun Button.applyButtonViewProperties(properties: BasePropertiesData) {
     applyViewProperties(properties)
     applyButtonTextProperty(properties)
 }
 
-fun Button.applyButtonTextProperty(properties: AbstractPropertiesData) {
+fun Button.applyButtonTextProperty(properties: BasePropertiesData) {
     properties.getStringOrNull("text")?.let(::setText)
 }

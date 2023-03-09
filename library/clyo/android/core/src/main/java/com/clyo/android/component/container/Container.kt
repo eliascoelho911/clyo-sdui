@@ -5,7 +5,7 @@ import com.clyo.android.action.ActionsAssignor
 import com.clyo.android.component.Component
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.widget.Widget
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.properties.BasePropertiesData
 
 internal class Container<T : ViewGroup>(
     override val view: T,
@@ -15,7 +15,7 @@ internal class Container<T : ViewGroup>(
 
     private val clyoContainer = view as ClyoContainer
 
-    fun addWidget(widget: Widget<*>, layoutProperties: AbstractPropertiesData) {
+    fun addWidget(widget: Widget<*>, layoutProperties: BasePropertiesData) {
         clyoContainer.addWidget(widget.view, layoutProperties)
     }
 }

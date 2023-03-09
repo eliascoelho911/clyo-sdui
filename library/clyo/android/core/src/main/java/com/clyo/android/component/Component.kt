@@ -2,7 +2,7 @@ package com.clyo.android.component
 
 import android.view.View
 import com.clyo.android.action.ActionsAssignor
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.properties.BasePropertiesData
 
 internal abstract class Component<T : View> {
     abstract val view: T
@@ -11,7 +11,7 @@ internal abstract class Component<T : View> {
 
     protected abstract val actionsAssignor: ActionsAssignor
 
-    open fun setup(properties: AbstractPropertiesData): T {
+    open fun setup(properties: BasePropertiesData): T {
         binder.bind(properties, view)
 
         actionsAssignor.assign(view)

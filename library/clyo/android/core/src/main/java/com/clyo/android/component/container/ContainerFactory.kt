@@ -3,14 +3,14 @@ package com.clyo.android.component.container
 import android.content.Context
 import android.view.ViewGroup
 import com.clyo.android.ClyoDeclarations
-import com.clyo.android.component.AbstractComponentData
+import com.clyo.android.component.BaseComponentData
 import com.clyo.android.component.ComponentFactory
 import com.clyo.android.util.createViewInstance
 
 internal class ContainerFactory(
     override val clyoDeclarations: ClyoDeclarations
 ) : ComponentFactory() {
-    override fun create(context: Context, data: AbstractComponentData): Container<*> {
+    override fun create(context: Context, data: BaseComponentData): Container<*> {
         val viewKClass = clyoDeclarations.getViewKClassOrNull(data.name)
             ?: error("Container $data.name has not been declared")
 
@@ -20,11 +20,11 @@ internal class ContainerFactory(
         )
     }
 
-    override fun setup(context: Context, data: AbstractComponentData): Container<*> {
+    override fun setup(context: Context, data: BaseComponentData): Container<*> {
         return super.setup(context, data) as Container<*>
     }
 
-    private fun <T : ViewGroup> create(data: AbstractComponentData, viewGroup: T): Container<T> {
+    private fun <T : ViewGroup> create(data: BaseComponentData, viewGroup: T): Container<T> {
         return Container(
             view = viewGroup,
             binder = getBinder(data.name),

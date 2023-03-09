@@ -1,7 +1,7 @@
 package com.clyo.android.component
 
 import android.view.View
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.properties.BasePropertiesData
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Test
@@ -16,7 +16,7 @@ internal class ComponentTest {
     @Test
     fun `bind properties to view`() {
         // Given
-        val propertiesData = mockk<AbstractPropertiesData>()
+        val propertiesData = mockk<BasePropertiesData>()
 
         // When
         component.bind(propertiesData)

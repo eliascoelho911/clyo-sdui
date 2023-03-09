@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.children
 import com.clyo.android.component.widget.WidgetContainerView
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.properties.BasePropertiesData
 
 interface ClyoContainer {
     val viewGroup: ViewGroup
 
-    fun applyLayoutProperties(view: View, layoutProperties: AbstractPropertiesData) {}
+    fun applyLayoutProperties(view: View, layoutProperties: BasePropertiesData) {}
 
-    fun addWidget(view: View, layoutProperties: AbstractPropertiesData) {
+    fun addWidget(view: View, layoutProperties: BasePropertiesData) {
         applyLayoutProperties(view, layoutProperties)
         viewGroup.addView(view)
     }
@@ -23,7 +23,7 @@ fun ClyoContainer.initContainer(@LayoutRes layoutRes: Int) {
 }
 
 interface ClyoTemplateContainer : ClyoContainer {
-    override fun addWidget(view: View, layoutProperties: AbstractPropertiesData) {
+    override fun addWidget(view: View, layoutProperties: BasePropertiesData) {
         applyLayoutProperties(view, layoutProperties)
 
         val position = layoutProperties.getStringOrNull("position") ?: error("position not found")

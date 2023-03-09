@@ -4,7 +4,7 @@ import android.view.View
 import com.clyo.android.component.ComponentName
 import com.clyo.android.component.ViewBinder
 import com.clyo.android.dsl.ComponentDeclarationDSL
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.properties.BasePropertiesData
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
@@ -22,7 +22,7 @@ internal class ComponentDeclarationDSLTest {
         val componentModule = mockk<ComponentModule>(relaxed = true)
         val componentName = ComponentName("myComponent")
         val componentDeclarationDSL = ComponentDeclarationDSL<View>(componentName, componentModule)
-        val block: View.(properties: AbstractPropertiesData) -> Unit = {
+        val block: View.(properties: BasePropertiesData) -> Unit = {
             // do nothing
         }
         val slot = slot<() -> ViewBinder<View>>()

@@ -1,13 +1,13 @@
 package com.clyo.android.component
 
-import com.clyo.android.action.AbstractActionData
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.action.BaseActionData
+import com.clyo.android.properties.BasePropertiesData
 
 @JvmInline
 value class ComponentName(val name: String)
 
-interface AbstractComponentData {
+interface BaseComponentData {
     val name: ComponentName
-    val properties: AbstractPropertiesData
-    val onClickActions: List<AbstractActionData>
+    val properties: BasePropertiesData
+    val onClickActions: List<BaseActionData>
 }

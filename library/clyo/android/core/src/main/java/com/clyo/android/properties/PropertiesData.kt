@@ -14,7 +14,7 @@ import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
 
-interface AbstractPropertiesData {
+interface BasePropertiesData {
     fun getString(key: String): String
 
     fun getStringOrNull(key: String): String?
@@ -49,7 +49,7 @@ interface AbstractPropertiesData {
 @Serializable(with = PropertiesAsJsonObjectSerializer::class)
 data class PropertiesData(
     internal val jsonObject: JsonObject
-) : AbstractPropertiesData {
+) : BasePropertiesData {
     override fun getString(key: String): String = getStringOrNull(key) ?: error(key, "string")
 
     override fun getStringOrNull(key: String): String? = get(key)?.contentOrNull

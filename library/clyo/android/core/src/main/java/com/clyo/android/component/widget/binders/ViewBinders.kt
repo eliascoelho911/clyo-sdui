@@ -1,12 +1,12 @@
 package com.clyo.android.component.widget.binders
 
 import android.view.View
-import com.clyo.android.properties.AbstractPropertiesData
+import com.clyo.android.properties.BasePropertiesData
 
-fun View.applyViewProperties(properties: AbstractPropertiesData) {
+fun View.applyViewProperties(properties: BasePropertiesData) {
     applyBackgroundColorProperty(properties)
 }
 
-fun View.applyBackgroundColorProperty(properties: AbstractPropertiesData) {
+fun View.applyBackgroundColorProperty(properties: BasePropertiesData) {
     properties.getColorOrNull("background_color")?.let(::setBackgroundColor)
 }
