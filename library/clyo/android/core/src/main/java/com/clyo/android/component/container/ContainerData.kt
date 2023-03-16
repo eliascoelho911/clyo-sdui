@@ -3,8 +3,8 @@ package com.clyo.android.component.container
 import com.clyo.android.action.ActionsData
 import com.clyo.android.component.BaseComponentData
 import com.clyo.android.component.ComponentName
+import com.clyo.android.component.properties.PropertiesData
 import com.clyo.android.component.widget.WidgetData
-import com.clyo.android.properties.PropertiesData
 import com.clyo.android.util.serializer.ComponentNameAsStringSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

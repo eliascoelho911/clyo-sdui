@@ -3,8 +3,8 @@ package com.clyo.android.module.dsl
 import android.view.View
 import com.clyo.android.component.ComponentName
 import com.clyo.android.component.ViewBinder
+import com.clyo.android.component.properties.BasePropertiesData
 import com.clyo.android.dsl.ComponentDeclarationDSL
-import com.clyo.android.properties.BasePropertiesData
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just

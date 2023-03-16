@@ -2,7 +2,7 @@ package com.clyo.android.stub
 
 import com.clyo.android.component.ComponentData
 import com.clyo.android.component.ComponentName
-import com.clyo.android.properties.PropertiesData
+import com.clyo.android.component.properties.PropertiesData
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive

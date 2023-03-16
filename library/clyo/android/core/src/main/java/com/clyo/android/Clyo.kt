@@ -1,10 +1,29 @@
 package com.clyo.android
 
 import android.view.View
+import android.view.ViewGroup
 import com.clyo.android.action.Action
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentName
+import com.clyo.android.component.container.ContainerFactory
+import com.clyo.android.component.container.ShowClyoScreen
+import com.clyo.android.component.container.template.BaseTemplateData
+import com.clyo.android.component.container.template.TemplateCreator
+import com.clyo.android.component.widget.WidgetFactory
 import kotlin.reflect.KClass
+
+interface ClyoContext
+
+fun ClyoContext.clyo(
+    clyoDeclarations: ClyoDeclarations = emptyClyoDeclarations()
+): Lazy<ClyoEngine> = lazy {
+    ClyoEngine(
+        showClyoScreen = ShowClyoScreen(
+            widgetFactory = WidgetFactory(clyoDeclarations),
+            containerFactory = ContainerFactory(clyoDeclarations)
+        )
+    )
+}
 
 interface ClyoDeclarations {
     fun putViewKClass(name: ComponentName, kClass: KClass<out View>)
@@ -88,3 +107,16 @@ internal class ClyoDeclarationsImpl : ClyoDeclarations {
 }
 
 internal fun emptyClyoDeclarations(): ClyoDeclarations = ClyoDeclarationsImpl()
+
+class ClyoEngine internal constructor(
+    private val showClyoScreen: ShowClyoScreen,
+    private val templateCreator: TemplateCreator
+) {
+    fun newTemplate(data: BaseTemplateData) {
+        templateCreator(data)
+    }
+
+    fun render(data: BaseClyoData, container: ViewGroup) {
+        showClyoScreen(data, container)
+    }
+}

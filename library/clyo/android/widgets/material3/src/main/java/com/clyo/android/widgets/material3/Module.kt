@@ -5,11 +5,11 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.clyo.android.action.Action
+import com.clyo.android.component.properties.BasePropertiesData
 import com.clyo.android.component.widget.binders.applyButtonViewProperties
 import com.clyo.android.component.widget.binders.applyTextViewProperties
 import com.clyo.android.component.widget.binders.applyViewProperties
 import com.clyo.android.dsl.clyoDeclarations
-import com.clyo.android.properties.BasePropertiesData
 
 val ClyoWidgetsModule = clyoDeclarations {
     widget<AppCompatImageView>("image") {

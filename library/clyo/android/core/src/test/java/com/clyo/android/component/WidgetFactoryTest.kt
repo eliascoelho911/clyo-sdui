@@ -34,7 +34,7 @@ internal class WidgetFactoryTest {
         viewKClass.mockCreateViewInstance(returns = viewInstance)
 
         // When
-        val result = componentFactory.create(name)
+        val result = componentFactory.justCreate(name)
 
         // Then
         assertEquals(expected, result)
@@ -49,7 +49,7 @@ internal class WidgetFactoryTest {
 
         // Then
         assertFailsWith(IllegalArgumentException::class) {
-            componentFactory.create(name)
+            componentFactory.justCreate(name)
         }
     }
 
@@ -66,7 +66,7 @@ internal class WidgetFactoryTest {
 
         // Then
         assertFailsWith(IllegalArgumentException::class) {
-            componentFactory.create(name)
+            componentFactory.justCreate(name)
         }
     }
 

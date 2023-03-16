@@ -1,10 +1,11 @@
-package com.clyo.android.properties
+package com.clyo.android.component.properties
 
 import android.graphics.Color
 import androidx.annotation.ColorInt
 import com.clyo.android.util.serializer.PropertiesAsJsonObjectSerializer
 import java.util.regex.Pattern
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.contentOrNull
@@ -92,5 +93,7 @@ data class PropertiesData(
         throw IllegalArgumentException("No argument with key $key and type $type found")
     }
 }
+
+fun propertiesData(map: Map<String, JsonElement> = emptyMap()) = PropertiesData(JsonObject(map))
 
 private const val COLOR_REG = "#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$"

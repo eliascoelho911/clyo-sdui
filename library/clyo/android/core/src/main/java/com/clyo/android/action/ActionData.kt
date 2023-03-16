@@ -1,7 +1,7 @@
 package com.clyo.android.action
 
-import com.clyo.android.properties.BasePropertiesData
-import com.clyo.android.properties.PropertiesData
+import com.clyo.android.component.properties.BasePropertiesData
+import com.clyo.android.component.properties.PropertiesData
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject

@@ -1,7 +1,7 @@
 package com.clyo.android.component
 
 import com.clyo.android.action.BaseActionsData
-import com.clyo.android.properties.BasePropertiesData
+import com.clyo.android.component.properties.BasePropertiesData
 
 @JvmInline
 value class ComponentName(val name: String)

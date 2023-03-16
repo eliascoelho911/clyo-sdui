@@ -1,5 +1,6 @@
 package com.clyo.android.properties
 
+import com.clyo.android.component.properties.PropertiesData
 import com.clyo.android.stub.PropertiesDataStub
 import kotlin.test.assertEquals
 import kotlinx.serialization.decodeFromString

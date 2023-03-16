@@ -4,7 +4,7 @@ import android.view.View
 import com.clyo.android.ClyoDeclarations
 import com.clyo.android.component.ComponentBinderImpl
 import com.clyo.android.component.ComponentName
-import com.clyo.android.properties.BasePropertiesData
+import com.clyo.android.component.properties.BasePropertiesData
 
 class ComponentDeclarationDSL<T : View> @PublishedApi internal constructor(
     private val name: ComponentName,
