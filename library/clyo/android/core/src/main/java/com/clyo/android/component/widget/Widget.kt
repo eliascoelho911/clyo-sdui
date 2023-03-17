@@ -11,7 +11,6 @@ import com.clyo.android.component.BaseComponentData
 import com.clyo.android.component.Component
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentFactory
-import com.clyo.android.util.createViewInstance
 
 internal class Widget<T : View>(
     override val view: T,
@@ -24,11 +23,10 @@ internal class WidgetFactory(
 ) : ComponentFactory() {
 
     override fun justCreate(context: Context, data: BaseComponentData): Widget<*> {
-        val viewKClass = clyoDeclaration.getViewKClassOrNull(data.name)
-            ?: error("Widget $data.name has not been declared")
+        val viewProvider = clyoDeclaration.getViewProvider(data.name)
 
         return widget(
-            view = viewKClass.createViewInstance(context),
+            view = viewProvider.provide(context),
             data = data,
         )
     }
@@ -55,7 +53,7 @@ class WidgetSlotView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    var positionId: String? = null
+    var ref: String? = null
 
     init {
         getAttrs(context, attrs)
@@ -68,7 +66,7 @@ class WidgetSlotView @JvmOverloads constructor(
             0, 0
         ).apply {
             try {
-                positionId = getString(R.styleable.WidgetContainerView_position)
+                ref = getString(R.styleable.WidgetContainerView_ref)
             } finally {
                 recycle()
             }
@@ -76,6 +74,6 @@ class WidgetSlotView @JvmOverloads constructor(
     }
 
     companion object {
-        const val name = "widget_slot"
+        const val name = "clyo:widget_slot"
     }
 }

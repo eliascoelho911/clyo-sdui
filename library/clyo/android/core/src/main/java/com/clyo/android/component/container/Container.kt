@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.core.view.children
 import com.clyo.android.BaseClyoData
 import com.clyo.android.ClyoDeclaration
 import com.clyo.android.ClyoEngine
@@ -16,16 +17,31 @@ import com.clyo.android.component.properties.BasePropertiesData
 import com.clyo.android.component.widget.BaseWidgetData
 import com.clyo.android.component.widget.Widget
 import com.clyo.android.component.widget.WidgetFactory
-import com.clyo.android.util.createViewInstance
+import com.clyo.android.component.widget.WidgetSlotView
 
 interface ClyoContainer {
     val viewGroup: ViewGroup
 
-    fun applyLayoutProperties(view: View, layoutProperties: BasePropertiesData) {}
+    var isTemplate: Boolean
+
+    fun applyLayoutProperties(view: View, layoutProperties: BasePropertiesData)
 
     fun addWidget(view: View, layoutProperties: BasePropertiesData) {
         applyLayoutProperties(view, layoutProperties)
-        viewGroup.addView(view)
+        if (isTemplate) addWidgetOnTemplate(view, layoutProperties) else viewGroup.addView(view)
+    }
+
+    private fun addWidgetOnTemplate(view: View, layoutProperties: BasePropertiesData) {
+        val ref = layoutProperties.getStringOrNull("ref") ?: error("ref not found")
+
+        viewGroup.children.forEach { childView ->
+            if (childView is WidgetSlotView && childView.ref == ref) {
+                childView.addView(view)
+                return
+            }
+        }
+
+        error("No widget with ref $ref was declared in the template")
     }
 }
 
@@ -51,12 +67,11 @@ internal class ContainerFactory(
 ) : ComponentFactory() {
 
     override fun justCreate(context: Context, data: BaseComponentData): Container<*> {
-        val viewKClass = clyoDeclaration.getViewKClassOrNull(data.name)
-            ?: error("Container $data.name has not been declared")
+        val viewProvider = clyoDeclaration.getViewProvider(data.name)
 
         return container(
             data = data,
-            viewGroup = viewKClass.createViewInstance(context) as ViewGroup
+            viewGroup = viewProvider.provide(context) as ViewGroup
         )
     }
 
@@ -73,7 +88,17 @@ internal class ContainerFactory(
     }
 }
 
-internal fun createContainer(
+internal fun ClyoEngine.createContainer(
+    context: Context,
+    data: BaseContainerData
+): Container<*> {
+    val containerFactory = ContainerFactory(clyoDeclaration)
+    val widgetFactory = WidgetFactory(clyoDeclaration)
+
+    return createContainer(context, containerFactory, widgetFactory, data)
+}
+
+private fun createContainer(
     context: Context,
     containerFactory: ContainerFactory,
     widgetFactory: WidgetFactory,

@@ -1,0 +1,18 @@
+{
+  "name": "column_template",
+  "root": "column",
+  "content": [
+    {
+      "ref": "first",
+      "layout_properties": {
+
+      }
+    },
+    {
+      "ref": "second",
+      "layout_properties": {
+
+      }
+    }
+  ]
+}

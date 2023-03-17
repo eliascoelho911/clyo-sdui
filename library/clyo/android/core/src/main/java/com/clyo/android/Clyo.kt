@@ -1,10 +1,9 @@
 package com.clyo.android
 
-import android.view.View
 import com.clyo.android.action.Action
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentName
-import kotlin.reflect.KClass
+import com.clyo.android.util.ViewProvider
 
 interface ClyoContext
 
@@ -15,8 +14,9 @@ fun ClyoContext.clyo(
 }
 
 //TODO Usar suspend functions
+//TODO Refatorar
 interface ClyoDeclaration {
-    fun putViewKClass(name: ComponentName, kClass: KClass<out View>)
+    fun putViewProvider(name: ComponentName, viewProvider: ViewProvider)
 
     fun putBinder(name: ComponentName, binder: () -> ComponentBinder<*>)
 
@@ -24,11 +24,11 @@ interface ClyoDeclaration {
 
     fun putAll(module: ClyoDeclaration)
 
-    fun getViewKClass(name: ComponentName): KClass<out View>
+    fun getViewProvider(name: ComponentName): ViewProvider
 
-    fun getViewKClassOrNull(name: ComponentName): KClass<out View>?
+    fun getViewProviderOrNull(name: ComponentName): ViewProvider?
 
-    fun getAllViewKClasses(): Map<ComponentName, KClass<out View>>
+    fun getAllViewProviders(): Map<ComponentName, ViewProvider>
 
     fun getBinderOrNull(name: ComponentName): ComponentBinder<*>?
 
@@ -43,14 +43,14 @@ interface ClyoDeclaration {
 
 internal class ClyoDeclarationImpl : ClyoDeclaration {
 
-    private val viewKClassesMap = HashMap<ComponentName, KClass<out View>>()
+    private val viewProvidersMap = HashMap<ComponentName, ViewProvider>()
 
     private val componentBindersMap = HashMap<ComponentName, () -> ComponentBinder<*>>()
 
     private val actionsMap = HashMap<String, () -> Action>()
 
-    override fun putViewKClass(name: ComponentName, kClass: KClass<out View>) {
-        viewKClassesMap[name] = kClass
+    override fun putViewProvider(name: ComponentName, viewProvider: ViewProvider) {
+        viewProvidersMap[name] = viewProvider
     }
 
     override fun putBinder(name: ComponentName, binder: () -> ComponentBinder<*>) {
@@ -62,21 +62,21 @@ internal class ClyoDeclarationImpl : ClyoDeclaration {
     }
 
     override fun putAll(module: ClyoDeclaration) {
-        viewKClassesMap.putAll(module.getAllViewKClasses())
+        viewProvidersMap.putAll(module.getAllViewProviders())
         componentBindersMap.putAll(module.getAllBinders())
         actionsMap.putAll(module.getAllActions())
     }
 
-    override fun getViewKClass(name: ComponentName): KClass<out View> {
-        return viewKClassesMap.getValue(name)
+    override fun getViewProvider(name: ComponentName): ViewProvider {
+        return getViewProviderOrNull(name) ?: notFoundError("ViewProvider", name)
     }
 
-    override fun getViewKClassOrNull(name: ComponentName): KClass<out View>? {
-        return viewKClassesMap[name]
+    override fun getViewProviderOrNull(name: ComponentName): ViewProvider? {
+        return viewProvidersMap[name]
     }
 
-    override fun getAllViewKClasses(): Map<ComponentName, KClass<out View>> {
-        return viewKClassesMap
+    override fun getAllViewProviders(): Map<ComponentName, ViewProvider> {
+        return viewProvidersMap
     }
 
     override fun getBinderOrNull(name: ComponentName): ComponentBinder<*>? {
@@ -97,8 +97,12 @@ internal class ClyoDeclarationImpl : ClyoDeclaration {
 
     override fun clear() {
         componentBindersMap.clear()
-        viewKClassesMap.clear()
+        viewProvidersMap.clear()
         actionsMap.clear()
+    }
+
+    private fun notFoundError(type: String, name: ComponentName): Nothing {
+        throw NoSuchElementException("$type $name has not been declared")
     }
 }
 

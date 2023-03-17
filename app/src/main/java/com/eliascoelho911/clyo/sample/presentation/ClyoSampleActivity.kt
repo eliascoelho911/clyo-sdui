@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.clyo.android.ClyoContext
 import com.clyo.android.clyo
 import com.clyo.android.component.container.showClyoScreen
+import com.clyo.android.component.container.template.createDeclarationToTemplate
 import com.eliascoelho911.clyo.sample.R
 import com.eliascoelho911.clyo.sample.databinding.ActivityClyoSampleBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,6 +26,11 @@ internal class ClyoSampleActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel.templateContent.observe(this) {
+            val templateDeclaration = clyo.createDeclarationToTemplate(it)
+            ClyoComponents.putAll(templateDeclaration)
+        }
 
         viewModel.screenContent.observe(this) {
             clyo.showClyoScreen(binding.clyoContainerView, it)

@@ -17,7 +17,7 @@
       {
         "name": "image",
         "layout_properties": {
-          "position": "illustration"
+          "ref": "title"
         },
         "properties": {
           "background_color": "#ff0000"
@@ -26,7 +26,7 @@
       {
         "name": "text",
         "layout_properties": {
-          "position": "title"
+          "ref": "illustration"
         },
         "properties": {
           "background_color": "#000000",
@@ -37,7 +37,7 @@
       {
         "name": "text",
         "layout_properties": {
-          "position": "subtitle"
+          "ref": "subtitle"
         },
         "properties": {
           "text": "Esse é o conteúdo do feedback",
@@ -47,7 +47,7 @@
       {
         "name": "button",
         "layout_properties": {
-          "position": "first_button"
+          "ref": "first_button"
         },
         "properties": {
           "text": "Botão",

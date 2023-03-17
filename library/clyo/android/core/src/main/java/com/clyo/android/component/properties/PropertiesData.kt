@@ -15,7 +15,7 @@ import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
 
-interface BasePropertiesData {
+sealed interface BasePropertiesData {
     fun getString(key: String): String
 
     fun getStringOrNull(key: String): String?
