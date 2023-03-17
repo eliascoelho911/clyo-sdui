@@ -6,28 +6,22 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.clyo.android.action.Action
 import com.clyo.android.component.properties.BasePropertiesData
-import com.clyo.android.component.widget.binders.applyButtonViewProperties
-import com.clyo.android.component.widget.binders.applyTextViewProperties
-import com.clyo.android.component.widget.binders.applyViewProperties
+import com.clyo.android.component.widget.applyButtonViewProperties
+import com.clyo.android.component.widget.applyTextViewProperties
+import com.clyo.android.component.widget.applyViewProperties
 import com.clyo.android.dsl.clyoDeclaration
 
 val ClyoWidgetsModule = clyoDeclaration {
-    widget<AppCompatImageView>("image") {
-        binder { properties ->
-            applyViewProperties(properties)
-        }
+    widget<AppCompatImageView>("image") { properties ->
+        applyViewProperties(properties)
     }
 
-    widget<AppCompatTextView>("text") {
-        binder { properties ->
-            applyTextViewProperties(properties)
-        }
+    widget<AppCompatTextView>("text") { properties ->
+        applyTextViewProperties(properties)
     }
 
-    widget<AppCompatButton>("button") {
-        binder { properties ->
-            applyButtonViewProperties(properties)
-        }
+    widget<AppCompatButton>("button") { properties ->
+        applyButtonViewProperties(properties)
     }
 
     action("test") {

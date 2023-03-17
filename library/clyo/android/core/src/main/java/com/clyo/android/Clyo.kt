@@ -4,10 +4,6 @@ import android.view.View
 import com.clyo.android.action.Action
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentName
-import com.clyo.android.component.container.ContainerFactory
-import com.clyo.android.component.container.ShowClyoScreen
-import com.clyo.android.component.container.showClyoScreen
-import com.clyo.android.component.widget.WidgetFactory
 import kotlin.reflect.KClass
 
 interface ClyoContext
@@ -15,12 +11,7 @@ interface ClyoContext
 fun ClyoContext.clyo(
     clyoDeclaration: ClyoDeclaration = emptyClyoDeclaration()
 ): Lazy<ClyoEngine> = lazy {
-    ClyoEngine(
-        showClyoScreen = ShowClyoScreen(
-            widgetFactory = WidgetFactory(clyoDeclaration),
-            containerFactory = ContainerFactory(clyoDeclaration)
-        )
-    )
+    ClyoEngine(clyoDeclaration)
 }
 
 //TODO Usar suspend functions
@@ -33,9 +24,9 @@ interface ClyoDeclaration {
 
     fun putAll(module: ClyoDeclaration)
 
-    fun getViewKClassOrNull(name: ComponentName): KClass<out View>?
-
     fun getViewKClass(name: ComponentName): KClass<out View>
+
+    fun getViewKClassOrNull(name: ComponentName): KClass<out View>?
 
     fun getAllViewKClasses(): Map<ComponentName, KClass<out View>>
 
@@ -74,6 +65,10 @@ internal class ClyoDeclarationImpl : ClyoDeclaration {
         viewKClassesMap.putAll(module.getAllViewKClasses())
         componentBindersMap.putAll(module.getAllBinders())
         actionsMap.putAll(module.getAllActions())
+    }
+
+    override fun getViewKClass(name: ComponentName): KClass<out View> {
+        return viewKClassesMap.getValue(name)
     }
 
     override fun getViewKClassOrNull(name: ComponentName): KClass<out View>? {
@@ -116,7 +111,8 @@ class ClyoEngine internal constructor(
 object ClyoApplication {
     private var privateClyoDeclaration: ClyoDeclaration? = null
 
-    val clyoDeclaration: ClyoDeclaration get() = privateClyoDeclaration ?: TODO(ERRO)
+    val clyoDeclaration: ClyoDeclaration
+        get() = privateClyoDeclaration ?: error("Clyo is not started")
 
     fun start(clyoDeclaration: ClyoDeclaration) {
         this.privateClyoDeclaration = clyoDeclaration

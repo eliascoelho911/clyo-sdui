@@ -102,7 +102,22 @@ private fun Container<*>.showWidget(
     addWidget(widget, data.layoutProperties)
 }
 
-internal fun ClyoEngine.showClyoScreen(
+fun ClyoEngine.showClyoScreen(
+    parent: ViewGroup,
+    data: BaseClyoData
+) {
+    val containerFactory = ContainerFactory(clyoDeclaration)
+    val widgetFactory = WidgetFactory(clyoDeclaration)
+
+    showClyoScreen(
+        containerFactory,
+        widgetFactory,
+        parent,
+        data
+    )
+}
+
+private fun showClyoScreen(
     containerFactory: ContainerFactory,
     widgetFactory: WidgetFactory,
     parent: ViewGroup,

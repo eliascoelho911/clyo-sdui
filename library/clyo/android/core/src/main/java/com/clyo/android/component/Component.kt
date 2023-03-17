@@ -28,9 +28,9 @@ internal abstract class Component<T : View> {
     }
 }
 
+//Todo Deve ser internal
 @JvmInline
-@PublishedApi
-internal value class ComponentBinder<T : View>(
+value class ComponentBinder<T : View>(
     private val binderBlock: T.(properties: BasePropertiesData) -> Unit = {}
 ) {
     fun bind(properties: BasePropertiesData, destination: T) {

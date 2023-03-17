@@ -4,7 +4,6 @@ import android.view.View
 import com.clyo.android.component.ComponentName
 import com.clyo.android.component.ViewBinder
 import com.clyo.android.component.properties.BasePropertiesData
-import com.clyo.android.dsl.ComponentDeclarationDSL
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just

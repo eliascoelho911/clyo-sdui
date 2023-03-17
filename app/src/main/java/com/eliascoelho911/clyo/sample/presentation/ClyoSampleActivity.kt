@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.clyo.android.ClyoContext
 import com.clyo.android.clyo
+import com.clyo.android.component.container.showClyoScreen
 import com.eliascoelho911.clyo.sample.R
 import com.eliascoelho911.clyo.sample.databinding.ActivityClyoSampleBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +27,7 @@ internal class ClyoSampleActivity :
         super.onCreate(savedInstanceState)
 
         viewModel.screenContent.observe(this) {
-            clyo.render(it, binding.clyoContainerView)
+            clyo.showClyoScreen(binding.clyoContainerView, it)
         }
     }
 }

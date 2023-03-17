@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import androidx.appcompat.widget.LinearLayoutCompat
 import com.clyo.android.R
-import com.clyo.android.component.container.ClyoTemplateContainer
 import com.clyo.android.component.container.initContainer
+import com.clyo.android.component.container.template.ClyoTemplateContainer
 
 internal class FeedbackContainerView @JvmOverloads constructor(
     context: Context,
