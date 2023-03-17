@@ -2,54 +2,69 @@ package com.clyo.android.dsl
 
 import android.view.View
 import android.view.ViewGroup
-import com.clyo.android.ClyoDeclarations
-import com.clyo.android.ClyoDeclarationsImpl
+import com.clyo.android.ClyoDeclaration
+import com.clyo.android.ClyoDeclarationImpl
 import com.clyo.android.action.Action
+import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentName
+import com.clyo.android.component.properties.BasePropertiesData
+import kotlin.reflect.KClass
 
 class ClyoDeclarationDSL @PublishedApi internal constructor() {
 
     @PublishedApi
-    internal val clyoDeclarations: ClyoDeclarations = ClyoDeclarationsImpl()
+    internal val clyoDeclaration: ClyoDeclaration = ClyoDeclarationImpl()
 
     inline fun <reified T : View> widget(
         name: String,
-        block: ComponentDeclarationDSL<T>.() -> Unit = {}
+        noinline binder: T.(properties: BasePropertiesData) -> Unit = {}
     ) {
-        component(name, block)
+        component(name, binder)
     }
 
     inline fun <reified T : ViewGroup> container(
         name: String,
-        block: ComponentDeclarationDSL<T>.() -> Unit = {}
+        noinline binder: T.(properties: BasePropertiesData) -> Unit = {}
     ) {
-        component(name, block)
+        component(name, binder)
+    }
+
+    fun <T : ViewGroup> container(name: String, viewKClass: KClass<T>) {
+        component(name, viewKClass)
+    }
+
+    @PublishedApi
+    internal inline fun <reified T : View> component(
+        name: String,
+        noinline binder: T.(properties: BasePropertiesData) -> Unit,
+    ) {
+        component(name, T::class, binder)
+    }
+
+    @PublishedApi
+    internal fun <T : View> component(
+        name: String,
+        viewKClass: KClass<T>,
+        binder: T.(properties: BasePropertiesData) -> Unit = { }
+    ) {
+        val componentName = ComponentName(name)
+
+        clyoDeclaration.putViewKClass(componentName, viewKClass)
+        clyoDeclaration.putBinder(componentName) { ComponentBinder(binder) }
     }
 
     fun action(
         name: String,
         action: () -> Action
     ) {
-        clyoDeclarations.putAction(name, action)
+        clyoDeclaration.putAction(name, action)
     }
 
-    @PublishedApi
-    internal inline fun <reified T : View> component(
-        name: String,
-        block: ComponentDeclarationDSL<T>.() -> Unit
-    ) {
-        val componentName = ComponentName(name)
-
-        clyoDeclarations.putViewKClass(componentName, T::class)
-
-        ComponentDeclarationDSL<T>(componentName, clyoDeclarations).block()
-    }
-
-    fun add(declarations: ClyoDeclarations) {
-        clyoDeclarations.putAll(declarations)
+    fun add(declarations: ClyoDeclaration) {
+        clyoDeclaration.putAll(declarations)
     }
 }
 
-inline fun clyoDeclarations(scope: ClyoDeclarationDSL.() -> Unit): ClyoDeclarations {
-    return ClyoDeclarationDSL().apply(scope).clyoDeclarations
+inline fun clyoDeclaration(scope: ClyoDeclarationDSL.() -> Unit): ClyoDeclaration {
+    return ClyoDeclarationDSL().apply(scope).clyoDeclaration
 }

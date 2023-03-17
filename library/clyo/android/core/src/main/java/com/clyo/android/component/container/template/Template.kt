@@ -6,18 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.core.view.children
-import com.clyo.android.ClyoDeclarations
+import com.clyo.android.ClyoDeclaration
+import com.clyo.android.ClyoEngine
 import com.clyo.android.component.ComponentName
 import com.clyo.android.component.container.ClyoContainer
-import com.clyo.android.component.container.ContainerData
-import com.clyo.android.component.container.CreateContainer
-import com.clyo.android.component.emptyBinder
 import com.clyo.android.component.properties.BasePropertiesData
-import com.clyo.android.component.properties.PropertiesData
-import com.clyo.android.component.properties.propertiesData
-import com.clyo.android.component.widget.WidgetData
 import com.clyo.android.component.widget.WidgetSlotView
-import kotlinx.serialization.json.JsonPrimitive
+import com.clyo.android.component.widget.applyDefaultLayoutProperties
+import com.clyo.android.dsl.clyoDeclaration
+import kotlin.reflect.KClass
 
 interface ClyoTemplateContainer : ClyoContainer {
     override fun addWidget(view: View, layoutProperties: BasePropertiesData) {
@@ -44,34 +41,25 @@ private class ClyoTemplateContainerView @JvmOverloads constructor(
     override val viewGroup: ViewGroup = this
 }
 
-internal class TemplateCreator(
-    private val clyoDeclarations: ClyoDeclarations,
-    private val createContainer: CreateContainer,
-    private val context: Context
-) {
-    operator fun invoke(data: BaseTemplateData) {
-        declare(data)
-
-        val container = createContainer(context, data.toContainerData())
-    }
-
-    private fun declare(data: BaseTemplateData) {
-        clyoDeclarations.putBinder(ComponentName(data.name)) { emptyBinder() }
-        clyoDeclarations.putViewKClass(ComponentName(data.name), ClyoTemplateContainerView::class)
+internal val clyoTemplateDeclaration = clyoDeclaration {
+    widget<WidgetSlotView>("clyo:widget_slot") { properties ->
+        applyDefaultLayoutProperties(properties)
     }
 }
 
-private fun BaseTemplateData.toContainerData() = ContainerData(
-    name = ComponentName(name),
-    content = content.map { widgetSlotData ->
-        WidgetData(
-            name = ComponentName(WidgetSlotView.name),
-            properties = widgetSlotData.properties as PropertiesData,
-            layoutProperties = layoutPropertiesOfWidget(widgetSlotData)
-        )
-    }
-)
+fun ClyoEngine.createDeclarationToTemplate(templateData: BaseTemplateData): ClyoDeclaration {
+    return createDeclarationToTemplate(
+        templateName = templateData.name,
+        viewKClass = clyoDeclaration.getViewKClass(ComponentName(templateData.rootName))
+    )
+}
 
-private fun layoutPropertiesOfWidget(widgetSlotData: BaseWidgetSlotData) = propertiesData(
-    mapOf("position" to JsonPrimitive(widgetSlotData.ref))
-)
+@Suppress("UNCHECKED_CAST")
+private fun createDeclarationToTemplate(
+    templateName: String,
+    viewKClass: KClass<out View>
+) = clyoDeclaration {
+    val rootKClass = viewKClass as KClass<out ViewGroup>
+
+    container(name = templateName, viewKClass = rootKClass)
+}

@@ -27,6 +27,11 @@ fun View.applyViewProperties(properties: BasePropertiesData) {
     applyBackgroundColorProperty(properties)
 }
 
+fun View.applyDefaultLayoutProperties(properties: BasePropertiesData) {
+    TODO()
+}
+
 fun View.applyBackgroundColorProperty(properties: BasePropertiesData) {
     properties.getColorOrNull("background_color")?.let(::setBackgroundColor)
 }
+

@@ -5,15 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import com.clyo.android.BaseClyoData
-import com.clyo.android.ClyoDeclarations
+import com.clyo.android.ClyoDeclaration
+import com.clyo.android.ClyoEngine
 import com.clyo.android.action.ActionsAssignor
 import com.clyo.android.component.BaseComponentData
 import com.clyo.android.component.Component
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentFactory
 import com.clyo.android.component.properties.BasePropertiesData
-import com.clyo.android.component.widget.CreateWidget
+import com.clyo.android.component.widget.BaseWidgetData
 import com.clyo.android.component.widget.Widget
+import com.clyo.android.component.widget.WidgetFactory
 import com.clyo.android.util.createViewInstance
 
 interface ClyoContainer {
@@ -45,10 +47,11 @@ internal class Container<T : ViewGroup>(
 }
 
 internal class ContainerFactory(
-    override val clyoDeclarations: ClyoDeclarations
+    override val clyoDeclaration: ClyoDeclaration
 ) : ComponentFactory() {
+
     override fun justCreate(context: Context, data: BaseComponentData): Container<*> {
-        val viewKClass = clyoDeclarations.getViewKClassOrNull(data.name)
+        val viewKClass = clyoDeclaration.getViewKClassOrNull(data.name)
             ?: error("Container $data.name has not been declared")
 
         return container(
@@ -57,8 +60,8 @@ internal class ContainerFactory(
         )
     }
 
-    override fun createCompletely(context: Context, data: BaseComponentData): Container<*> {
-        return super.createCompletely(context, data) as Container<*>
+    override fun createAndApplyProperties(context: Context, data: BaseComponentData): Container<*> {
+        return super.createAndApplyProperties(context, data) as Container<*>
     }
 
     private fun <T : ViewGroup> container(data: BaseComponentData, viewGroup: T): Container<T> {
@@ -70,37 +73,46 @@ internal class ContainerFactory(
     }
 }
 
-internal class CreateContainer(
-    private val containerFactory: ContainerFactory,
-    private val widgetRenderer: CreateWidget
-) {
-    operator fun invoke(context: Context, data: BaseContainerData): Container<*> {
-        val container = containerFactory.createCompletely(context, data)
+internal fun createContainer(
+    context: Context,
+    containerFactory: ContainerFactory,
+    widgetFactory: WidgetFactory,
+    data: BaseContainerData
+): Container<*> {
+    val container = containerFactory.createAndApplyProperties(context, data)
 
-        addChildren(data, container, context)
-
-        return container
+    data.content.forEach { widgetData ->
+        container.showWidget(
+            widgetFactory = widgetFactory,
+            data = widgetData
+        )
     }
 
-    private fun addChildren(
-        data: BaseContainerData,
-        container: Container<*>,
-        context: Context
-    ) {
-        data.content.forEach { widgetData ->
-            container.addWidget(
-                widget = widgetRenderer(context, widgetData),
-                layoutProperties = widgetData.layoutProperties
-            )
-        }
-    }
+    return container
 }
 
-internal class ShowClyoScreen(
-    private val createContainer: CreateContainer
+private fun Container<*>.showWidget(
+    widgetFactory: WidgetFactory,
+    data: BaseWidgetData
 ) {
-    operator fun invoke(data: BaseClyoData, parent: ViewGroup) {
-        val rootView = createContainer(parent.context, data.root).view
-        parent.addView(rootView)
-    }
+    val widget = widgetFactory.createAndApplyProperties(
+        context = view.context,
+        data = data
+    )
+    addWidget(widget, data.layoutProperties)
+}
+
+internal fun ClyoEngine.showClyoScreen(
+    containerFactory: ContainerFactory,
+    widgetFactory: WidgetFactory,
+    parent: ViewGroup,
+    data: BaseClyoData
+) {
+    val rootContainer = createContainer(
+        context = parent.context,
+        containerFactory = containerFactory,
+        widgetFactory = widgetFactory,
+        data = data.root
+    )
+    parent.addView(rootContainer.view)
 }

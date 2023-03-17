@@ -1,40 +1,41 @@
 package com.clyo.android
 
 import android.view.View
-import android.view.ViewGroup
 import com.clyo.android.action.Action
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentName
 import com.clyo.android.component.container.ContainerFactory
 import com.clyo.android.component.container.ShowClyoScreen
-import com.clyo.android.component.container.template.BaseTemplateData
-import com.clyo.android.component.container.template.TemplateCreator
+import com.clyo.android.component.container.showClyoScreen
 import com.clyo.android.component.widget.WidgetFactory
 import kotlin.reflect.KClass
 
 interface ClyoContext
 
 fun ClyoContext.clyo(
-    clyoDeclarations: ClyoDeclarations = emptyClyoDeclarations()
+    clyoDeclaration: ClyoDeclaration = emptyClyoDeclaration()
 ): Lazy<ClyoEngine> = lazy {
     ClyoEngine(
         showClyoScreen = ShowClyoScreen(
-            widgetFactory = WidgetFactory(clyoDeclarations),
-            containerFactory = ContainerFactory(clyoDeclarations)
+            widgetFactory = WidgetFactory(clyoDeclaration),
+            containerFactory = ContainerFactory(clyoDeclaration)
         )
     )
 }
 
-interface ClyoDeclarations {
+//TODO Usar suspend functions
+interface ClyoDeclaration {
     fun putViewKClass(name: ComponentName, kClass: KClass<out View>)
 
     fun putBinder(name: ComponentName, binder: () -> ComponentBinder<*>)
 
     fun putAction(name: String, action: () -> Action)
 
-    fun putAll(module: ClyoDeclarations)
+    fun putAll(module: ClyoDeclaration)
 
     fun getViewKClassOrNull(name: ComponentName): KClass<out View>?
+
+    fun getViewKClass(name: ComponentName): KClass<out View>
 
     fun getAllViewKClasses(): Map<ComponentName, KClass<out View>>
 
@@ -49,7 +50,7 @@ interface ClyoDeclarations {
     fun clear()
 }
 
-internal class ClyoDeclarationsImpl : ClyoDeclarations {
+internal class ClyoDeclarationImpl : ClyoDeclaration {
 
     private val viewKClassesMap = HashMap<ComponentName, KClass<out View>>()
 
@@ -69,7 +70,7 @@ internal class ClyoDeclarationsImpl : ClyoDeclarations {
         actionsMap[name] = action
     }
 
-    override fun putAll(module: ClyoDeclarations) {
+    override fun putAll(module: ClyoDeclaration) {
         viewKClassesMap.putAll(module.getAllViewKClasses())
         componentBindersMap.putAll(module.getAllBinders())
         actionsMap.putAll(module.getAllActions())
@@ -106,17 +107,26 @@ internal class ClyoDeclarationsImpl : ClyoDeclarations {
     }
 }
 
-internal fun emptyClyoDeclarations(): ClyoDeclarations = ClyoDeclarationsImpl()
+internal fun emptyClyoDeclaration(): ClyoDeclaration = ClyoDeclarationImpl()
 
 class ClyoEngine internal constructor(
-    private val showClyoScreen: ShowClyoScreen,
-    private val templateCreator: TemplateCreator
-) {
-    fun newTemplate(data: BaseTemplateData) {
-        templateCreator(data)
+    internal val clyoDeclaration: ClyoDeclaration
+)
+
+object ClyoApplication {
+    private var privateClyoDeclaration: ClyoDeclaration? = null
+
+    val clyoDeclaration: ClyoDeclaration get() = privateClyoDeclaration ?: TODO(ERRO)
+
+    fun start(clyoDeclaration: ClyoDeclaration) {
+        this.privateClyoDeclaration = clyoDeclaration
     }
 
-    fun render(data: BaseClyoData, container: ViewGroup) {
-        showClyoScreen(data, container)
+    fun close() {
+        privateClyoDeclaration = null
     }
+}
+
+internal fun applicationClyoDeclaration() = lazy {
+    ClyoApplication.clyoDeclaration
 }

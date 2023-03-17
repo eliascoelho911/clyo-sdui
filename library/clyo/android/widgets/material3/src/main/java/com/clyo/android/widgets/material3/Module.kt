@@ -9,9 +9,9 @@ import com.clyo.android.component.properties.BasePropertiesData
 import com.clyo.android.component.widget.binders.applyButtonViewProperties
 import com.clyo.android.component.widget.binders.applyTextViewProperties
 import com.clyo.android.component.widget.binders.applyViewProperties
-import com.clyo.android.dsl.clyoDeclarations
+import com.clyo.android.dsl.clyoDeclaration
 
-val ClyoWidgetsModule = clyoDeclarations {
+val ClyoWidgetsModule = clyoDeclaration {
     widget<AppCompatImageView>("image") {
         binder { properties ->
             applyViewProperties(properties)

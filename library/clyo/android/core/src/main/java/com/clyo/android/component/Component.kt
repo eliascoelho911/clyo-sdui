@@ -3,7 +3,7 @@ package com.clyo.android.component
 import android.content.Context
 import android.view.View
 import androidx.core.view.doOnAttach
-import com.clyo.android.ClyoDeclarations
+import com.clyo.android.ClyoDeclaration
 import com.clyo.android.action.ActionInvoker
 import com.clyo.android.action.ActionsAssignor
 import com.clyo.android.action.BaseActionContextData
@@ -28,37 +28,36 @@ internal abstract class Component<T : View> {
     }
 }
 
-abstract class ComponentBinder<T : View> {
-    protected abstract val binderBlock: T.(properties: BasePropertiesData) -> Unit
-
+@JvmInline
+@PublishedApi
+internal value class ComponentBinder<T : View>(
+    private val binderBlock: T.(properties: BasePropertiesData) -> Unit = {}
+) {
     fun bind(properties: BasePropertiesData, destination: T) {
         destination.binderBlock(properties)
     }
 }
 
-internal class ComponentBinderImpl<T : View>(
-    override val binderBlock: T.(properties: BasePropertiesData) -> Unit = {}
-) : ComponentBinder<T>()
-
 internal fun ComponentBinder<*>?.orEmpty(): ComponentBinder<out View> {
     return this ?: emptyBinder()
 }
 
-internal fun emptyBinder(): ComponentBinder<*> = ComponentBinderImpl<View>()
+internal fun emptyBinder(): ComponentBinder<*> = ComponentBinder<View>()
 
 internal abstract class ComponentFactory {
-    protected abstract val clyoDeclarations: ClyoDeclarations
+
+    protected abstract val clyoDeclaration: ClyoDeclaration
 
     @Suppress("UNCHECKED_CAST")
     protected fun <T : View> getBinder(name: ComponentName): ComponentBinder<T> {
-        return clyoDeclarations.getBinderOrNull(name).orEmpty() as ComponentBinder<T>
+        return clyoDeclaration.getBinderOrNull(name).orEmpty() as ComponentBinder<T>
     }
 
     protected fun getActionsAssignors(actions: BaseActionsData): List<ActionsAssignor> {
-        val onClickActions = actions.onClick.actionInvokers(clyoDeclarations)
+        val onClickActions = actions.onClick.actionInvokers(clyoDeclaration)
         val onClickActionsAssignor = OnClickActionsAssignor(onClickActions)
 
-        val onInitActions = actions.onInit.actionInvokers(clyoDeclarations)
+        val onInitActions = actions.onInit.actionInvokers(clyoDeclaration)
         val onInitActionsAssignor = OnInitActionsAssignor(onInitActions)
 
         return listOf(onClickActionsAssignor, onInitActionsAssignor)
@@ -66,16 +65,16 @@ internal abstract class ComponentFactory {
 
     abstract fun justCreate(context: Context, data: BaseComponentData): Component<out View>
 
-    open fun createCompletely(context: Context, data: BaseComponentData): Component<out View> {
+    open fun createAndApplyProperties(context: Context, data: BaseComponentData): Component<out View> {
         return justCreate(context, data).also {
             it.setup(properties = data.properties)
         }
     }
 }
 
-private fun BaseActionContextData.actionInvokers(clyoDeclarations: ClyoDeclarations): List<ActionInvoker> {
+private fun BaseActionContextData.actionInvokers(clyoDeclaration: ClyoDeclaration): List<ActionInvoker> {
     return actions.mapNotNull { actionData ->
-        val action = clyoDeclarations.getActionOrNull(actionData.name)
+        val action = clyoDeclaration.getActionOrNull(actionData.name)
         action?.let { ActionInvoker(action, actionData.properties) }
     }
 }

@@ -24,13 +24,13 @@ data class TemplateData(
 
 interface BaseWidgetSlotData {
     val ref: String
-    val properties: BasePropertiesData
+    val layoutProperties: BasePropertiesData
 }
 
 @Serializable
 data class WidgetSlotData(
     @SerialName("ref")
     override val ref: String,
-    @SerialName("properties")
-    override val properties: PropertiesData = propertiesData()
+    @SerialName("layout_properties")
+    override val layoutProperties: PropertiesData = propertiesData()
 ) : BaseWidgetSlotData

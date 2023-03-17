@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
-import com.clyo.android.ClyoDeclarations
+import com.clyo.android.ClyoDeclaration
 import com.clyo.android.R
 import com.clyo.android.action.ActionsAssignor
 import com.clyo.android.component.BaseComponentData
@@ -20,10 +20,11 @@ internal class Widget<T : View>(
 ) : Component<T>()
 
 internal class WidgetFactory(
-    override val clyoDeclarations: ClyoDeclarations
+    override val clyoDeclaration: ClyoDeclaration
 ) : ComponentFactory() {
+
     override fun justCreate(context: Context, data: BaseComponentData): Widget<*> {
-        val viewKClass = clyoDeclarations.getViewKClassOrNull(data.name)
+        val viewKClass = clyoDeclaration.getViewKClassOrNull(data.name)
             ?: error("Widget $data.name has not been declared")
 
         return widget(
@@ -32,11 +33,11 @@ internal class WidgetFactory(
         )
     }
 
-    override fun createCompletely(
+    override fun createAndApplyProperties(
         context: Context,
         data: BaseComponentData
     ): Widget<*> {
-        return super.createCompletely(context, data) as Widget<*>
+        return super.createAndApplyProperties(context, data) as Widget<*>
     }
 
     private fun <T : View> widget(view: T, data: BaseComponentData): Widget<T> {
@@ -44,17 +45,6 @@ internal class WidgetFactory(
             view = view,
             binder = getBinder(data.name),
             actionsAssignors = getActionsAssignors(data.actions)
-        )
-    }
-}
-
-internal class CreateWidget(
-    private val widgetFactory: WidgetFactory
-) {
-    operator fun invoke(context: Context, data: BaseWidgetData): Widget<*> {
-        return widgetFactory.createCompletely(
-            context = context,
-            data = data
         )
     }
 }

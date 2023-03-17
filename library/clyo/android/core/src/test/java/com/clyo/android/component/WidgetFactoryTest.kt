@@ -2,7 +2,7 @@ package com.clyo.android.component
 
 import android.content.Context
 import android.view.View
-import com.clyo.android.ClyoDeclarations
+import com.clyo.android.ClyoDeclaration
 import com.clyo.android.component.widget.WidgetFactory
 import com.clyo.android.util.createViewInstance
 import io.mockk.every
@@ -16,9 +16,9 @@ import org.junit.Test
 internal class WidgetFactoryTest {
     private val context: Context = mockk(relaxed = true)
 
-    private val clyoDeclarations: ClyoDeclarations = mockk()
+    private val clyoDeclaration: ClyoDeclaration = mockk()
 
-    private val componentFactory = WidgetFactory(context, clyoDeclarations)
+    private val componentFactory = WidgetFactory(context, clyoDeclaration)
 
     @Test
     fun `create component when Module contains all params`() {
@@ -29,8 +29,8 @@ internal class WidgetFactoryTest {
         val viewInstance = mockk<View>()
         val expected = Component(viewInstance, componentBinder)
 
-        every { clyoDeclarations.viewKClass(name) } returns viewKClass
-        every { clyoDeclarations.viewBinder<View>(name) } returns componentBinder
+        every { clyoDeclaration.viewKClass(name) } returns viewKClass
+        every { clyoDeclaration.viewBinder<View>(name) } returns componentBinder
         viewKClass.mockCreateViewInstance(returns = viewInstance)
 
         // When
@@ -45,7 +45,7 @@ internal class WidgetFactoryTest {
         // Given
         val name = ComponentName("component")
 
-        every { clyoDeclarations.viewKClass(name) } throws IllegalArgumentException()
+        every { clyoDeclaration.viewKClass(name) } throws IllegalArgumentException()
 
         // Then
         assertFailsWith(IllegalArgumentException::class) {
@@ -60,8 +60,8 @@ internal class WidgetFactoryTest {
         val viewKClass = View::class
         val viewInstance = mockk<View>()
 
-        every { clyoDeclarations.viewKClass(name) } returns viewKClass
-        every { clyoDeclarations.viewBinder<View>(name) } throws IllegalArgumentException()
+        every { clyoDeclaration.viewKClass(name) } returns viewKClass
+        every { clyoDeclaration.viewBinder<View>(name) } throws IllegalArgumentException()
         viewKClass.mockCreateViewInstance(returns = viewInstance)
 
         // Then
