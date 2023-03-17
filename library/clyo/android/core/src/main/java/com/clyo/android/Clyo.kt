@@ -13,8 +13,9 @@ fun ClyoContext.clyo(
     ClyoEngine(clyoDeclaration)
 }
 
-//TODO Usar suspend functions
-//TODO Refatorar
+// TODO Usar suspend functions
+// TODO Refatorar
+// TODO Deve ser safe LifeCycle
 interface ClyoDeclaration {
     fun putViewProvider(name: ComponentName, viewProvider: ViewProvider)
 
@@ -28,13 +29,13 @@ interface ClyoDeclaration {
 
     fun getViewProviderOrNull(name: ComponentName): ViewProvider?
 
-    fun getAllViewProviders(): Map<ComponentName, ViewProvider>
-
     fun getBinderOrNull(name: ComponentName): ComponentBinder<*>?
 
-    fun getAllBinders(): Map<ComponentName, () -> ComponentBinder<*>>
-
     fun getActionOrNull(name: String): Action?
+
+    fun getAllViewProviders(): Map<ComponentName, ViewProvider>
+
+    fun getAllBinders(): Map<ComponentName, () -> ComponentBinder<*>>
 
     fun getAllActions(): Map<String, () -> Action>
 
@@ -75,20 +76,20 @@ internal class ClyoDeclarationImpl : ClyoDeclaration {
         return viewProvidersMap[name]
     }
 
-    override fun getAllViewProviders(): Map<ComponentName, ViewProvider> {
-        return viewProvidersMap
-    }
-
     override fun getBinderOrNull(name: ComponentName): ComponentBinder<*>? {
         return componentBindersMap[name]?.invoke()
+    }
+
+    override fun getActionOrNull(name: String): Action? {
+        return actionsMap[name]?.invoke()
     }
 
     override fun getAllBinders(): Map<ComponentName, () -> ComponentBinder<*>> {
         return componentBindersMap
     }
 
-    override fun getActionOrNull(name: String): Action? {
-        return actionsMap[name]?.invoke()
+    override fun getAllViewProviders(): Map<ComponentName, ViewProvider> {
+        return viewProvidersMap
     }
 
     override fun getAllActions(): Map<String, () -> Action> {
@@ -125,8 +126,4 @@ object ClyoApplication {
     fun close() {
         privateClyoDeclaration = null
     }
-}
-
-internal fun applicationClyoDeclaration() = lazy {
-    ClyoApplication.clyoDeclaration
 }

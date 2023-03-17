@@ -40,7 +40,6 @@ private fun ClyoEngine.createTemplateContainer(
     return containerView.viewGroup
 }
 
-//TODO Passar o layoutProperties com o ref
 private fun BaseClyoTemplateData.toContainerData() = ContainerData(
     name = ComponentName(rootName),
     content = content.map {
