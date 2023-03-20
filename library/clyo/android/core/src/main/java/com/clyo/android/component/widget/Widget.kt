@@ -1,11 +1,8 @@
 package com.clyo.android.component.widget
 
 import android.content.Context
-import android.util.AttributeSet
 import android.view.View
-import android.widget.FrameLayout
 import com.clyo.android.ClyoDeclaration
-import com.clyo.android.R
 import com.clyo.android.action.ActionsAssignor
 import com.clyo.android.component.BaseComponentData
 import com.clyo.android.component.Component
@@ -44,36 +41,5 @@ internal class WidgetFactory(
             binder = getBinder(data.name),
             actionsAssignors = getActionsAssignors(data.actions)
         )
-    }
-}
-
-class WidgetSlotView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
-
-    var ref: String? = null
-
-    init {
-        getAttrs(context, attrs)
-    }
-
-    private fun getAttrs(context: Context, attrs: AttributeSet?) {
-        context.theme.obtainStyledAttributes(
-            attrs,
-            R.styleable.WidgetContainerView,
-            0, 0
-        ).apply {
-            try {
-                ref = getString(R.styleable.WidgetContainerView_ref)
-            } finally {
-                recycle()
-            }
-        }
-    }
-
-    companion object {
-        const val name = "clyo:widget_slot"
     }
 }

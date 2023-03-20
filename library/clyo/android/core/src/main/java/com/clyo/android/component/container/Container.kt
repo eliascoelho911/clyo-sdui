@@ -13,21 +13,26 @@ import com.clyo.android.component.BaseComponentData
 import com.clyo.android.component.Component
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentFactory
+import com.clyo.android.component.container.template.WidgetSlotView
+import com.clyo.android.component.container.view.applyDefaultLayoutProperties
 import com.clyo.android.component.properties.BasePropertiesData
 import com.clyo.android.component.widget.BaseWidgetData
 import com.clyo.android.component.widget.Widget
 import com.clyo.android.component.widget.WidgetFactory
-import com.clyo.android.component.widget.WidgetSlotView
 
+//TODO Desacoplar essa interface de template
 interface ClyoContainer {
     val viewGroup: ViewGroup
 
     var isTemplate: Boolean
 
-    fun applyLayoutProperties(view: View, layoutProperties: BasePropertiesData)
+    fun applyLayoutPropertiesOnWidget(view: View, layoutProperties: BasePropertiesData) {
+        view.applyDefaultLayoutProperties(layoutProperties)
+    }
 
+    //TODO Substituir view por widget
     fun addWidget(view: View, layoutProperties: BasePropertiesData) {
-        applyLayoutProperties(view, layoutProperties)
+        applyLayoutPropertiesOnWidget(view, layoutProperties)
         if (isTemplate) addWidgetOnTemplate(view, layoutProperties) else viewGroup.addView(view)
     }
 
@@ -36,7 +41,7 @@ interface ClyoContainer {
 
         viewGroup.children.forEach { childView ->
             if (childView is WidgetSlotView && childView.ref == ref) {
-                childView.addView(view)
+                childView.show(view)
                 return
             }
         }

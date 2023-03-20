@@ -3,6 +3,8 @@ package com.clyo.android
 import com.clyo.android.action.Action
 import com.clyo.android.component.ComponentBinder
 import com.clyo.android.component.ComponentName
+import com.clyo.android.component.container.view.ColumnContainerView
+import com.clyo.android.dsl.clyoDeclaration
 import com.clyo.android.util.ViewProvider
 
 interface ClyoContext
@@ -10,10 +12,11 @@ interface ClyoContext
 fun ClyoContext.clyo(
     clyoDeclaration: ClyoDeclaration = emptyClyoDeclaration()
 ): Lazy<ClyoEngine> = lazy {
-    ClyoEngine(clyoDeclaration)
+    ClyoApplication.start(clyoDeclaration)
+
+    ClyoEngine()
 }
 
-// TODO Usar suspend functions
 // TODO Refatorar
 // TODO Deve ser safe LifeCycle
 interface ClyoDeclaration {
@@ -109,9 +112,9 @@ internal class ClyoDeclarationImpl : ClyoDeclaration {
 
 internal fun emptyClyoDeclaration(): ClyoDeclaration = ClyoDeclarationImpl()
 
-class ClyoEngine internal constructor(
-    internal val clyoDeclaration: ClyoDeclaration
-)
+class ClyoEngine {
+    internal val clyoDeclaration = ClyoApplication.clyoDeclaration
+}
 
 object ClyoApplication {
     private var privateClyoDeclaration: ClyoDeclaration? = null
@@ -119,11 +122,17 @@ object ClyoApplication {
     val clyoDeclaration: ClyoDeclaration
         get() = privateClyoDeclaration ?: error("Clyo is not started")
 
-    fun start(clyoDeclaration: ClyoDeclaration) {
+    fun start(clyoDeclaration: ClyoDeclaration, withDefaults: Boolean = true) {
+        if (withDefaults) clyoDeclaration.putAll(ClyoDefault)
+
         this.privateClyoDeclaration = clyoDeclaration
     }
 
     fun close() {
         privateClyoDeclaration = null
     }
+}
+
+internal val ClyoDefault = clyoDeclaration {
+    container<ColumnContainerView>("column")
 }

@@ -15,23 +15,24 @@
     },
     "content": [
       {
-        "name": "image",
-        "layout_properties": {
-          "ref": "title"
-        },
-        "properties": {
-          "background_color": "#ff0000"
-        }
-      },
-      {
         "name": "text",
         "layout_properties": {
           "ref": "illustration"
         },
         "properties": {
           "background_color": "#000000",
-          "text": "Esse é o título do feedback",
+          "text": "Esse é a ilustração do feedback",
           "style": "title"
+        }
+      },
+      {
+        "name": "text",
+        "layout_properties": {
+          "ref": "title"
+        },
+        "properties": {
+          "text": "Esse é o título do feedback",
+          "background_color": "#ff0000"
         }
       },
       {

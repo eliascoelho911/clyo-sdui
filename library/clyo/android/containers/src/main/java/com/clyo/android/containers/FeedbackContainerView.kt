@@ -24,6 +24,6 @@ internal class FeedbackContainerView @JvmOverloads constructor(
         orientation = VERTICAL
     }
 
-    override fun applyLayoutProperties(view: View, layoutProperties: BasePropertiesData) {
+    override fun applyLayoutPropertiesOnWidget(view: View, layoutProperties: BasePropertiesData) {
     }
 }

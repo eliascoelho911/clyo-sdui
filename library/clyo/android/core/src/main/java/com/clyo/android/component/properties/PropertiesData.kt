@@ -11,10 +11,13 @@ import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.doubleOrNull
 import kotlinx.serialization.json.floatOrNull
+import kotlinx.serialization.json.int
 import kotlinx.serialization.json.intOrNull
+import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
 
+//TODO [IMPORTANTE] Mudar para dataclass por widget. Isso permitirá a execução de testes de contrato
 sealed interface BasePropertiesData {
     fun getString(key: String): String
 
@@ -35,6 +38,8 @@ sealed interface BasePropertiesData {
     fun getInt(key: String): Int
 
     fun getIntOrNull(key: String): Int?
+
+    fun getIntMap(key: String): Map<String, Int>
 
     fun getLong(key: String): Long
 
@@ -70,6 +75,15 @@ data class PropertiesData(
     override fun getInt(key: String): Int = getIntOrNull(key) ?: error(key, "int")
 
     override fun getIntOrNull(key: String): Int? = get(key)?.intOrNull
+
+    override fun getIntMap(key: String): Map<String, Int> {
+        return jsonObject[key]?.jsonObject?.toMap()?.mapValues {
+            //TODO Melhorar mensagem de erro
+            runCatching {
+                it.value.jsonPrimitive.int
+            }.getOrThrow()
+        }.orEmpty()
+    }
 
     override fun getLong(key: String): Long = getLongOrNull(key) ?: error(key, "long")
 

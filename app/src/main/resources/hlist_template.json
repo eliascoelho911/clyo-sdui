@@ -5,13 +5,22 @@
     {
       "ref": "first",
       "layout_properties": {
-
+        "size": {
+          "height": 100,
+          "width": -2
+        },
+        "margin": {
+          "top": 32,
+          "start": 32
+        }
       }
     },
     {
       "ref": "second",
       "layout_properties": {
-
+        "margin": {
+          "top": 16
+        }
       }
     }
   ]
