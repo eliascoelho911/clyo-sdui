@@ -6,7 +6,7 @@ import androidx.core.view.doOnAttach
 import com.clyo.android.ClyoDeclaration
 import com.clyo.android.action.ActionInvoker
 import com.clyo.android.action.ActionsAssignor
-import com.clyo.android.action.BaseActionContextData
+import com.clyo.android.action.BaseActionData
 import com.clyo.android.action.BaseActionsData
 import com.clyo.android.component.properties.BasePropertiesData
 
@@ -65,15 +65,18 @@ internal abstract class ComponentFactory {
 
     abstract fun justCreate(context: Context, data: BaseComponentData): Component<out View>
 
-    open fun createAndApplyProperties(context: Context, data: BaseComponentData): Component<out View> {
+    open fun createAndApplyProperties(
+        context: Context,
+        data: BaseComponentData
+    ): Component<out View> {
         return justCreate(context, data).also {
             it.setup(properties = data.properties)
         }
     }
 }
 
-private fun BaseActionContextData.actionInvokers(clyoDeclaration: ClyoDeclaration): List<ActionInvoker> {
-    return actions.mapNotNull { actionData ->
+private fun List<BaseActionData>.actionInvokers(clyoDeclaration: ClyoDeclaration): List<ActionInvoker> {
+    return mapNotNull { actionData ->
         val action = clyoDeclaration.getActionOrNull(actionData.name)
         action?.let { ActionInvoker(action, actionData.properties) }
     }

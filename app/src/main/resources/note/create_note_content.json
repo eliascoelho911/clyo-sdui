@@ -1,0 +1,42 @@
+{
+  "root": {
+    "container_name": "template:note",
+    "content": [
+      {
+        "name": "material:toolbar",
+        "layout_properties": {
+          "ref": "slot:toolbar"
+        }
+      },
+      {
+        "name": "material:text_field",
+        "layout_properties": {
+          "ref": "slot:title"
+        },
+        "properties": {
+          "placeholder": "Título",
+          "style": "LARGE"
+        }
+      },
+      {
+        "name": "material:text_field",
+        "layout_properties": {
+          "ref": "slot:body"
+        },
+        "properties": {
+          "placeholder": "Nota",
+          "style": "NORMAL"
+        }
+      },
+      {
+        "name": "material:button",
+        "layout_properties": {
+          "ref": "slot:action"
+        },
+        "properties": {
+          "text": "Salvar"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "template:note",
+  "root": "column",
+  "content": [
+    {
+      "ref": "slot:toolbar"
+    },
+    {
+      "ref": "slot:title",
+      "layout_properties": {
+        "margin": {
+          "top": 16,
+          "start": 16,
+          "end": 16
+        }
+      }
+    },
+    {
+      "ref": "slot:body",
+      "layout_properties": {
+        "margin": {
+          "top": 16,
+          "start": 16,
+          "end": 16
+        }
+      }
+    },
+    {
+      "ref": "slot:action",
+      "layout_properties": {
+        "size": {
+          "width": -1
+        },
+        "gravity": "BOTTOM_END"
+      }
+    }
+  ]
+}

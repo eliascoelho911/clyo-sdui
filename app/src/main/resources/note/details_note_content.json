@@ -1,0 +1,71 @@
+{
+  "root": {
+    "container_name": "template:note",
+    "actions": {
+      "on_init": [
+        {
+          "name": "tracking",
+          "properties": {
+            "event_name": "Screen Viewed",
+            "screen_name": "DetailsNoteScreen"
+          }
+        }
+      ]
+    },
+    "content": [
+      {
+        "name": "material:toolbar",
+        "layout_properties": {
+          "ref": "slot:toolbar"
+        },
+        "actions": {
+          "on_navigation_click": [
+            {
+              "name": "pop"
+            }
+          ]
+        }
+      },
+      {
+        "name": "material:text",
+        "layout_properties": {
+          "ref": "slot:title"
+        },
+        "properties": {
+          "text": "Esse é o título da nota",
+          "style": "LARGE"
+        }
+      },
+      {
+        "name": "material:text",
+        "layout_properties": {
+          "ref": "slot:body"
+        },
+        "properties": {
+          "text": "Esse é o corpo da nota",
+          "style": "NORMAL"
+        }
+      },
+      {
+        "name": "material:button",
+        "layout_properties": {
+          "ref": "slot:action"
+        },
+        "properties": {
+          "text": "Editar"
+        },
+        "actions": {
+          "on_click": [
+            {
+              "name": "tracking",
+              "properties": {
+                "event_name": "Button Clicked",
+                "screen_name": "details"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

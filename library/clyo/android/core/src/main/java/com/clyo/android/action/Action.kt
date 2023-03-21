@@ -3,6 +3,7 @@ package com.clyo.android.action
 import android.view.View
 import com.clyo.android.component.properties.BasePropertiesData
 
+//TODO Execurar ações com contexto
 interface Action {
     operator fun invoke(properties: BasePropertiesData)
 }

@@ -4,7 +4,7 @@ import com.clyo.android.component.container.template.ClyoTemplateData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-private const val TEMPLATE_CONTENT_PATH = "hlist_template.json"
+private const val TEMPLATE_CONTENT_PATH = "note/note_template.json"
 
 internal class GetClyoTemplateContent {
     operator fun invoke(): ClyoTemplateData {

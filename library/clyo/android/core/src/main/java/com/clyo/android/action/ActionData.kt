@@ -7,12 +7,8 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
 interface BaseActionsData {
-    val onClick: BaseActionContextData
-    val onInit: BaseActionContextData
-}
-
-interface BaseActionContextData {
-    val actions: List<BaseActionData>
+    val onClick: List<BaseActionData>
+    val onInit: List<BaseActionData>
 }
 
 interface BaseActionData {
@@ -23,16 +19,10 @@ interface BaseActionData {
 @Serializable
 data class ActionsData(
     @SerialName("on_click")
-    override val onClick: ActionContextData = ActionContextData(),
+    override val onClick: List<ActionData> = listOf(),
     @SerialName("on_init")
-    override val onInit: ActionContextData = ActionContextData()
-): BaseActionsData
-
-@Serializable
-data class ActionContextData(
-    @SerialName("perform")
-    override val actions: List<ActionData> = emptyList()
-): BaseActionContextData
+    override val onInit: List<ActionData> = listOf()
+) : BaseActionsData
 
 @Serializable
 data class ActionData(
@@ -40,4 +30,4 @@ data class ActionData(
     override val name: String,
     @SerialName("properties")
     override val properties: PropertiesData = PropertiesData(JsonObject(mapOf()))
-): BaseActionData
+) : BaseActionData
