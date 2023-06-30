@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlinx-serialization'
+
+apply from: "$rootDir/plugins/android.gradle"
+apply from: "$rootDir/plugins/unit-test.gradle"
+
+android {
+    namespace 'com.clyo.android'
+}
+
+dependencies {
+    // Android
+    implementation Libs.appCompat
+
+    // Kotlin
+    implementation Libs.kotlinReflect
+    implementation Libs.kotlinSerializationJson
+}
