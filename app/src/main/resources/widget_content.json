@@ -1,9 +1,11 @@
 {
-  "root": {
-    "name": "text",
-    "properties": {
-      "text": "Esse é um título",
-      "style": "title"
+  "content": {
+    "type": "Text",
+    "id": "txt"
+  },
+  "properties": {
+    "txt": {
+      "text": "Hello World!"
     }
   }
 }
