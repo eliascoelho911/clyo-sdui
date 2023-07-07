@@ -1,4 +1,4 @@
-java {
+kotlin {
     sourceCompatibility = Config.javaVersion
     targetCompatibility = Config.javaVersion
 }
