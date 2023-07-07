@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ClyoJson(
     @SerialName("content")
-    val content: WidgetJson,
+    val content: List<WidgetJson>,
     @SerialName("properties")
     val properties: PropertiesJson
 )

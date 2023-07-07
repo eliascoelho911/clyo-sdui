@@ -10,7 +10,7 @@ import kotlinx.serialization.json.JsonObject
 @Serializable(PropertiesJsonSerializer::class)
 data class PropertiesJson(val content: JsonObject)
 
-private object PropertiesJsonSerializer : KSerializer<PropertiesJson> {
+object PropertiesJsonSerializer : KSerializer<PropertiesJson> {
     override val descriptor: SerialDescriptor = JsonObject.serializer().descriptor
 
     override fun serialize(encoder: Encoder, value: PropertiesJson) {

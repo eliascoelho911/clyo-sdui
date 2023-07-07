@@ -6,6 +6,5 @@ apply from: "$rootDir/plugins/unit-test.gradle"
 
 dependencies {
     // Kotlin
-    implementation Libs.kotlinReflect
     implementation Libs.kotlinSerializationJson
 }
