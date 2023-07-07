@@ -1,4 +1,4 @@
-package com.clyo.data
+package com.clyo.data.properties
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable

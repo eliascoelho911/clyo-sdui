@@ -1,4 +1,4 @@
-package com.clyo.data
+package com.clyo.data.widget
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
