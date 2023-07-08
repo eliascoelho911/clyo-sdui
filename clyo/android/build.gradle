@@ -7,6 +7,12 @@ apply from: "$rootDir/plugins/unit-test.gradle"
 
 android {
     namespace 'com.clyo.android'
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -18,4 +24,15 @@ dependencies {
     implementation Libs.kotlinSerializationJson
 
     implementation project(":clyo:data")
+
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation TestLibs.roboletric
+    testImplementation TestLibs.junitExt
+
+    androidTestImplementation 'androidx.test:core:1.5.0'
+    androidTestImplementation(TestLibs.junit)
+    androidTestImplementation TestLibs.junitExt
+    androidTestImplementation(TestLibs.kotlinTestJunit)
+    androidTestImplementation(TestLibs.mockk)
+    androidTestImplementation(TestLibs.espressoCore)
 }

@@ -13,6 +13,7 @@ object Versions {
 
     // JUnit
     const val junit = "4.13.2"
+    const val junitExt = "1.1.5"
 
     // Gradle
     const val gradle = "7.3.0"
@@ -22,4 +23,10 @@ object Versions {
 
     // Mockk
     const val mockk = "1.13.3"
+
+    // Espresso
+    const val expresso = "3.5.1"
+
+    // Roboletric
+    const val robolectric = "4.9"
 }
