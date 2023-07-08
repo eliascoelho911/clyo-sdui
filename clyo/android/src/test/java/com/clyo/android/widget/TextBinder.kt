@@ -1,14 +1,14 @@
-package com.clyo.android.widget.render
+package com.clyo.android.widget
 
 import androidx.appcompat.widget.AppCompatTextView
-import com.clyo.android.widget.render.WidgetPropertyAssignor
+import com.clyo.android.widget.WidgetBinder
 import com.clyo.data.properties.PropertiesJson
 import com.clyo.data.widget.getProperties
 import com.clyo.widget.TextProperties
 
-internal class TextPropertyAssignor(
+internal class TextBinder(
     override val widgetId: String
-) : WidgetPropertyAssignor<AppCompatTextView, TextProperties> {
+) : WidgetBinder<AppCompatTextView> {
     override fun assign(view: AppCompatTextView, properties: PropertiesJson) {
         val textProperties = properties.getProperties<TextProperties>(widgetId)
 
