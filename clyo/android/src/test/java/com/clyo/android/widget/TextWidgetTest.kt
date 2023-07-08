@@ -40,9 +40,10 @@ internal class TextWidgetTest {
         val binder = TextBinder(widgetJson.id)
         val widget = Widget(viewKClass, binder)
 
-        // When
         mockkStatic("com.clyo.android.common.KClassExtensionsKt")
         every { viewKClass.newInstance(context) } returns view
+
+        // When
 
         widget.render(context, properties)
 
