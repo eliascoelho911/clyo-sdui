@@ -1,6 +1,6 @@
 package com.clyo.stubs
 
-import com.clyo.data.ClyoJson
+import com.clyo.data.ConsolidatedJson
 import com.clyo.data.properties.PropertiesJson
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -20,7 +20,7 @@ internal object ClyoStub {
         }
     """.trimIndent()
 
-    val clyo = ClyoJson(
+    val clyo = ConsolidatedJson(
         content = listOf(
             WidgetStub.Text.widgetJson,
             WidgetStub.Button.widgetJson

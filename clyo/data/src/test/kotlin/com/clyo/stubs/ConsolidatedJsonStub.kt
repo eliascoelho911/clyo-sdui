@@ -1,18 +1,22 @@
 package com.clyo.stubs
 
-import com.clyo.data.ClyoJson
+import com.clyo.data.ConsolidatedJson
+import com.clyo.data.layout.LayoutJson
 import com.clyo.data.properties.PropertiesJson
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 
-internal object ClyoStub {
-    val clyoJsonValue = """
+internal object ConsolidatedJsonStub {
+    val jsonValue = """
         {
-            "content": [
-                ${WidgetStub.Text.widgetJsonValue},
-                ${WidgetStub.Button.widgetJsonValue}
-            ],
+            "content": {
+                "type": "layout",
+                "content": [
+                    ${WidgetStub.Text.widgetJsonValue},
+                    ${WidgetStub.Button.widgetJsonValue}
+                ]
+            },
             "properties": {
                 "txt": ${WidgetStub.Text.propertiesJsonValue},
                 "btn": ${WidgetStub.Button.propertiesJsonValue}
@@ -20,10 +24,13 @@ internal object ClyoStub {
         }
     """.trimIndent()
 
-    val clyo = ClyoJson(
-        content = listOf(
-            WidgetStub.Text.widgetJson,
-            WidgetStub.Button.widgetJson
+    val json = ConsolidatedJson(
+        content = LayoutJson(
+            type = "layout",
+            content = listOf(
+                WidgetStub.Text.widgetJson,
+                WidgetStub.Button.widgetJson
+            )
         ),
         properties = PropertiesJson(
             JsonObject(
