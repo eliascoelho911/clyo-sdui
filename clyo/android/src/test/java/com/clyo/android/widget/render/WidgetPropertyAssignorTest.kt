@@ -1,4 +1,4 @@
-package com.clyo.android.render
+package com.clyo.android.widget.render
 
 import androidx.appcompat.widget.AppCompatTextView
 import com.clyo.data.widget.getProperties

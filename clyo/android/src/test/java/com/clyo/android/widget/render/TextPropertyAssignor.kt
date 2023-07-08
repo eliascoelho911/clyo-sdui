@@ -1,6 +1,7 @@
-package com.clyo.android.render
+package com.clyo.android.widget.render
 
 import androidx.appcompat.widget.AppCompatTextView
+import com.clyo.android.widget.render.WidgetPropertyAssignor
 import com.clyo.data.properties.PropertiesJson
 import com.clyo.data.widget.getProperties
 import com.clyo.widget.TextProperties
