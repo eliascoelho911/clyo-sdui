@@ -44,7 +44,6 @@ internal class TextWidgetTest {
         every { viewKClass.newInstance(context) } returns view
 
         // When
-
         widget.render(context, properties)
 
         // Then
