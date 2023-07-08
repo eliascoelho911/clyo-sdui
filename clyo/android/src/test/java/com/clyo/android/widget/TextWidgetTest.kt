@@ -22,10 +22,9 @@ internal class TextWidgetTest {
         // Given
         val widgetId = WidgetStub.Text.id
         val properties = ClyoStub.clyo.properties
-
-        // When
         val assignor = TextBinder(widgetId)
 
+        // When
         assignor.assign(view, properties)
 
         // Then
@@ -35,19 +34,19 @@ internal class TextWidgetTest {
     @Test
     fun `should render text widget`() {
         // Given
-        val widget = WidgetStub.Text.widgetJson
+        val widgetJson = WidgetStub.Text.widgetJson
         val properties = ClyoStub.clyo.properties
         val context = mockk<Context>(relaxed = true)
-        val binder = TextBinder(widget.id)
-        val widgetRenderer = Widget(viewKClass, binder)
+        val binder = TextBinder(widgetJson.id)
+        val widget = Widget(viewKClass, binder)
 
         // When
         mockkStatic("com.clyo.android.common.KClassExtensionsKt")
         every { viewKClass.newInstance(context) } returns view
 
-        widgetRenderer.render(context, properties)
+        widget.render(context, properties)
 
         // Then
-        verify { view.text = properties.getProperties<TextProperties>(widget.id).text }
+        verify { view.text = properties.getProperties<TextProperties>(widgetJson.id).text }
     }
 }
