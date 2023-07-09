@@ -1,43 +1,52 @@
 package com.clyo.android.layout
 
-import android.view.ViewGroup
-import com.clyo.android.widget.Widget
+import android.widget.FrameLayout
+import androidx.appcompat.widget.AppCompatTextView
+import com.clyo.android.impl.layout.BoxLayout
+import com.clyo.android.impl.widget.Text
+import io.mockk.every
 import io.mockk.mockk
+import io.mockk.spyk
 import io.mockk.verify
 import org.junit.Test
 
 class LayoutTest {
-    private val viewGroup = mockk<ViewGroup>(relaxed = true)
-
     @Test
     fun `should add widget to view group`() {
         // Given
-        val layout = Layout(viewGroup)
-        val widget = mockk<Widget<*, *>>(relaxed = true)
+        val frameLayout = mockk<FrameLayout>(relaxed = true)
+        val layout = spyk(BoxLayout()) {
+            every { getView() } returns frameLayout
+        }
+        val textView = mockk<AppCompatTextView>(relaxed = true)
+        val textWidget = spyk(Text()) {
+            every { getView() } returns textView
+        }
 
         // When
-        layout.add(widget)
+        layout.add(textWidget)
 
         // Then
-        verify { viewGroup.addView(widget.view) }
+        verify { frameLayout.addView(textView) }
     }
 
     @Test
     fun `should add all widgets to view group`() {
         // Given
-        val layout = Layout(viewGroup)
-        val widgets = listOf(
-            mockk<Widget<*, *>>(relaxed = true),
-            mockk<Widget<*, *>>(relaxed = true),
-            mockk<Widget<*, *>>(relaxed = true)
-        )
+        val frameLayout = mockk<FrameLayout>(relaxed = true)
+        val layout = spyk(BoxLayout()) {
+            every { getView() } returns frameLayout
+        }
+        val textView = mockk<AppCompatTextView>(relaxed = true)
+        val textWidget = spyk(Text()) {
+            every { getView() } returns textView
+        }
+        val widgets = listOf(textWidget, textWidget, textWidget)
 
         // When
-        layout.add(widgets)
+        layout.addAll(widgets)
 
         // Then
-        verify { viewGroup.addView(widgets[0].view) }
-        verify { viewGroup.addView(widgets[1].view) }
-        verify { viewGroup.addView(widgets[2].view) }
+        verify(exactly = 3) { layout.add(any()) }
     }
 }
