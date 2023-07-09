@@ -6,7 +6,9 @@ import com.clyo.tools.json.JsonProvider
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonObject
 
-inline fun <reified T : Properties> PropertiesJson.getProperties(widgetId: String): T {
+internal fun PropertiesJson.getProperties(
+    widgetId: String
+): Properties {
     val jsonObject = content[widgetId]?.jsonObject ?: throw IllegalArgumentException(
         "No properties for widget $widgetId"
     )
