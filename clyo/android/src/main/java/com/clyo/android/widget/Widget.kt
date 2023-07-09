@@ -1,14 +1,14 @@
 package com.clyo.android.widget
 
 import android.view.View
-import com.clyo.data.properties.PropertiesJson
+import com.clyo.data.properties.Properties
 
-data class Widget<T : View> internal constructor(
-    val view: T,
-    private val binder: WidgetBinder<T>
+data class Widget<VIEW : View, PROP : Properties> internal constructor(
+    val view: VIEW,
+    private val binder: WidgetBinder<VIEW, PROP>
 ) {
-    fun render(propertiesJson: PropertiesJson): View {
-        binder.assign(view, propertiesJson)
+    fun render(properties: PROP): View {
+        binder.bind(view, properties)
 
         return view
     }

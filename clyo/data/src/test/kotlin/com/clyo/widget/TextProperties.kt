@@ -1,9 +1,9 @@
 package com.clyo.widget
 
-import com.clyo.data.widget.WidgetProperties
+import com.clyo.data.properties.Properties
 import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class TextProperties(
     val text: String
-) : WidgetProperties()
+) : Properties()

@@ -13,7 +13,7 @@ class LayoutTest {
     fun `should add widget to view group`() {
         // Given
         val layout = Layout(viewGroup)
-        val widget = mockk<Widget<*>>(relaxed = true)
+        val widget = mockk<Widget<*, *>>(relaxed = true)
 
         // When
         layout.add(widget)
@@ -27,9 +27,9 @@ class LayoutTest {
         // Given
         val layout = Layout(viewGroup)
         val widgets = listOf(
-            mockk<Widget<*>>(relaxed = true),
-            mockk<Widget<*>>(relaxed = true),
-            mockk<Widget<*>>(relaxed = true)
+            mockk<Widget<*, *>>(relaxed = true),
+            mockk<Widget<*, *>>(relaxed = true),
+            mockk<Widget<*, *>>(relaxed = true)
         )
 
         // When

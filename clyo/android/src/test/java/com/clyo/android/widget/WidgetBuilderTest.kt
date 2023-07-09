@@ -3,6 +3,7 @@ package com.clyo.android.widget
 import android.content.Context
 import android.view.View
 import com.clyo.android.common.newInstance
+import com.clyo.data.properties.Properties
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
@@ -13,10 +14,10 @@ internal class WidgetBuilderTest {
     @Test
     fun `should build widget`() {
         // Given
-        val widgetBuilder = WidgetBuilder<View>()
+        val widgetBuilder = WidgetBuilder<View, Properties>()
         val viewKClass = View::class
         val view = mockk<View>(relaxed = true)
-        val binder = mockk<WidgetBinder<View>>(relaxed = true)
+        val binder = mockk<WidgetBinder<View, Properties>>(relaxed = true)
         val context = mockk<Context>(relaxed = true)
         val expectedWidget = Widget(view, binder)
 
