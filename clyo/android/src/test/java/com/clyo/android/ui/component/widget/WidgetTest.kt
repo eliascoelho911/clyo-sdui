@@ -1,4 +1,4 @@
-package com.clyo.android.widget
+package com.clyo.android.ui.component.widget
 
 import androidx.appcompat.widget.AppCompatTextView
 import com.clyo.android.impl.widget.Text

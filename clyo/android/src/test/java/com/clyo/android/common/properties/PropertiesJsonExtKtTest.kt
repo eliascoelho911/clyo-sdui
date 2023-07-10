@@ -1,5 +1,6 @@
 package com.clyo.android.common.properties
 
+import com.clyo.android.tools.properties.JsonProvider
 import com.clyo.data.properties.Properties
 import com.clyo.stubs.PropertiesJsonStub
 import kotlin.test.assertIs

@@ -1,4 +1,4 @@
-package com.clyo.android.layout
+package com.clyo.android.ui.component.container
 
 import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatTextView

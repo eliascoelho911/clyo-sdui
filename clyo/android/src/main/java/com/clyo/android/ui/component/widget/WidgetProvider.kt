@@ -2,6 +2,6 @@ package com.clyo.android.ui.component.widget
 
 import android.content.Context
 
-interface WidgetFactory {
+interface WidgetProvider {
     fun provideInstanceByType(context: Context, type: String): Widget<*, *>
 }
