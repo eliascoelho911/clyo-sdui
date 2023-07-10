@@ -2,7 +2,7 @@ package com.clyo.android.layout
 
 import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatTextView
-import com.clyo.android.impl.layout.BoxLayout
+import com.clyo.android.impl.layout.BoxContainer
 import com.clyo.android.impl.widget.Text
 import io.mockk.every
 import io.mockk.mockk
@@ -10,12 +10,12 @@ import io.mockk.spyk
 import io.mockk.verify
 import org.junit.Test
 
-class LayoutTest {
+class ContainerTest {
     @Test
     fun `should add widget to view group`() {
         // Given
         val frameLayout = mockk<FrameLayout>(relaxed = true)
-        val layout = spyk(BoxLayout()) {
+        val layout = spyk(BoxContainer()) {
             every { getView() } returns frameLayout
         }
         val textView = mockk<AppCompatTextView>(relaxed = true)
@@ -34,7 +34,7 @@ class LayoutTest {
     fun `should add all widgets to view group`() {
         // Given
         val frameLayout = mockk<FrameLayout>(relaxed = true)
-        val layout = spyk(BoxLayout()) {
+        val layout = spyk(BoxContainer()) {
             every { getView() } returns frameLayout
         }
         val textView = mockk<AppCompatTextView>(relaxed = true)

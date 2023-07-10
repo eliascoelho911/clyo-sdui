@@ -1,7 +1,7 @@
 package com.clyo.stubs
 
 import com.clyo.data.ConsolidatedJson
-import com.clyo.data.layout.LayoutJson
+import com.clyo.data.container.ContainerJson
 import com.clyo.data.properties.PropertiesJson
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -25,7 +25,7 @@ internal object ConsolidatedJsonStub {
     """.trimIndent()
 
     val json = ConsolidatedJson(
-        content = LayoutJson(
+        content = ContainerJson(
             type = "layout",
             content = listOf(
                 WidgetStub.Text.widgetJson,

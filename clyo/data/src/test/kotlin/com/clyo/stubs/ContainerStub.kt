@@ -1,8 +1,8 @@
 package com.clyo.stubs
 
-import com.clyo.data.layout.LayoutJson
+import com.clyo.data.container.ContainerJson
 
-internal object LayoutStub {
+internal object ContainerStub {
     val jsonValue = """
         {
             "type": "layout",
@@ -13,7 +13,7 @@ internal object LayoutStub {
         }
     """.trimIndent()
 
-    val layout = LayoutJson(
+    val container = ContainerJson(
         type = "layout",
         content = listOf(
             WidgetStub.Text.widgetJson,
