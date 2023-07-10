@@ -1,4 +1,4 @@
-package com.clyo.android.tools.properties
+package com.clyo.android.tools
 
 import kotlinx.serialization.json.Json
 
