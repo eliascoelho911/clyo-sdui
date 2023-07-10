@@ -9,14 +9,14 @@ interface ContainerFactory {
     val widgetFactory: WidgetFactory
 
     fun create(context: Context, json: ContainerJson): Container<*> {
-        val layout = provideContainerInstanceByType(context, json.type)
+        val layout = provideInstanceByType(context, json.type)
 
         json.content.forEach { widgetJson ->
-            layout.add(widgetFactory.create(context, widgetJson.type))
+            layout.add(widgetFactory.provideInstanceByType(context, widgetJson.type))
         }
 
         return layout
     }
 
-    fun provideContainerInstanceByType(context: Context, type: String): Container<*>
+    fun provideInstanceByType(context: Context, type: String): Container<*>
 }

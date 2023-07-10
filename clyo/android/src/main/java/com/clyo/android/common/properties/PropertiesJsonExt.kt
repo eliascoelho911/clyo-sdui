@@ -20,7 +20,12 @@ private fun propertiesObject(
     propertiesJson: PropertiesJson,
     widgetId: String
 ): JsonObject {
-    return propertiesJson.content[widgetId]?.jsonObject ?: throw IllegalArgumentException(
-        "No properties for widget $widgetId"
+    return runCatching {
+        propertiesJson.content[widgetId]!!.jsonObject
+    }.fold(
+        onSuccess = { it },
+        onFailure = {
+            throw IllegalStateException("Properties for widget $widgetId not found")
+        }
     )
 }

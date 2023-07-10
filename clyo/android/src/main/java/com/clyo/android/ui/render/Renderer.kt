@@ -9,7 +9,8 @@ internal class Renderer(private val json: Json) {
 
     fun render(container: Container<*>, propertiesJson: PropertiesJson) {
         container.children.forEach { widget ->
-            widget.render(propertiesJson.decodeProperties(json, widget.id))
+            val properties = propertiesJson.decodeProperties(json, widget.id)
+            widget.render(properties)
         }
     }
 }
