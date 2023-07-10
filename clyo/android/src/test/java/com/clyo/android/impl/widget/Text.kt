@@ -11,7 +11,7 @@ internal data class TextProperties(
     val text: String
 ) : Properties()
 
-internal class Text : Widget<AppCompatTextView, TextProperties>() {
+internal class Text(override val id: String = "txt") : Widget<AppCompatTextView, TextProperties>() {
 
     override fun createView(context: Context): AppCompatTextView {
         return AppCompatTextView(context)

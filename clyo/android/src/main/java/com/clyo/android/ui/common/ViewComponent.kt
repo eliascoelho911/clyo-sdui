@@ -1,4 +1,4 @@
-package com.clyo.android.ui
+package com.clyo.android.ui.common
 
 import android.content.Context
 import android.view.View

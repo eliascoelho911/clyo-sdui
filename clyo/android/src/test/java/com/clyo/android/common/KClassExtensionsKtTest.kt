@@ -1,4 +1,4 @@
-package com.clyo.common
+package com.clyo.android.common
 
 import android.view.View
 import androidx.test.ext.junit.runners.AndroidJUnit4

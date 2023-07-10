@@ -1,10 +1,14 @@
 package com.clyo.android.ui.layout
 
 import android.view.ViewGroup
-import com.clyo.android.ui.ViewComponent
+import com.clyo.android.ui.common.ViewComponent
 import com.clyo.android.ui.widget.Widget
+import com.clyo.data.properties.Properties
 import com.clyo.data.properties.PropertiesJson
-import com.clyo.data.widget.getProperties
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.jsonObject
 
 abstract class Layout<VIEW : ViewGroup> : ViewComponent<VIEW>() {
     private val _children: MutableList<Widget<*, *>> = mutableListOf()
@@ -23,9 +27,10 @@ abstract class Layout<VIEW : ViewGroup> : ViewComponent<VIEW>() {
         _children.add(widget)
     }
 
+    // Todo: Mover para outro lugar
     fun render(properties: PropertiesJson) {
         children.forEach { widget ->
-            widget.render(properties.getProperties(widget.id))
+//            widget.render(properties.getProperties(widget.id))
         }
     }
 }
