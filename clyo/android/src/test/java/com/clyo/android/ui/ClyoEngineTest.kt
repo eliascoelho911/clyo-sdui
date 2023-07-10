@@ -4,9 +4,10 @@ import android.content.Context
 import android.view.ViewGroup
 import com.clyo.android.common.properties.decodeProperties
 import com.clyo.android.ui.component.container.Container
-import com.clyo.android.ui.component.container.ContainerProvider
+import com.clyo.android.ui.component.ComponentFactory
+import com.clyo.android.ui.component.ContainerFactory
+import com.clyo.android.ui.component.WidgetFactory
 import com.clyo.android.ui.component.widget.Widget
-import com.clyo.android.ui.component.widget.WidgetProvider
 import com.clyo.data.container.ContainerJson
 import com.clyo.data.properties.Properties
 import com.clyo.data.properties.PropertiesJson
@@ -18,11 +19,11 @@ import io.mockk.verify
 import kotlinx.serialization.json.Json
 import org.junit.Test
 
-internal class ClyoScreenTest {
+internal class ClyoEngineTest {
     private val json = mockk<Json>(relaxed = true)
-    private val widgetProvider = mockk<WidgetProvider>(relaxed = true)
-    private val containerProvider = mockk<ContainerProvider>(relaxed = true)
-    private val clyoScreen = ClyoScreen(json, widgetProvider, containerProvider)
+    private val widgetFactory = mockk<WidgetFactory>(relaxed = true)
+    private val componentFactory = mockk<ContainerFactory>(relaxed = true)
+    private val clyoEngine = ClyoEngine(json, widgetFactory, componentFactory)
 
     @Test
     fun `should render all children`() {
@@ -39,7 +40,7 @@ internal class ClyoScreenTest {
         }
 
         // When
-        clyoScreen.render(container, propertiesJson)
+        clyoEngine.render(container, propertiesJson)
 
         // Then
         container.children.forEach { widget ->
@@ -60,11 +61,11 @@ internal class ClyoScreenTest {
             every { content } returns listOf(widgetJson)
         }
         val container = mockk<Container<ViewGroup>>(relaxed = true)
-        every { containerProvider.provideInstanceByType(context, "container") } returns container
-        every { widgetProvider.provideInstanceByType(context, "widget") } returns widget
+        every { componentFactory.create(context, "container") } returns container
+        every { widgetFactory.create(context, "widget") } returns widget
 
         // When
-        clyoScreen.create(context, containerJson)
+        clyoEngine.create(context, containerJson)
 
         // Then
         verify(exactly = 1) { container.add(widget) }

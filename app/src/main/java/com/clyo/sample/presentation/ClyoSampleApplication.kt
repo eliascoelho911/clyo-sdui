@@ -1,4 +1,4 @@
-package com.eliascoelho911.clyo.sample.presentation
+package com.clyo.sample.presentation
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

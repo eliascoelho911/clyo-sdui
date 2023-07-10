@@ -10,11 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".presentation.ClyoSampleApplication"
+        android:name="com.clyo.sample.presentation.ClyoSampleApplication"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.ClyoSampleActivity"
+            android:name="com.clyo.sample.presentation.ClyoSampleActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

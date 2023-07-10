@@ -13,7 +13,7 @@ internal data class TextProperties(
 
 internal class Text(override val id: String = "txt") : Widget<AppCompatTextView, TextProperties>() {
 
-    override fun createView(context: Context): AppCompatTextView {
+    override fun newViewInstance(context: Context): AppCompatTextView {
         return AppCompatTextView(context)
     }
 

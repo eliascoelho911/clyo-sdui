@@ -11,9 +11,14 @@ abstract class ViewComponent<VIEW : View> internal constructor() {
     }
 
     fun getOrCreateView(context: Context): VIEW {
-        return viewInstance ?: createView(context).also { view ->
-            viewInstance = view
+        return viewInstance ?: run {
+            createView(context)
+            getView()
         }
+    }
+
+    fun createView(context: Context) {
+        viewInstance = newViewInstance(context)
     }
 
     fun destroyView() {
@@ -24,5 +29,5 @@ abstract class ViewComponent<VIEW : View> internal constructor() {
         return getView().apply(block)
     }
 
-    protected abstract fun createView(context: Context): VIEW
+    protected abstract fun newViewInstance(context: Context): VIEW
 }

@@ -1,6 +1,5 @@
 package com.clyo.android.common.properties
 
-import com.clyo.android.tools.JsonProvider
 import com.clyo.data.properties.Properties
 import com.clyo.stubs.PropertiesJsonStub
 import kotlin.test.assertIs
@@ -12,6 +11,16 @@ import kotlinx.serialization.modules.polymorphic
 import org.junit.Test
 
 internal class PropertiesJsonExtKtTest {
+    private val json: Json = Json {
+        ignoreUnknownKeys = true
+        serializersModule = SerializersModule {
+            polymorphic(Properties::class) {
+                subclass(Widget1Properties::class, Widget1Properties.serializer())
+                subclass(Widget2Properties::class, Widget2Properties.serializer())
+            }
+        }
+    }
+
 
     @Test
     fun `should get properties from json`() {
@@ -19,7 +28,6 @@ internal class PropertiesJsonExtKtTest {
         val propertiesJson = PropertiesJsonStub.propertiesJson
 
         // When
-        val json = JsonProviderImpl().json
         val result = propertiesJson.decodeProperties(json, widgetId = "widget1")
 
         // Then
@@ -40,15 +48,3 @@ private data class Widget2Properties(
     @SerialName("widget2_prop")
     val prop: Boolean
 ) : Properties()
-
-private class JsonProviderImpl : JsonProvider {
-    override val json: Json = Json {
-        ignoreUnknownKeys = true
-        serializersModule = SerializersModule {
-            polymorphic(Properties::class) {
-                subclass(Widget1Properties::class, Widget1Properties.serializer())
-                subclass(Widget2Properties::class, Widget2Properties.serializer())
-            }
-        }
-    }
-}
