@@ -2,7 +2,7 @@ package com.clyo.sample.stub.widget
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatTextView
-import com.clyo.android.ui.component.widget.Widget
+import com.clyo.android.ui.Widget
 import com.clyo.data.properties.Properties
 import com.clyo.data.widget.WidgetJson
 import kotlinx.serialization.SerialName

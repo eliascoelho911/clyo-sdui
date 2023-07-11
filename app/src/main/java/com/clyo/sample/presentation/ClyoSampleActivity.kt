@@ -3,7 +3,7 @@ package com.clyo.sample.presentation
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.clyo.android.ui.clyoEngine
+import com.clyo.android.clyo
 import com.clyo.sample.R
 import com.clyo.sample.databinding.ActivityClyoSampleBinding
 import com.clyo.sample.stub.ClyoSampleJson
@@ -21,7 +21,7 @@ internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sam
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val clyoEngine = clyoEngine {
+        val clyoEngine = clyo {
             json(ClyoSampleJson)
             widgetProvider(WidgetFactoryImpl())
             containerProvider(ContainerFactoryImpl())

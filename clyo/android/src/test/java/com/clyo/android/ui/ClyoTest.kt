@@ -2,12 +2,10 @@ package com.clyo.android.ui
 
 import android.content.Context
 import android.view.ViewGroup
+import com.clyo.android.Clyo
 import com.clyo.android.common.properties.decodeProperties
-import com.clyo.android.ui.component.container.Container
-import com.clyo.android.ui.component.ComponentFactory
 import com.clyo.android.ui.component.ContainerFactory
 import com.clyo.android.ui.component.WidgetFactory
-import com.clyo.android.ui.component.widget.Widget
 import com.clyo.data.container.ContainerJson
 import com.clyo.data.properties.Properties
 import com.clyo.data.properties.PropertiesJson
@@ -19,11 +17,11 @@ import io.mockk.verify
 import kotlinx.serialization.json.Json
 import org.junit.Test
 
-internal class ClyoEngineTest {
+internal class ClyoTest {
     private val json = mockk<Json>(relaxed = true)
     private val widgetFactory = mockk<WidgetFactory>(relaxed = true)
     private val componentFactory = mockk<ContainerFactory>(relaxed = true)
-    private val clyoEngine = ClyoEngine(json, widgetFactory, componentFactory)
+    private val clyo = Clyo(json, widgetFactory, componentFactory)
 
     @Test
     fun `should render all children`() {
@@ -40,7 +38,7 @@ internal class ClyoEngineTest {
         }
 
         // When
-        clyoEngine.render(container, propertiesJson)
+        clyo.render(container, propertiesJson)
 
         // Then
         container.children.forEach { widget ->
@@ -65,7 +63,7 @@ internal class ClyoEngineTest {
         every { widgetFactory.create(context, "widget") } returns widget
 
         // When
-        clyoEngine.create(context, containerJson)
+        clyo.create(context, containerJson)
 
         // Then
         verify(exactly = 1) { container.add(widget) }

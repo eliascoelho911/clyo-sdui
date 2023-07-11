@@ -1,7 +1,7 @@
 package com.clyo.sample.stub
 
 import com.clyo.android.ui.component.WidgetFactory
-import com.clyo.android.ui.component.widget.Widget
+import com.clyo.android.ui.Widget
 import com.clyo.sample.stub.widget.Button
 import com.clyo.sample.stub.widget.ButtonStubs
 import com.clyo.sample.stub.widget.Text

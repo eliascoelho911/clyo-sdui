@@ -1,7 +1,6 @@
-package com.clyo.android.ui.component.widget
+package com.clyo.android.ui
 
 import android.view.View
-import com.clyo.android.ui.component.ViewComponent
 import com.clyo.data.properties.Properties
 
 abstract class Widget<VIEW : View, PROP : Properties> : ViewComponent<VIEW>() {

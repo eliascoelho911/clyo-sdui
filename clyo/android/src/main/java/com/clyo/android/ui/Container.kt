@@ -1,8 +1,6 @@
-package com.clyo.android.ui.component.container
+package com.clyo.android.ui
 
 import android.view.ViewGroup
-import com.clyo.android.ui.component.ViewComponent
-import com.clyo.android.ui.component.widget.Widget
 
 abstract class Container<VIEW : ViewGroup> : ViewComponent<VIEW>() {
     private val _children: MutableList<Widget<*, *>> = mutableListOf()

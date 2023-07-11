@@ -1,9 +1,8 @@
 package com.clyo.sample.stub.container
 
 import android.content.Context
-import android.widget.FrameLayout
 import android.widget.LinearLayout
-import com.clyo.android.ui.component.container.Container
+import com.clyo.android.ui.Container
 import com.clyo.data.container.ContainerJson
 import com.clyo.sample.stub.widget.ButtonStubs
 import com.clyo.sample.stub.widget.TextStubs
