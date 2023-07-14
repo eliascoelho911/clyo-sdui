@@ -1,10 +1,13 @@
-package com.eliascoelho911.clyo.sample.presentation
+package com.clyo.sample.presentation
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.eliascoelho911.clyo.sample.R
-import com.eliascoelho911.clyo.sample.databinding.ActivityClyoSampleBinding
+import com.clyo.android.clyo
+import com.clyo.android.show
+import com.clyo.sample.R
+import com.clyo.sample.databinding.ActivityClyoSampleBinding
+import com.clyo.sample.stub.ConsolidatedJsonStub
 
 internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sample) {
 
@@ -13,7 +16,14 @@ internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sam
         ActivityClyoSampleBinding.bind(root)
     }
 
+    private val clyo = clyo()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        clyo.init(ConsolidatedJsonStub.json.content)
+
+        clyo.show(binding.clyoContainerView, ConsolidatedJsonStub.json.properties)
     }
 }
+
