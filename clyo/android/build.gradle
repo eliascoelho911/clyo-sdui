@@ -23,7 +23,7 @@ dependencies {
     implementation Libs.kotlinReflect
     implementation Libs.kotlinSerializationJson
 
-    implementation project(":clyo:data")
+    api project(":clyo:data")
 
     testImplementation 'androidx.test:core:1.5.0'
     testImplementation TestLibs.roboletric

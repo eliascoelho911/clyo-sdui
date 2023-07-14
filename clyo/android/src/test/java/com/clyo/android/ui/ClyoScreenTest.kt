@@ -2,11 +2,10 @@ package com.clyo.android.ui
 
 import android.content.Context
 import android.view.ViewGroup
+import com.clyo.android.Clyo
 import com.clyo.android.common.properties.decodeProperties
-import com.clyo.android.ui.component.container.Container
-import com.clyo.android.ui.component.container.ContainerProvider
-import com.clyo.android.ui.component.widget.Widget
-import com.clyo.android.ui.component.widget.WidgetProvider
+import com.clyo.android.ui.component.ContainerFactory
+import com.clyo.android.ui.component.WidgetFactory
 import com.clyo.data.container.ContainerJson
 import com.clyo.data.properties.Properties
 import com.clyo.data.properties.PropertiesJson
@@ -18,17 +17,17 @@ import io.mockk.verify
 import kotlinx.serialization.json.Json
 import org.junit.Test
 
-internal class ClyoScreenTest {
+internal class ClyoTest {
     private val json = mockk<Json>(relaxed = true)
-    private val widgetProvider = mockk<WidgetProvider>(relaxed = true)
-    private val containerProvider = mockk<ContainerProvider>(relaxed = true)
-    private val clyoScreen = ClyoScreen(json, widgetProvider, containerProvider)
+    private val widgetFactory = mockk<WidgetFactory>(relaxed = true)
+    private val componentFactory = mockk<ContainerFactory>(relaxed = true)
+    private val clyo = Clyo(json, widgetFactory, componentFactory)
 
     @Test
     fun `should render all children`() {
         // Given
         val container = mockk<Container<ViewGroup>>(relaxed = true) {
-            every { children } returns listOf(
+            every { widgets } returns listOf(
                 mockk(relaxed = true),
             )
         }
@@ -39,10 +38,10 @@ internal class ClyoScreenTest {
         }
 
         // When
-        clyoScreen.render(container, propertiesJson)
+        clyo.render(container, propertiesJson)
 
         // Then
-        container.children.forEach { widget ->
+        container.widgets.forEach { widget ->
             verify { widget.render(properties) }
         }
     }
@@ -60,13 +59,13 @@ internal class ClyoScreenTest {
             every { content } returns listOf(widgetJson)
         }
         val container = mockk<Container<ViewGroup>>(relaxed = true)
-        every { containerProvider.provideInstanceByType(context, "container") } returns container
-        every { widgetProvider.provideInstanceByType(context, "widget") } returns widget
+        every { componentFactory.create(context, "container") } returns container
+        every { widgetFactory.create(context, "widget") } returns widget
 
         // When
-        clyoScreen.create(context, containerJson)
+        clyo.create(context, containerJson)
 
         // Then
-        verify(exactly = 1) { container.add(widget) }
+        verify(exactly = 1) { container.addWidget(widget) }
     }
 }

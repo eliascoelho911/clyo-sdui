@@ -2,7 +2,7 @@ package com.clyo.android.impl.widget
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatTextView
-import com.clyo.android.ui.component.widget.Widget
+import com.clyo.android.ui.Widget
 import com.clyo.data.properties.Properties
 import kotlinx.serialization.Serializable
 
@@ -13,7 +13,7 @@ internal data class TextProperties(
 
 internal class Text(override val id: String = "txt") : Widget<AppCompatTextView, TextProperties>() {
 
-    override fun createView(context: Context): AppCompatTextView {
+    override fun newViewInstance(context: Context): AppCompatTextView {
         return AppCompatTextView(context)
     }
 

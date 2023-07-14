@@ -24,7 +24,7 @@ class ContainerTest {
         }
 
         // When
-        layout.add(textWidget)
+        layout.addWidget(textWidget)
 
         // Then
         verify { frameLayout.addView(textView) }
@@ -44,9 +44,9 @@ class ContainerTest {
         val widgets = listOf(textWidget, textWidget, textWidget)
 
         // When
-        layout.addAll(widgets)
+        layout.addAllWidgets(widgets)
 
         // Then
-        verify(exactly = 3) { layout.add(any()) }
+        verify(exactly = 3) { layout.addWidget(any()) }
     }
 }
