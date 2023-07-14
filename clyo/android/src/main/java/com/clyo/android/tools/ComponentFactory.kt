@@ -1,36 +1,26 @@
 package com.clyo.android.tools
 
-import android.content.Context
 import com.clyo.android.ui.Container
-import com.clyo.android.ui.ViewComponent
-import com.clyo.android.ui.Widget
 import com.clyo.data.container.ContainerJson
 import com.clyo.data.widget.WidgetJson
 
 abstract class ContainerFactory(
-    private val widgetFactory: WidgetFactory
-) : ComponentFactory<Container<*>>() {
+    private val widgetProvider: WidgetProvider
+) {
+    abstract fun provide(type: String): Container<*>
 
-    fun create(context: Context, json: ContainerJson): Container<*> {
-        return super.create(context, json.type).apply {
-            json.content.forEach { widget ->
-                add(widgetFactory.create(context, widget))
-            }
-        }
+    fun create(json: ContainerJson): Container<*> {
+        return provide(json.type).addAllWidgets(widgetProvider, json.content)
     }
 }
 
-abstract class WidgetFactory : ComponentFactory<Widget<*, *>>() {
+internal fun containerFactory() = tools().containerFactory
 
-    fun create(context: Context, json: WidgetJson): Widget<*, *> {
-        return super.create(context, json.type)
-    }
-}
+private fun Container<*>.addAllWidgets(
+    widgetProvider: WidgetProvider,
+    json: List<WidgetJson>
+): Container<*> {
+    json.forEach(widgetProvider::provide)
 
-abstract class ComponentFactory<T : ViewComponent<*>> {
-    protected abstract fun provide(type: String): T
-
-    protected fun create(
-        context: Context, type: String
-    ): T = provide(type).also { it.createView(context) }
+    return this
 }

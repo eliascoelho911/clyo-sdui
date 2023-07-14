@@ -27,7 +27,7 @@ internal class ClyoTest {
     fun `should render all children`() {
         // Given
         val container = mockk<Container<ViewGroup>>(relaxed = true) {
-            every { children } returns listOf(
+            every { widgets } returns listOf(
                 mockk(relaxed = true),
             )
         }
@@ -41,7 +41,7 @@ internal class ClyoTest {
         clyo.render(container, propertiesJson)
 
         // Then
-        container.children.forEach { widget ->
+        container.widgets.forEach { widget ->
             verify { widget.render(properties) }
         }
     }
@@ -66,6 +66,6 @@ internal class ClyoTest {
         clyo.create(context, containerJson)
 
         // Then
-        verify(exactly = 1) { container.add(widget) }
+        verify(exactly = 1) { container.addWidget(widget) }
     }
 }

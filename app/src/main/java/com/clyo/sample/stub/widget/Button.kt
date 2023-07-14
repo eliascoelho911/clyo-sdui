@@ -18,7 +18,7 @@ internal data class ButtonProperties(
 internal class Button(override val id: String = ButtonStubs.widgetJson.id) :
     Widget<AppCompatButton, ButtonProperties>() {
 
-    override fun newViewInstance(context: Context): AppCompatButton {
+    override fun viewInstance(context: Context): AppCompatButton {
         return AppCompatButton(context)
     }
 

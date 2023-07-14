@@ -8,7 +8,7 @@ import com.clyo.sample.stub.widget.ButtonStubs
 import com.clyo.sample.stub.widget.TextStubs
 
 internal class Box : Container<FrameLayout>() {
-    override fun newViewInstance(context: Context): FrameLayout {
+    override fun viewInstance(context: Context): FrameLayout {
         return FrameLayout(context)
     }
 }
