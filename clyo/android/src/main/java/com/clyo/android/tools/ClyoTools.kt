@@ -5,6 +5,7 @@ import kotlinx.serialization.json.Json
 
 data class ClyoTools internal constructor(
     val containerFactory: ContainerFactory,
+    val widgetProvider: WidgetProvider,
     val json: Json
 )
 

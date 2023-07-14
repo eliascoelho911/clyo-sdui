@@ -2,6 +2,7 @@ package com.clyo.android
 
 import com.clyo.android.tools.ClyoTools
 import com.clyo.android.tools.ContainerFactory
+import com.clyo.android.tools.WidgetProvider
 import kotlinx.serialization.json.Json
 
 internal object ClyoApplication {
@@ -20,9 +21,13 @@ internal object ClyoApplication {
     }
 }
 
-fun startClyo(containerFactory: ContainerFactory, json: Json) {
+fun startClyo(
+    containerFactory: ContainerFactory,
+    widgetProvider: WidgetProvider,
+    json: Json
+) {
     ClyoApplication.init(
-        tools = ClyoTools(containerFactory, json)
+        tools = ClyoTools(containerFactory, widgetProvider, json)
     )
 }
 

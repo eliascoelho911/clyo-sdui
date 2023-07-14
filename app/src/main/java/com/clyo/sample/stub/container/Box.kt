@@ -3,14 +3,16 @@ package com.clyo.sample.stub.container
 import android.content.Context
 import android.widget.FrameLayout
 import com.clyo.android.ui.Container
+import com.clyo.android.ui.Widget
 import com.clyo.data.container.ContainerJson
 import com.clyo.sample.stub.widget.ButtonStubs
 import com.clyo.sample.stub.widget.TextStubs
 
-internal class Box : Container<FrameLayout>() {
-    override fun viewInstance(context: Context): FrameLayout {
-        return FrameLayout(context)
-    }
+internal class Box(
+    context: Context,
+    override val content: List<Widget<*, *>>
+) : Container<FrameLayout>() {
+    override val view: FrameLayout = FrameLayout(context)
 }
 
 internal object BoxStubs {

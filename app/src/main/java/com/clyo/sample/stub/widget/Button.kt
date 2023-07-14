@@ -15,19 +15,19 @@ internal data class ButtonProperties(
     val isDisabled: Boolean
 ) : Properties()
 
-internal class Button(override val id: String = ButtonStubs.widgetJson.id) :
-    Widget<AppCompatButton, ButtonProperties>() {
+internal class Button(
+    context: Context,
+    override val id: String
+) : Widget<AppCompatButton, ButtonProperties> {
 
-    override fun viewInstance(context: Context): AppCompatButton {
-        return AppCompatButton(context)
-    }
-
-    override fun handleProperties(properties: ButtonProperties): AppCompatButton {
-        return getView().apply {
+    override fun render(properties: ButtonProperties): AppCompatButton {
+        return view.apply {
             text = properties.text
             isEnabled = !properties.isDisabled
         }
     }
+
+    override val view: AppCompatButton = AppCompatButton(context)
 }
 
 internal object ButtonStubs {

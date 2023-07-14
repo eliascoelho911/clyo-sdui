@@ -17,7 +17,7 @@ internal class Text(override val id: String = "txt") : Widget<AppCompatTextView,
         return AppCompatTextView(context)
     }
 
-    override fun handleProperties(properties: TextProperties): AppCompatTextView {
+    override fun render(properties: TextProperties): AppCompatTextView {
         return getView().apply {
             text = properties.text
         }

@@ -14,15 +14,15 @@ internal data class TextProperties(
     val text: String
 ) : Properties()
 
-internal class Text(override val id: String = TextStubs.widgetJson.id) :
-    Widget<AppCompatTextView, TextProperties>() {
+internal class Text(
+    context: Context,
+    override val id: String
+) : Widget<AppCompatTextView, TextProperties> {
 
-    override fun newViewInstance(context: Context): AppCompatTextView {
-        return AppCompatTextView(context)
-    }
+    override val view: AppCompatTextView = AppCompatTextView(context)
 
-    override fun handleProperties(properties: TextProperties): AppCompatTextView {
-        return getView().apply {
+    override fun render(properties: TextProperties): AppCompatTextView {
+        return view.apply {
             text = properties.text
         }
     }
