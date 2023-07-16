@@ -1,8 +1,8 @@
 package com.clyo.sample.stub
 
 import android.content.Context
-import com.clyo.android.tools.WidgetProvider
-import com.clyo.android.ui.Widget
+import com.clyo.android.ui.component.widget.WidgetProvider
+import com.clyo.android.ui.component.widget.Widget
 import com.clyo.data.widget.WidgetJson
 import com.clyo.sample.stub.widget.Button
 import com.clyo.sample.stub.widget.ButtonStubs

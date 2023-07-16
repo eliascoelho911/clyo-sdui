@@ -3,7 +3,7 @@ package com.clyo.sample.presentation
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.clyo.android.ui.ClyoPage
+import com.clyo.android.ui.page.ClyoPage
 import com.clyo.android.ui.clyoPage
 import com.clyo.sample.R
 import com.clyo.sample.databinding.ActivityClyoSampleBinding

@@ -19,7 +19,13 @@ internal object PropertiesJsonStub {
                         "type" to JsonPrimitive("widget2"),
                         "widget2_prop" to JsonPrimitive(true)
                     )
-                )
+                ),
+                "txt" to JsonObject(
+                    mapOf(
+                        "type" to JsonPrimitive("text"),
+                        "text" to JsonPrimitive("test")
+                    )
+                ),
             )
         )
     )

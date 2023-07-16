@@ -2,8 +2,8 @@ package com.clyo.sample.stub.container
 
 import android.content.Context
 import android.widget.FrameLayout
-import com.clyo.android.ui.Container
-import com.clyo.android.ui.Widget
+import com.clyo.android.ui.component.container.ViewGroupContainer
+import com.clyo.android.ui.component.widget.Widget
 import com.clyo.data.container.ContainerJson
 import com.clyo.sample.stub.widget.ButtonStubs
 import com.clyo.sample.stub.widget.TextStubs
@@ -11,7 +11,7 @@ import com.clyo.sample.stub.widget.TextStubs
 internal class Box(
     context: Context,
     override val content: List<Widget<*, *>>
-) : Container<FrameLayout>() {
+) : ViewGroupContainer<FrameLayout>() {
     override val view: FrameLayout = FrameLayout(context)
 }
 
