@@ -2,50 +2,44 @@ package com.clyo.sample.stub.widget
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatButton
+import com.clyo.android.ui.component.ComponentRenderer
 import com.clyo.android.ui.component.widget.Widget
 import com.clyo.data.properties.Properties
 import com.clyo.data.widget.WidgetJson
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+internal fun button(context: Context, id: String): Widget<AppCompatButton, ButtonProperties> {
+    return Widget(
+        view = AppCompatButton(context),
+        id = id,
+        renderer = ButtonRenderer()
+    )
+}
+
 @Serializable
 @SerialName("button")
 internal data class ButtonProperties(
     val text: String,
-    val isDisabled: Boolean
+    val isEnabled: Boolean
 ) : Properties()
 
-internal class Button(
-    context: Context,
-    override val id: String
-) : Widget<AppCompatButton, ButtonProperties> {
-
-    override fun render(properties: ButtonProperties): AppCompatButton {
-        return view.apply {
-            text = properties.text
-            isEnabled = !properties.isDisabled
-        }
+internal class ButtonRenderer : ComponentRenderer<AppCompatButton, ButtonProperties> {
+    override fun render(view: AppCompatButton, properties: ButtonProperties) {
+        view.text = properties.text
+        view.isEnabled = properties.isEnabled
     }
-
-    override val view: AppCompatButton = AppCompatButton(context)
 }
 
 internal object ButtonStubs {
 
-    val widgetJsonValue = """
-        {
-            "type": "button",
-            "id": "btn"
-        }
-    """.trimIndent()
     val widgetJson = WidgetJson(type = "button", id = "btn")
 
     val propertiesJsonValue = """
         {
             "type": "button",
             "text": "test button",
-            "isDisabled": false
+            "isEnabled": true
         }
     """.trimIndent()
-    val properties = ButtonProperties(text = "test button", isDisabled = false)
 }

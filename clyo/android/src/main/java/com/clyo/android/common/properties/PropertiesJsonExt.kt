@@ -10,22 +10,17 @@ import kotlinx.serialization.json.jsonObject
 internal fun PropertiesJson.decodeProperties(
     json: Json,
     widgetId: String,
-): Properties {
+): Properties? {
     val jsonObject = propertiesObject(this, widgetId)
 
-    return json.decodeFromJsonElement(jsonObject)
+    return jsonObject?.let { json.decodeFromJsonElement(it) }
 }
 
 private fun propertiesObject(
     propertiesJson: PropertiesJson,
     widgetId: String
-): JsonObject {
+): JsonObject? {
     return runCatching {
         propertiesJson.content[widgetId]!!.jsonObject
-    }.fold(
-        onSuccess = { it },
-        onFailure = {
-            throw IllegalStateException("Properties for widget $widgetId not found")
-        }
-    )
+    }.getOrNull()
 }

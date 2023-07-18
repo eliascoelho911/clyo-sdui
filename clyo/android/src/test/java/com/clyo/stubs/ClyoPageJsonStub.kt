@@ -1,9 +1,9 @@
 package com.clyo.stubs
 
-import com.clyo.data.ClyoPageJson
+import com.clyo.data.PageJson
 
 internal object ClyoPageJsonStub {
-    val clyoPage = ClyoPageJson(
+    val clyoPage = PageJson(
         content = BoxContainerStub.containerJson,
         properties = PropertiesJsonStub.propertiesJson
     )

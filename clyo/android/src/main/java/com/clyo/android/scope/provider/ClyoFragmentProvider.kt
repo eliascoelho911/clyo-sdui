@@ -1,6 +1,5 @@
 package com.clyo.android.scope.provider
 
-import androidx.annotation.IdRes
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -9,8 +8,8 @@ import com.clyo.android.scope.Clyo
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-fun Fragment.clyo(@IdRes rootId: Int): ReadOnlyProperty<Fragment, Clyo> =
-    ClyoFragmentPropertyDelegate { Clyo(rootView = it.requireView().findViewById(rootId)) }
+fun Fragment.clyo(): ReadOnlyProperty<Fragment, Clyo> =
+    ClyoFragmentPropertyDelegate { createClyo() }
 
 private class ClyoFragmentPropertyDelegate(
     private val clyoCreator: (Fragment) -> Clyo

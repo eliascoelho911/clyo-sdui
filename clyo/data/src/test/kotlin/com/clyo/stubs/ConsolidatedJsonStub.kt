@@ -1,6 +1,6 @@
 package com.clyo.stubs
 
-import com.clyo.data.ClyoPageJson
+import com.clyo.data.PageJson
 import com.clyo.data.container.ContainerJson
 import com.clyo.data.properties.PropertiesJson
 import kotlinx.serialization.decodeFromString
@@ -24,7 +24,7 @@ internal object ConsolidatedJsonStub {
         }
     """.trimIndent()
 
-    val json = ClyoPageJson(
+    val json = PageJson(
         content = ContainerJson(
             type = "layout",
             content = listOf(

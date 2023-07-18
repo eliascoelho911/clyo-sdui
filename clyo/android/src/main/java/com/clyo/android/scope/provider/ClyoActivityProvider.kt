@@ -1,6 +1,5 @@
 package com.clyo.android.scope.provider
 
-import androidx.annotation.IdRes
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -9,8 +8,8 @@ import com.clyo.android.scope.Clyo
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-fun AppCompatActivity.clyo(@IdRes rootId: Int): ReadOnlyProperty<AppCompatActivity, Clyo> =
-    ClyoActivityPropertyDelegate { Clyo(rootView = it.findViewById(rootId)) }
+fun AppCompatActivity.clyo(): ReadOnlyProperty<AppCompatActivity, Clyo> =
+    ClyoActivityPropertyDelegate { createClyo() }
 
 private class ClyoActivityPropertyDelegate(
     private val clyoCreator: (AppCompatActivity) -> Clyo

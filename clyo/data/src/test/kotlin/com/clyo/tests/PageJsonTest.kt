@@ -1,13 +1,13 @@
 package com.clyo.tests
 
-import com.clyo.data.ClyoPageJson
+import com.clyo.data.PageJson
 import com.clyo.stubs.ConsolidatedJsonStub
 import kotlin.test.assertEquals
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.junit.Test
 
-internal class ClyoPageJsonTest {
+internal class PageJsonTest {
     @Test
     fun `Should map a ConsolidatedJson to a Clyo`() {
         // Given
@@ -15,7 +15,7 @@ internal class ClyoPageJsonTest {
         val expected = ConsolidatedJsonStub.json
 
         // When
-        val result = Json.decodeFromString<ClyoPageJson>(json)
+        val result = Json.decodeFromString<PageJson>(json)
 
         // Then
         assertEquals(expected, result)

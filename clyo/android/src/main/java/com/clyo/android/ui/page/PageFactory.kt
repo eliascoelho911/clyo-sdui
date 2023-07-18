@@ -1,22 +1,33 @@
 package com.clyo.android.ui.page
 
 import android.content.Context
-import com.clyo.android.ui.component.container.ViewGroupContainer
+import com.clyo.android.ui.component.container.ContainerProvider
+import com.clyo.android.ui.component.widget.WidgetProvider
+import com.clyo.data.PageJson
 import com.clyo.data.container.ContainerJson
 
-internal object PageFactory {
-    private val widgetProvider get() = tools().widgetProvider
-    private val containerProvider get() = tools().containerProvider
-
-    fun create(context: Context, json: ContainerJson): ViewGroupContainer<*> {
-        val content = createContent(json, context)
-        return containerProvider.get(context, json.type, content)
+internal class PageFactory(
+    private val widgetProvider: WidgetProvider,
+    private val containerProvider: ContainerProvider
+) {
+    fun create(context: Context, pageJson: PageJson): Page {
+        val container = createContainer(context, pageJson.content)
+        return Page(container)
     }
 
+    private fun createContainer(
+        context: Context,
+        containerJson: ContainerJson
+    ) = containerProvider.get(
+        context = context,
+        type = containerJson.type,
+        content = createContent(context, containerJson)
+    )
+
     private fun createContent(
-        json: ContainerJson,
-        context: Context
-    ) = json.content.map { widgetJson ->
+        context: Context,
+        containerJson: ContainerJson
+    ) = containerJson.content.map { widgetJson ->
         widgetProvider.provide(context, widgetJson)
     }
 }

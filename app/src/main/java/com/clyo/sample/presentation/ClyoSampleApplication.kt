@@ -1,7 +1,7 @@
 package com.clyo.sample.presentation
 
 import android.app.Application
-import com.clyo.android.initClyo
+import com.clyo.android.startClyo
 import com.clyo.sample.stub.ClyoSampleJson
 import com.clyo.sample.stub.ContainerFactoryImpl
 import com.clyo.sample.stub.WidgetProviderImpl
@@ -16,10 +16,10 @@ internal class ClyoSampleApplication : Application() {
             androidContext(this@ClyoSampleApplication)
         }
 
-        initClyo(
-            containerFactory = ContainerFactoryImpl(),
-            widgetProvider = WidgetProviderImpl(),
+        startClyo {
+            containerProvider = ContainerFactoryImpl()
+            widgetProvider = WidgetProviderImpl()
             json = ClyoSampleJson
-        )
+        }
     }
 }

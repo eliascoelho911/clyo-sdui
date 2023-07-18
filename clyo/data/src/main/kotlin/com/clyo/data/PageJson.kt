@@ -6,7 +6,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ClyoPageJson(
+data class PageJson(
     @SerialName("content")
     val content: ContainerJson,
     @SerialName("properties")

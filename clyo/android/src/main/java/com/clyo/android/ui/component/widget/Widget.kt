@@ -1,26 +1,21 @@
 package com.clyo.android.ui.component.widget
 
 import android.view.View
+import com.clyo.android.ui.component.ComponentRenderer
 import com.clyo.android.ui.component.ViewComponent
 import com.clyo.data.properties.Properties
 
-interface Widget<VIEW : View, PROP : Properties> : ViewComponent<VIEW> {
-
-    val id: String
-
-    /**
-     * This method is responsible for rendering the widget, adding the properties to it.
-     */
-    fun render(properties: PROP): VIEW
+class Widget<VIEW : View, PROP : Properties>(
+    override val view: VIEW,
+    val id: String,
+    private val renderer: ComponentRenderer<VIEW, PROP>
+) : ViewComponent<VIEW> {
 
     @Suppress("UNCHECKED_CAST")
-    @Deprecated(
-        replaceWith = ReplaceWith("render(properties)"),
-        message = "Use render(properties) instead"
-    )
     fun render(properties: Properties) {
-        render(
-            properties as? PROP ?: throw IllegalArgumentException("Properties type mismatch")
+        renderer.render(
+            view = view,
+            properties = properties as PROP
         )
     }
 }

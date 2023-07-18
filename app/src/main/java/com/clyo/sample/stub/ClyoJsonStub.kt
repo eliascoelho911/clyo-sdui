@@ -1,6 +1,6 @@
 package com.clyo.sample.stub
 
-import com.clyo.data.ClyoPageJson
+import com.clyo.data.PageJson
 import com.clyo.data.properties.PropertiesJson
 import com.clyo.sample.stub.container.ColumnStubs
 import com.clyo.sample.stub.widget.ButtonStubs
@@ -10,7 +10,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 
 internal object ClyoJsonStub {
-    val json = ClyoPageJson(
+    val json = PageJson(
         content = ColumnStubs.containerJson,
         properties = PropertiesJson(
             JsonObject(
