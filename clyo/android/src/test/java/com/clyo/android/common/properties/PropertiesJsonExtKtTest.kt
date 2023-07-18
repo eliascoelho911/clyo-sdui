@@ -1,11 +1,13 @@
 package com.clyo.android.common.properties
 
 import com.clyo.data.properties.Properties
-import com.clyo.stubs.PropertiesJsonStub
+import com.clyo.data.properties.PropertiesJson
 import kotlin.test.assertIs
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import org.junit.Test
@@ -48,3 +50,24 @@ private data class Widget2Properties(
     @SerialName("widget2_prop")
     val prop: Boolean
 ) : Properties()
+
+private object PropertiesJsonStub {
+    val propertiesJson = PropertiesJson(
+        JsonObject(
+            mapOf(
+                "widget1" to JsonObject(
+                    mapOf(
+                        "type" to JsonPrimitive("widget1"),
+                        "widget1_prop" to JsonPrimitive(true)
+                    )
+                ),
+                "widget2" to JsonObject(
+                    mapOf(
+                        "type" to JsonPrimitive("widget2"),
+                        "widget2_prop" to JsonPrimitive(true)
+                    )
+                )
+            )
+        )
+    )
+}
