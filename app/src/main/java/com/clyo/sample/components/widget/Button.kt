@@ -1,11 +1,10 @@
-package com.clyo.sample.stub.widget
+package com.clyo.sample.components.widget
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatButton
 import com.clyo.android.ui.component.ComponentRenderer
 import com.clyo.android.ui.component.widget.Widget
 import com.clyo.data.properties.Properties
-import com.clyo.data.widget.WidgetJson
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -29,17 +28,4 @@ internal class ButtonRenderer : ComponentRenderer<AppCompatButton, ButtonPropert
         view.text = properties.text
         view.isEnabled = properties.isEnabled
     }
-}
-
-internal object ButtonStubs {
-
-    val widgetJson = WidgetJson(type = "button", id = "btn")
-
-    val propertiesJsonValue = """
-        {
-            "type": "button",
-            "text": "test button",
-            "isEnabled": true
-        }
-    """.trimIndent()
 }

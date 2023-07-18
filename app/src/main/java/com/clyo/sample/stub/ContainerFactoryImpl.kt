@@ -4,7 +4,7 @@ import android.content.Context
 import com.clyo.android.ui.component.container.Container
 import com.clyo.android.ui.component.container.ContainerProvider
 import com.clyo.android.ui.component.widget.Widget
-import com.clyo.sample.stub.container.column
+import com.clyo.sample.components.container.column
 
 internal class ContainerFactoryImpl : ContainerProvider {
     override fun get(

@@ -1,22 +1,37 @@
 package com.clyo.sample.stub
 
 import com.clyo.data.PageJson
+import com.clyo.data.container.ContainerJson
 import com.clyo.data.properties.PropertiesJson
-import com.clyo.sample.stub.container.ColumnStubs
-import com.clyo.sample.stub.widget.ButtonStubs
-import com.clyo.sample.stub.widget.TextStubs
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
+import com.clyo.data.widget.WidgetJson
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 
 internal object ClyoJsonStub {
     val json = PageJson(
-        content = ColumnStubs.containerJson,
+        content = ContainerJson(
+            type = "column",
+            content = listOf(
+                WidgetJson(type = "text", id = "txt"),
+                WidgetJson(type = "button", id = "btn")
+            )
+        ),
         properties = PropertiesJson(
             JsonObject(
                 mapOf(
-                    "txt" to Json.decodeFromString(TextStubs.propertiesJsonValue),
-                    "btn" to Json.decodeFromString(ButtonStubs.propertiesJsonValue)
+                    "txt" to JsonObject(
+                        mapOf(
+                            "type" to JsonPrimitive("text"),
+                            "text" to JsonPrimitive("test text")
+                        )
+                    ),
+                    "btn" to JsonObject(
+                        mapOf(
+                            "type" to JsonPrimitive("button"),
+                            "text" to JsonPrimitive("test button"),
+                            "isEnabled" to JsonPrimitive(true)
+                        )
+                    )
                 )
             )
         )

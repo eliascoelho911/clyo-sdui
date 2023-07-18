@@ -1,8 +1,8 @@
 package com.clyo.sample.stub
 
 import com.clyo.data.properties.Properties
-import com.clyo.sample.stub.widget.ButtonProperties
-import com.clyo.sample.stub.widget.TextProperties
+import com.clyo.sample.components.widget.ButtonProperties
+import com.clyo.sample.components.widget.TextProperties
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
