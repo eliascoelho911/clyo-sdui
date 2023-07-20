@@ -3,7 +3,7 @@ package com.clyo.android.ui.page
 import android.content.Context
 import com.clyo.android.ui.component.container.ContainerProvider
 import com.clyo.android.ui.component.widget.WidgetProvider
-import com.clyo.data.PageJson
+import com.clyo.data.page.PageJson
 import com.clyo.data.container.ContainerJson
 
 internal class PageFactory(
