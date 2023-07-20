@@ -9,5 +9,5 @@ data class ContainerJson(
     @SerialName("type")
     val type: String,
     @SerialName("content")
-    val content: List<WidgetJson>
-)
+    override val content: List<WidgetJson>
+) : ContainerData

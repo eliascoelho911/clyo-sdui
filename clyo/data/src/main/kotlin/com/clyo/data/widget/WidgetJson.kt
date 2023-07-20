@@ -1,5 +1,6 @@
 package com.clyo.data.widget
 
+import com.clyo.data.properties.PropertiesJson
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -7,6 +8,6 @@ import kotlinx.serialization.Serializable
 data class WidgetJson(
     @SerialName("type")
     val type: String,
-    @SerialName("id")
-    val id: String
-)
+    @SerialName("properties")
+    override val properties: PropertiesJson
+) : WidgetData

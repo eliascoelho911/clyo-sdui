@@ -1,14 +1,11 @@
-package com.clyo.data
+package com.clyo.data.page
 
 import com.clyo.data.container.ContainerJson
-import com.clyo.data.properties.PropertiesJson
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class PageJson(
     @SerialName("content")
-    val content: ContainerJson,
-    @SerialName("properties")
-    val properties: PropertiesJson
-)
+    override val content: ContainerJson
+) : PageData
