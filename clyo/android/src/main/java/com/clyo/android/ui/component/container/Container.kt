@@ -16,7 +16,7 @@ class Container<VIEW : ViewGroup>(
 
     fun renderContent(properties: (widgetId: String) -> Properties?) {
         content.forEach { widget ->
-            properties(widget.id)?.let { widget.render(it) }
+            properties(widget.id)?.let { widget.bind(it) }
         }
     }
 

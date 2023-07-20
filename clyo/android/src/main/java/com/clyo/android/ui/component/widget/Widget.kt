@@ -3,10 +3,10 @@ package com.clyo.android.ui.component.widget
 import android.view.View
 import com.clyo.android.ui.component.ViewComponent
 import com.clyo.data.properties.Properties
+import com.clyo.data.widget.WidgetProperties
 
-class Widget<VIEW : View, PROP : Properties>(
+class Widget<VIEW : View, PROP : WidgetProperties>(
     override val view: VIEW,
-    val id: String,
     private val binder: WidgetBinder<VIEW, PROP>
 ) : ViewComponent<VIEW> {
 
