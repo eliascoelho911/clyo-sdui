@@ -2,7 +2,7 @@ package com.clyo.sample.components.widget
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatButton
-import com.clyo.android.ui.component.ComponentRenderer
+import com.clyo.android.ui.component.widget.WidgetBinder
 import com.clyo.android.ui.component.widget.Widget
 import com.clyo.data.properties.Properties
 import kotlinx.serialization.SerialName
@@ -12,7 +12,7 @@ internal fun button(context: Context, id: String): Widget<AppCompatButton, Butto
     return Widget(
         view = AppCompatButton(context),
         id = id,
-        renderer = ButtonRenderer()
+        binder = ButtonBinder()
     )
 }
 
@@ -23,8 +23,8 @@ internal data class ButtonProperties(
     val isEnabled: Boolean
 ) : Properties()
 
-internal class ButtonRenderer : ComponentRenderer<AppCompatButton, ButtonProperties> {
-    override fun render(view: AppCompatButton, properties: ButtonProperties) {
+internal class ButtonBinder : WidgetBinder<AppCompatButton, ButtonProperties> {
+    override fun bind(view: AppCompatButton, properties: ButtonProperties) {
         view.text = properties.text
         view.isEnabled = properties.isEnabled
     }
