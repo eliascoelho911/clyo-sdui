@@ -1,9 +1,9 @@
 package com.clyo.sample.impl.container
 
 import android.content.Context
-import com.clyo.android.component.container.Container
-import com.clyo.android.component.container.ContainerProvider
-import com.clyo.android.component.type.ComponentType
+import com.clyo.android.component.ComponentType
+import com.clyo.android.component.Container
+import com.clyo.android.component.ContainerProvider
 import com.clyo.sample.components.container.Column
 
 internal class ContainerProviderImpl : ContainerProvider {

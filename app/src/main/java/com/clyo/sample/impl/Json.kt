@@ -1,6 +1,6 @@
 package com.clyo.sample.impl
 
-import com.clyo.android.component.args.ComponentArgs
+import com.clyo.android.component.ComponentArgs
 import com.clyo.sample.components.widget.ButtonArgs
 import com.clyo.sample.components.widget.TextArgs
 import kotlinx.serialization.json.Json

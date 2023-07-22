@@ -1,8 +1,8 @@
-package com.clyo.android.component.container
+package com.clyo.android.component
 
+import android.content.Context
 import android.view.ViewGroup
-import com.clyo.android.component.ViewComponent
-import com.clyo.android.component.widget.Widget
+import kotlinx.serialization.Serializable
 
 abstract class Container<V : ViewGroup> : ViewComponent<V> {
 
@@ -29,4 +29,15 @@ abstract class Container<V : ViewGroup> : ViewComponent<V> {
         _content.clear()
         view.removeAllViews()
     }
+}
+
+@Serializable
+data class ContainerData(
+    @Serializable(with = ComponentTypeSerializer::class)
+    val type: ComponentType,
+    val content: List<WidgetData>
+)
+
+interface ContainerProvider {
+    fun provideByType(context: Context, type: ComponentType): Container<*>
 }

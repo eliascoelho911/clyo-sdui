@@ -1,3 +1,3 @@
 package com.clyo.android.component
 
-interface Component
+sealed interface Component

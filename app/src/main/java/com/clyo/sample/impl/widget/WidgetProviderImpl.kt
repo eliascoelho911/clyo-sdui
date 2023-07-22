@@ -1,9 +1,9 @@
 package com.clyo.sample.impl.widget
 
 import android.content.Context
-import com.clyo.android.component.type.ComponentType
-import com.clyo.android.component.widget.Widget
-import com.clyo.android.component.widget.WidgetProvider
+import com.clyo.android.component.ComponentType
+import com.clyo.android.component.Widget
+import com.clyo.android.component.WidgetProvider
 import com.clyo.sample.components.widget.Button
 import com.clyo.sample.components.widget.Text
 

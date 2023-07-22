@@ -2,8 +2,8 @@ package com.clyo.sample.components.widget
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatButton
-import com.clyo.android.component.widget.Widget
-import com.clyo.android.component.args.ComponentArgs
+import com.clyo.android.component.Widget
+import com.clyo.android.component.ComponentArgs
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

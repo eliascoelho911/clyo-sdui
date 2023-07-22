@@ -1,11 +1,11 @@
 package com.clyo.android
 
 import android.content.Context
-import com.clyo.android.component.container.Container
-import com.clyo.android.component.container.ContainerProvider
-import com.clyo.android.component.type.ComponentType
-import com.clyo.android.component.widget.Widget
-import com.clyo.android.component.widget.WidgetProvider
+import com.clyo.android.component.ComponentType
+import com.clyo.android.component.Container
+import com.clyo.android.component.ContainerProvider
+import com.clyo.android.component.Widget
+import com.clyo.android.component.WidgetProvider
 import java.util.Locale
 import kotlinx.serialization.json.Json
 

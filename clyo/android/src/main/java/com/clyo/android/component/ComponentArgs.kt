@@ -1,4 +1,4 @@
-package com.clyo.android.component.args
+package com.clyo.android.component
 
 import kotlinx.serialization.Serializable
 

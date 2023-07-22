@@ -1,14 +1,14 @@
 package com.clyo.android.page
 
 import android.content.Context
-import com.clyo.android.component.args.ComponentArgs
-import com.clyo.android.component.container.Container
-import com.clyo.android.component.container.ContainerData
-import com.clyo.android.component.container.ContainerProvider
-import com.clyo.android.component.type.ComponentType
-import com.clyo.android.component.widget.Widget
-import com.clyo.android.component.widget.WidgetData
-import com.clyo.android.component.widget.WidgetProvider
+import com.clyo.android.component.ComponentArgs
+import com.clyo.android.component.ComponentType
+import com.clyo.android.component.Container
+import com.clyo.android.component.ContainerData
+import com.clyo.android.component.ContainerProvider
+import com.clyo.android.component.Widget
+import com.clyo.android.component.WidgetData
+import com.clyo.android.component.WidgetProvider
 
 internal class PageFactory(
     private val widgetProvider: WidgetProvider,

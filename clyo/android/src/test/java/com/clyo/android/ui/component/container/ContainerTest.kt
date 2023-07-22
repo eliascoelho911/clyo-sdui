@@ -1,7 +1,7 @@
 package com.clyo.android.ui.component.container
 
 import android.view.ViewGroup
-import com.clyo.android.component.widget.Widget
+import com.clyo.android.component.Widget
 import com.clyo.data.Properties
 import io.mockk.every
 import io.mockk.mockk

@@ -1,7 +1,7 @@
 package com.clyo.android.ui.component.widget
 
 import android.view.View
-import com.clyo.android.component.widget.Widget
+import com.clyo.android.component.Widget
 import com.clyo.data.Properties
 import io.mockk.mockk
 import io.mockk.verify
