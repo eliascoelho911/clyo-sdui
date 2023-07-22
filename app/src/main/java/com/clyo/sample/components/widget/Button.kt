@@ -15,7 +15,6 @@ internal data class ButtonArgs(
 ) : ComponentArgs()
 
 internal class Button(context: Context) : Widget<AppCompatButton, ButtonArgs>() {
-
     override val view: AppCompatButton = AppCompatButton(context)
 
     override fun updateArgs(args: ButtonArgs) {

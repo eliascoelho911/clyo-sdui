@@ -12,5 +12,5 @@ data class WidgetData(
     @Serializable(with = ComponentTypeSerializer::class)
     val type: ComponentType,
     @SerialName("args")
-    val componentArgs: ComponentArgs
+    val args: ComponentArgs
 )

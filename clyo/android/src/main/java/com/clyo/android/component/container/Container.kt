@@ -16,8 +16,7 @@ abstract class Container<V : ViewGroup> : ViewComponent<V> {
     }
 
     fun addAll(widgets: List<Widget<*, *>>) {
-        _content.addAll(widgets)
-
+        widgets.forEach { add(it) }
     }
 
     fun remove(index: Int) {

@@ -1,4 +1,4 @@
-package com.clyo.android.data
+package com.clyo.android.page
 
 import com.clyo.android.component.container.ContainerData
 import kotlinx.serialization.Serializable

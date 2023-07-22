@@ -1,25 +1,25 @@
 package com.clyo.android.scope.provider
 
 import androidx.annotation.MainThread
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.clyo.android.scope.Clyo
+import com.clyo.android.scope.ClyoScope
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-fun Fragment.clyo(): ReadOnlyProperty<Fragment, Clyo> =
-    ClyoFragmentPropertyDelegate { createClyo() }
+fun AppCompatActivity.clyo(): ReadOnlyProperty<AppCompatActivity, ClyoScope> =
+    ClyoActivityPropertyDelegate { createClyo(this) }
 
-private class ClyoFragmentPropertyDelegate(
-    private val clyoCreator: (Fragment) -> Clyo
-) : ReadOnlyProperty<Fragment, Clyo> {
+private class ClyoActivityPropertyDelegate(
+    private val clyoCreator: (AppCompatActivity) -> ClyoScope
+) : ReadOnlyProperty<AppCompatActivity, ClyoScope> {
 
-    private var clyo: Clyo? = null
+    private var clyo: ClyoScope? = null
     private val lifecycleObserver = ClyoLifecycleObserver()
 
     @MainThread
-    override fun getValue(thisRef: Fragment, property: KProperty<*>): Clyo {
+    override fun getValue(thisRef: AppCompatActivity, property: KProperty<*>): ClyoScope {
         thisRef.lifecycle.addObserver(lifecycleObserver)
 
         return clyo ?: clyoCreator(thisRef).also { clyo = it }

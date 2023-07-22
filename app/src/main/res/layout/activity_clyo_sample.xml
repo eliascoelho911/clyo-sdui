@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.clyo.android.page.PageHolderView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.clyo.android.page.PageHolder xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/clyoPageHolderView"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

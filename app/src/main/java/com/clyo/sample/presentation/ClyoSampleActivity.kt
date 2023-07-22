@@ -20,7 +20,7 @@ internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sam
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val page = clyo.page(this, PageDataStub.data)
+        val page = clyo.page(PageDataStub.data)
         binding.clyoPageHolderView.show(page)
     }
 }

@@ -3,7 +3,7 @@ package com.clyo.sample.stub
 import com.clyo.android.component.container.ContainerData
 import com.clyo.android.component.type.ComponentType
 import com.clyo.android.component.widget.WidgetData
-import com.clyo.android.data.PageData
+import com.clyo.android.page.PageData
 import com.clyo.sample.components.widget.ButtonArgs
 import com.clyo.sample.components.widget.TextArgs
 
@@ -14,13 +14,13 @@ internal object PageDataStub {
             content = listOf(
                 WidgetData(
                     type = ComponentType("text"),
-                    componentArgs = TextArgs(
+                    args = TextArgs(
                         text = "Hello World!"
                     )
                 ),
                 WidgetData(
                     type = ComponentType("button"),
-                    componentArgs = ButtonArgs(
+                    args = ButtonArgs(
                         text = "Click me!",
                         isEnabled = true
                     )

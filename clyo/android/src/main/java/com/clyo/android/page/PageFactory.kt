@@ -1,15 +1,16 @@
 package com.clyo.android.page
 
 import android.content.Context
+import com.clyo.android.component.args.ComponentArgs
 import com.clyo.android.component.container.Container
 import com.clyo.android.component.container.ContainerData
 import com.clyo.android.component.container.ContainerProvider
 import com.clyo.android.component.type.ComponentType
 import com.clyo.android.component.widget.Widget
+import com.clyo.android.component.widget.WidgetData
 import com.clyo.android.component.widget.WidgetProvider
-import com.clyo.android.data.PageData
 
-internal class PageRenderer(
+internal class PageFactory(
     private val widgetProvider: WidgetProvider,
     private val containerProvider: ContainerProvider,
 ) {
@@ -23,14 +24,14 @@ internal class PageRenderer(
     ): Container<*> = containerProvider.provideByTypeWithContent(
         context = context,
         type = containerData.type,
-        content = widgets(context, containerData.widgetsType())
+        content = widgets(context, containerData.content)
     )
 
     private fun widgets(
         context: Context,
-        widgets: List<ComponentType>
-    ): List<Widget<*, *>> = widgets.map { widgetType ->
-        widgetProvider.provideByType(context, widgetType)
+        widgets: List<WidgetData>
+    ): List<Widget<*, *>> = widgets.map { widgetData ->
+        widgetProvider.provideByType(context, widgetData.type).submitArgs(widgetData.args)
     }
 }
 
@@ -42,4 +43,6 @@ private fun ContainerProvider.provideByTypeWithContent(
     addAll(content)
 }
 
-private fun ContainerData.widgetsType(): List<ComponentType> = content.map { it.type }
+private fun Widget<*, *>.submitArgs(args: ComponentArgs) = apply {
+    updateArgsWithCast(args)
+}
