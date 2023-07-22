@@ -1,8 +1,8 @@
 package com.clyo.android.ui.component.container
 
 import android.view.ViewGroup
-import com.clyo.android.ui.component.widget.Widget
-import com.clyo.data.properties.Properties
+import com.clyo.android.component.widget.Widget
+import com.clyo.data.Properties
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -26,7 +26,7 @@ internal class ContainerTest {
         container.renderContent(propertiesCreator)
 
         // Then
-        verify { widget1.render(properties) }
+        verify { widget1.bind(properties) }
     }
 
     @Test

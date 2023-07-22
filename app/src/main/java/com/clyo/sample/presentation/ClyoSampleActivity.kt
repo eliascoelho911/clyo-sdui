@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.clyo.android.scope.provider.clyo
 import com.clyo.sample.R
 import com.clyo.sample.databinding.ActivityClyoSampleBinding
-import com.clyo.sample.stub.ClyoJsonStub
+import com.clyo.sample.stub.PageDataStub
 
 internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sample) {
 
     private val binding: ActivityClyoSampleBinding by lazy {
-        val root = findViewById<View>(R.id.clyoContainerView)
+        val root = findViewById<View>(R.id.clyoPageHolderView)
         ActivityClyoSampleBinding.bind(root)
     }
 
@@ -20,7 +20,8 @@ internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sam
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        clyo.submit(ClyoJsonStub.json, binding.clyoContainerView)
+        val page = clyo.page(this, PageDataStub.data)
+        binding.clyoPageHolderView.show(page)
     }
 }
 

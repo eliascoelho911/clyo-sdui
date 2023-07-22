@@ -1,8 +1,8 @@
 package com.clyo.stubs
 
-import com.clyo.data.PageJson
-import com.clyo.data.container.ContainerJson
-import com.clyo.data.properties.PropertiesJson
+import com.clyo.data.json.PageJson
+import com.clyo.data.json.ContainerJson
+import com.clyo.data.json.PropertiesJson
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject

@@ -1,7 +1,7 @@
 package com.clyo.android.common.properties
 
-import com.clyo.data.properties.Properties
-import com.clyo.data.properties.PropertiesJson
+import com.clyo.data.Properties
+import com.clyo.data.json.PropertiesJson
 import kotlin.test.assertIs
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

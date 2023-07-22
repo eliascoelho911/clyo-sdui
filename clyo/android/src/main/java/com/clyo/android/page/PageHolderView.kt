@@ -1,4 +1,4 @@
-package com.clyo.android.ui.page
+package com.clyo.android.page
 
 import android.content.Context
 import android.util.AttributeSet

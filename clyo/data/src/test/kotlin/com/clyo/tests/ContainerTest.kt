@@ -1,6 +1,6 @@
 package com.clyo.tests
 
-import com.clyo.data.container.ContainerJson
+import com.clyo.data.json.ContainerJson
 import com.clyo.stubs.ContainerStub
 import kotlin.test.assertEquals
 import kotlinx.serialization.decodeFromString

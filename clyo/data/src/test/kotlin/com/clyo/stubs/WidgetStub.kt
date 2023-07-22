@@ -1,6 +1,6 @@
 package com.clyo.stubs
 
-import com.clyo.data.widget.WidgetJson
+import com.clyo.data.json.WidgetJson
 import com.clyo.widget.ButtonProperties
 import com.clyo.widget.TextProperties
 

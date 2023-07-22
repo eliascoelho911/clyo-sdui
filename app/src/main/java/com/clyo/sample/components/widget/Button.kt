@@ -2,25 +2,24 @@ package com.clyo.sample.components.widget
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatButton
-import com.clyo.android.ui.component.widget.Widget
-import com.clyo.data.widget.WidgetProperties
+import com.clyo.android.component.widget.Widget
+import com.clyo.android.component.args.ComponentArgs
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("button")
-internal class ButtonProperties(
+internal data class ButtonArgs(
     val text: String,
     val isEnabled: Boolean
-) : WidgetProperties()
+) : ComponentArgs()
 
-internal class Button(
-    override val view: AppCompatButton
-) : Widget<AppCompatButton, ButtonProperties>() {
-    override fun applyProperties(view: AppCompatButton, properties: ButtonProperties) {
-        view.text = properties.text
-        view.isEnabled = properties.isEnabled
+internal class Button(context: Context) : Widget<AppCompatButton, ButtonArgs>() {
+
+    override val view: AppCompatButton = AppCompatButton(context)
+
+    override fun updateArgs(args: ButtonArgs) {
+        view.text = args.text
+        view.isEnabled = args.isEnabled
     }
 }
-
-internal fun button(context: Context) = Button(AppCompatButton(context))

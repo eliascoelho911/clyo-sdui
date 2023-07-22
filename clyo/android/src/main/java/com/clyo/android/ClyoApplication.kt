@@ -1,11 +1,11 @@
 package com.clyo.android
 
 import android.content.Context
-import com.clyo.android.ui.component.container.ContainerProvider
-import com.clyo.android.ui.component.container.Container
-import com.clyo.android.ui.component.widget.Widget
-import com.clyo.android.ui.component.widget.WidgetProvider
-import com.clyo.data.widget.WidgetJson
+import com.clyo.android.component.container.Container
+import com.clyo.android.component.container.ContainerProvider
+import com.clyo.android.component.type.ComponentType
+import com.clyo.android.component.widget.Widget
+import com.clyo.android.component.widget.WidgetProvider
 import java.util.Locale
 import kotlinx.serialization.json.Json
 
@@ -18,17 +18,16 @@ object ClyoApplication {
 }
 
 private fun emptyWidgetProvider() = object : WidgetProvider {
-    override fun provide(
+    override fun provideByType(
         context: Context,
-        json: WidgetJson
+        type: ComponentType
     ): Widget<*, *> = isNotInitializedError("WidgetProvider")
 }
 
 private fun emptyContainerProvider() = object : ContainerProvider {
-    override fun get(
+    override fun provideByType(
         context: Context,
-        type: String,
-        content: List<Widget<*, *>>
+        type: ComponentType,
     ): Container<*> = isNotInitializedError("ContainerProvider")
 }
 

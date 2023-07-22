@@ -1,8 +1,8 @@
 package com.clyo.android.ui.page
 
 import android.view.ViewGroup
-import com.clyo.android.ui.component.container.Container
-import com.clyo.data.properties.Properties
+import com.clyo.android.page.Page
+import com.clyo.data.Properties
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Test

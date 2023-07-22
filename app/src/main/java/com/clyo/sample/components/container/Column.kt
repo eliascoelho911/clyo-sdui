@@ -2,14 +2,11 @@ package com.clyo.sample.components.container
 
 import android.content.Context
 import androidx.appcompat.widget.LinearLayoutCompat
-import com.clyo.android.ui.component.container.Container
-import com.clyo.android.ui.component.widget.Widget
+import com.clyo.android.component.container.ContainerData
+import com.clyo.android.component.args.ComponentArgs
+import com.clyo.android.component.container.Container
+import kotlinx.serialization.Serializable
 
-internal fun column(context: Context, content: List<Widget<*, *>>) = Container(
-    view = columnView(context),
-    content = content
-)
-
-private fun columnView(context: Context) = LinearLayoutCompat(context).apply {
-    orientation = LinearLayoutCompat.VERTICAL
+internal class Column(context: Context) : Container<LinearLayoutCompat>() {
+    override val view = LinearLayoutCompat(context)
 }

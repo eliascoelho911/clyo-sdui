@@ -2,12 +2,11 @@ package com.clyo.android.scope.provider
 
 import com.clyo.android.ClyoApplication
 import com.clyo.android.scope.Clyo
-import com.clyo.android.ui.page.PageFactory
+import com.clyo.android.page.PageRenderer
 
 internal fun createClyo(): Clyo = Clyo(
-    pageFactory = PageFactory(
+    pageRenderer = PageRenderer(
         widgetProvider = ClyoApplication.widgetProvider,
         containerProvider = ClyoApplication.containerProvider
-    ),
-    json = ClyoApplication.json
+    )
 )

@@ -2,23 +2,21 @@ package com.clyo.sample.components.widget
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatTextView
-import com.clyo.android.ui.component.widget.Widget
-import com.clyo.data.widget.WidgetProperties
+import com.clyo.android.component.widget.Widget
+import com.clyo.android.component.args.ComponentArgs
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("text")
-internal data class TextProperties(
+internal data class TextArgs(
     val text: String
-) : WidgetProperties()
+) : ComponentArgs()
 
-internal class Text(
-    override val view: AppCompatTextView
-) : Widget<AppCompatTextView, TextProperties>() {
-    override fun applyProperties(view: AppCompatTextView, properties: TextProperties) {
-        view.text = properties.text
+internal class Text(context: Context) : Widget<AppCompatTextView, TextArgs>() {
+    override val view: AppCompatTextView = AppCompatTextView(context)
+
+    override fun updateArgs(args: TextArgs) {
+        view.text = args.text
     }
 }
-
-internal fun text(context: Context) = Text(AppCompatTextView(context))

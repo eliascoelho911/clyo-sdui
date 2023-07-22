@@ -1,6 +1,6 @@
 package com.clyo.tests
 
-import com.clyo.data.widget.WidgetJson
+import com.clyo.data.json.WidgetJson
 import com.clyo.widget.TextProperties
 import com.clyo.stubs.WidgetStub
 import kotlin.test.assertEquals

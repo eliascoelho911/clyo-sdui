@@ -1,6 +1,6 @@
 package com.clyo.tests
 
-import com.clyo.data.PageJson
+import com.clyo.data.json.PageJson
 import com.clyo.stubs.PageJsonStub
 import kotlin.test.assertEquals
 import kotlinx.serialization.decodeFromString

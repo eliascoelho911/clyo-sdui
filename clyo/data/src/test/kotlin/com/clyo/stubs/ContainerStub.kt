@@ -1,6 +1,6 @@
 package com.clyo.stubs
 
-import com.clyo.data.container.ContainerJson
+import com.clyo.data.json.ContainerJson
 
 internal object ContainerStub {
     val jsonValue = """
