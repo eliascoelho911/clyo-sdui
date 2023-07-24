@@ -13,8 +13,6 @@ object ClyoApplication {
     var widgetProvider: WidgetProvider = emptyWidgetProvider()
 
     var containerProvider: ContainerProvider = emptyContainerProvider()
-
-    var json: Json = Json
 }
 
 private fun emptyWidgetProvider() = object : WidgetProvider {
