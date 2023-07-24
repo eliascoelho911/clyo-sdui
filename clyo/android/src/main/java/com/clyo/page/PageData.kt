@@ -1,6 +1,6 @@
-package com.clyo.android.page
+package com.clyo.page
 
-import com.clyo.android.container.ContainerData
+import com.clyo.component.container.ContainerData
 import kotlinx.serialization.Serializable
 
 @Serializable

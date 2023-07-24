@@ -1,16 +1,13 @@
-package com.clyo.android.widget
+package com.clyo.component.container
 
-import com.clyo.component.properties.Properties
+import com.clyo.component.widget.WidgetData
 import com.clyo.component.type.ComponentType
 import com.clyo.component.type.serializer.ComponentTypeSerializer
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class WidgetData(
-    @SerialName("type")
+data class ContainerData(
     @Serializable(with = ComponentTypeSerializer::class)
     val type: ComponentType,
-    @SerialName("args")
-    val args: Properties
+    val content: List<WidgetData>
 )
