@@ -1,48 +1,50 @@
 package com.clyo.android.page
 
 import android.content.Context
-import com.clyo.android.component.ComponentArgs
-import com.clyo.android.component.ComponentType
-import com.clyo.android.component.Container
-import com.clyo.android.component.ContainerData
-import com.clyo.android.component.ContainerProvider
-import com.clyo.android.component.Widget
-import com.clyo.android.component.WidgetData
-import com.clyo.android.component.WidgetProvider
+import android.view.View
+import com.clyo.android.container.AndroidContainer
+import com.clyo.android.container.ContainerData
+import com.clyo.android.container.ContainerProvider
+import com.clyo.android.widget.AndroidWidget
+import com.clyo.android.widget.WidgetData
+import com.clyo.android.widget.WidgetProvider
+import com.clyo.component.properties.Properties
+import com.clyo.component.properties.WidgetProperties
 
 internal class PageFactory(
     private val widgetProvider: WidgetProvider,
     private val containerProvider: ContainerProvider,
 ) {
     fun create(context: Context, pageData: PageData): Page {
-        return Page(container(context, pageData.content))
+        return Page(getContainer(context, pageData.content))
     }
 
-    private fun container(
+    private fun getContainer(
         context: Context,
         containerData: ContainerData
-    ): Container<*> = containerProvider.provideByTypeWithContent(
+    ): AndroidContainer<*> = containerProvider.provideByType(
         context = context,
-        type = containerData.type,
-        content = widgets(context, containerData.content)
-    )
+        type = containerData.type
+    ).addContent(getWidgets(context, containerData.content))
 
-    private fun widgets(
+    private fun getWidgets(
         context: Context,
         widgets: List<WidgetData>
-    ): List<Widget<*, *>> = widgets.map { widgetData ->
-        widgetProvider.provideByType(context, widgetData.type).submitArgs(widgetData.args)
+    ): List<AndroidWidget<*, *>> = widgets.map { widgetData ->
+        getWidget(context, widgetData).bind(widgetData.args)
     }
+
+    private fun getWidget(
+        context: Context,
+        widgetData: WidgetData
+    ): AndroidWidget<*, *> = widgetProvider.provideByType(context, widgetData.type)
 }
 
-private fun ContainerProvider.provideByTypeWithContent(
-    context: Context,
-    type: ComponentType,
-    content: List<Widget<*, *>>
-): Container<*> = provideByType(context, type).apply {
-    addAll(content)
-}
+private fun AndroidContainer<*>.addContent(
+    content: List<AndroidWidget<*, *>>
+): AndroidContainer<*> = apply { addAll(content) }
 
-private fun Widget<*, *>.submitArgs(args: ComponentArgs) = apply {
-    updateArgsWithCast(args)
-}
+@Suppress("UNCHECKED_CAST")
+private fun <V : View, P : WidgetProperties> AndroidWidget<V, P>.bind(
+    properties: Properties
+): AndroidWidget<V, P> = apply { bind(properties as P) }

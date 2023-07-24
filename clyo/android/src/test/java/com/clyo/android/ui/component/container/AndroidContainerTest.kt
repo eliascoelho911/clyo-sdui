@@ -1,16 +1,16 @@
 package com.clyo.android.ui.component.container
 
 import android.view.ViewGroup
-import com.clyo.android.component.Widget
+import com.clyo.android.widget.AndroidWidget
 import com.clyo.data.Properties
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Test
 
-internal class ContainerTest {
+internal class AndroidContainerTest {
     private val viewGroup = mockk<ViewGroup>(relaxed = true)
-    private val widget1 = mockk<Widget<*, *>>(relaxed = true)
+    private val widget1 = mockk<AndroidWidget<*, *>>(relaxed = true)
     private val content = listOf(widget1)
     private val container = Container(viewGroup, content)
 

@@ -1,13 +1,11 @@
-package com.clyo.android.component
+package com.clyo.component.type.serializer
 
+import com.clyo.component.type.ComponentType
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-
-@JvmInline
-value class ComponentType(val type: String)
 
 internal object ComponentTypeSerializer : KSerializer<ComponentType> {
     override val descriptor: SerialDescriptor = String.serializer().descriptor
