@@ -2,10 +2,10 @@ package com.clyo.android.page
 
 import android.content.Context
 import android.view.View
-import com.clyo.android.container.AndroidContainer
+import com.clyo.android.components.Container
+import com.clyo.android.components.Widget
 import com.clyo.android.container.ContainerData
 import com.clyo.android.container.ContainerProvider
-import com.clyo.android.widget.AndroidWidget
 import com.clyo.android.widget.WidgetData
 import com.clyo.android.widget.WidgetProvider
 import com.clyo.component.properties.Properties
@@ -22,7 +22,7 @@ internal class PageFactory(
     private fun getContainer(
         context: Context,
         containerData: ContainerData
-    ): AndroidContainer<*> = containerProvider.provideByType(
+    ): Container<*> = containerProvider.provideByType(
         context = context,
         type = containerData.type
     ).addContent(getWidgets(context, containerData.content))
@@ -30,21 +30,21 @@ internal class PageFactory(
     private fun getWidgets(
         context: Context,
         widgets: List<WidgetData>
-    ): List<AndroidWidget<*, *>> = widgets.map { widgetData ->
+    ): List<Widget<*, *>> = widgets.map { widgetData ->
         getWidget(context, widgetData).bind(widgetData.args)
     }
 
     private fun getWidget(
         context: Context,
         widgetData: WidgetData
-    ): AndroidWidget<*, *> = widgetProvider.provideByType(context, widgetData.type)
+    ): Widget<*, *> = widgetProvider.provideByType(context, widgetData.type)
 }
 
-private fun AndroidContainer<*>.addContent(
-    content: List<AndroidWidget<*, *>>
-): AndroidContainer<*> = apply { addAll(content) }
+private fun Container<*>.addContent(
+    content: List<Widget<*, *>>
+): Container<*> = apply { addAll(content) }
 
 @Suppress("UNCHECKED_CAST")
-private fun <V : View, P : WidgetProperties> AndroidWidget<V, P>.bind(
+private fun <V : View, P : WidgetProperties> Widget<V, P>.bind(
     properties: Properties
-): AndroidWidget<V, P> = apply { bind(properties as P) }
+): Widget<V, P> = apply { bind(properties as P) }

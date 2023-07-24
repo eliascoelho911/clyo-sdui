@@ -1,5 +1,5 @@
 package com.clyo.android.page
 
-import com.clyo.android.container.AndroidContainer
+import com.clyo.android.components.Container
 
-class Page(val container: AndroidContainer<*>)
+class Page(val container: Container<*>)

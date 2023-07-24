@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.clyo.android.scope.provider.clyo
 import com.clyo.sample.R
 import com.clyo.sample.databinding.ActivityClyoSampleBinding
-import com.clyo.sample.stub.PageDataStub
 
 internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sample) {
 
@@ -17,11 +16,5 @@ internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sam
 
     private val clyo by clyo()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val page = clyo.page(PageDataStub.data)
-        binding.clyoPageHolderView.show(page)
-    }
 }
 

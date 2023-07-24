@@ -16,6 +16,6 @@ class PageHolder @JvmOverloads constructor(
 
     private fun showOnlyPage(page: Page) {
         removeAllViews()
-        addView(page.container.value)
+        addView(page.container.view)
     }
 }
