@@ -1,6 +1,6 @@
 package com.clyo.component.widget
 
-import com.clyo.component.properties.Properties
+import com.clyo.component.properties.WidgetProperties
 import com.clyo.component.type.ComponentType
 import com.clyo.component.type.serializer.ComponentTypeSerializer
 import kotlinx.serialization.SerialName
@@ -12,5 +12,5 @@ data class WidgetData(
     @Serializable(with = ComponentTypeSerializer::class)
     val type: ComponentType,
     @SerialName("args")
-    val args: Properties
+    val args: WidgetProperties
 )
