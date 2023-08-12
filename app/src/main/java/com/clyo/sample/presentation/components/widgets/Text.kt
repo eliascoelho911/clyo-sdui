@@ -1,0 +1,22 @@
+package com.clyo.sample.presentation.components.widgets
+
+import android.content.Context
+import androidx.appcompat.widget.AppCompatTextView
+import com.clyo.android.components.Widget
+import com.clyo.component.properties.WidgetProperties
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class TextProperties(
+    val text: String,
+    val textSize: Float
+) : WidgetProperties()
+
+class Text(context: Context) : Widget<AppCompatTextView, TextProperties>() {
+    override val view: AppCompatTextView = AppCompatTextView(context)
+
+    override fun bind(properties: TextProperties) {
+        view.text = properties.text
+        view.textSize = properties.textSize
+    }
+}
