@@ -9,9 +9,3 @@ class Clyo internal constructor(
     internal val containerProvider: ContainerProvider,
     internal val json: Json
 )
-
-fun clyo(
-    widgetProvider: WidgetProvider,
-    containerProvider: ContainerProvider,
-    json: Json
-) = Clyo(widgetProvider, containerProvider, json)

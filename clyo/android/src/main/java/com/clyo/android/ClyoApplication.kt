@@ -12,6 +12,6 @@ object ClyoApplication {
         containerProvider: ContainerProvider,
         json: Json
     ) {
-        this.clyo = clyo(widgetProvider, containerProvider, json)
+        this.clyo = Clyo(widgetProvider, containerProvider, json)
     }
 }

@@ -27,7 +27,6 @@ internal class ClyoSampleApplication : Application() {
             widgetProvider = ClyoWidgetProviderImpl(),
             containerProvider = ClyoContainerProviderImpl(),
             json = Json {
-                ignoreUnknownKeys = true
                 serializersModule = SerializersModule {
                     polymorphic(WidgetProperties::class) {
                         subclass(TextProperties::class, TextProperties.serializer())

@@ -1,21 +1,22 @@
 package com.clyo.component.container
 
-//internal object ContainerStub {
-//    val jsonValue = """
-//        {
-//            "type": "layout",
-//            "content": [
-//                ${WidgetStub.Text.widgetJsonValue},
-//                ${WidgetStub.Button.widgetJsonValue}
-//            ]
-//        }
-//    """.trimIndent()
-//
-//    val container = ContainerData(
-//        type = ComponentType("layout"),
-//        content = listOf(
-//            WidgetStub.Text.widgetJson,
-//            WidgetStub.Button.widgetJson
-//        )
-//    )
-//}
+import com.clyo.component.type.ComponentType
+import com.clyo.component.widget.widgets.TestWidgetStubs
+
+internal object ContainerDataStub {
+    val jsonValue = """
+        {
+            "type": "test-container",
+            "content": [
+                ${TestWidgetStubs.jsonValue}
+            ]
+        }
+    """.trimIndent()
+
+    val container = ContainerData(
+        type = ComponentType("test-container"),
+        content = listOf(
+            TestWidgetStubs.widgetData
+        )
+    )
+}
