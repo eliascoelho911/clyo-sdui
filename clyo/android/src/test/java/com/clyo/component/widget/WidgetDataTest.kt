@@ -1,5 +1,6 @@
 package com.clyo.component.widget
 
+import com.clyo.component.properties.WidgetProperties
 import com.clyo.component.widget.widgets.TestWidgetProperties
 import com.clyo.component.widget.widgets.TestWidgetStubs
 import kotlinx.serialization.decodeFromString

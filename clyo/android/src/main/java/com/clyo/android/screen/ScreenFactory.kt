@@ -8,7 +8,7 @@ import com.clyo.android.container.ContainerProvider
 import com.clyo.android.widget.WidgetProvider
 import com.clyo.component.container.ContainerData
 import com.clyo.component.properties.Properties
-import com.clyo.component.widget.WidgetProperties
+import com.clyo.component.properties.WidgetProperties
 import com.clyo.component.widget.WidgetData
 import com.clyo.screen.ScreenData
 

@@ -2,7 +2,7 @@ package com.clyo.sample.presentation
 
 import android.app.Application
 import com.clyo.android.ClyoApplication
-import com.clyo.component.widget.WidgetProperties
+import com.clyo.component.properties.WidgetProperties
 import com.clyo.sample.di.koinModule
 import com.clyo.sample.presentation.components.widgets.TextProperties
 import com.clyo.sample.presentation.providers.ClyoContainerProviderImpl

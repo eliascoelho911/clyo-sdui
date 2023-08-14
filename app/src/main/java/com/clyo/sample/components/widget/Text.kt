@@ -3,7 +3,7 @@ package com.clyo.sample.components.widget
 import android.content.Context
 import androidx.appcompat.widget.AppCompatTextView
 import com.clyo.android.component.Widget
-import com.clyo.component.widget.WidgetProperties
+import com.clyo.component.properties.WidgetProperties
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
