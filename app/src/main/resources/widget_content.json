@@ -2,10 +2,5 @@
   "content": {
     "type": "Text",
     "id": "txt"
-  },
-  "properties": {
-    "txt": {
-      "text": "Hello World!"
-    }
   }
 }

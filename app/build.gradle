@@ -4,10 +4,10 @@ apply plugin: 'kotlinx-serialization'
 apply from: "$rootDir/plugins/android.gradle"
 
 android {
-    namespace "com.eliascoelho911.clyo.sample"
+    namespace "com.clyo.sample"
 
     defaultConfig {
-        applicationId "com.eliascoelho911.sdui.sample"
+        applicationId "com.clyo.sample"
         versionCode 1
         versionName "1.0"
     }
@@ -33,6 +33,8 @@ dependencies {
     implementation Libs.kotlinSerializationJson
 
     // Clyo
+    implementation project(":clyo:android")
+
     // Koin
     implementation Libs.koin
 }
