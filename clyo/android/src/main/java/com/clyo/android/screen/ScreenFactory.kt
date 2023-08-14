@@ -1,4 +1,4 @@
-package com.clyo.android.page
+package com.clyo.android.screen
 
 import android.content.Context
 import android.view.View
@@ -8,17 +8,17 @@ import com.clyo.android.container.ContainerProvider
 import com.clyo.android.widget.WidgetProvider
 import com.clyo.component.container.ContainerData
 import com.clyo.component.properties.Properties
-import com.clyo.component.properties.WidgetProperties
+import com.clyo.component.widget.WidgetProperties
 import com.clyo.component.widget.WidgetData
-import com.clyo.page.ContainerPageData
+import com.clyo.screen.ScreenData
 
-internal class ContainerPageFactory(
+internal class ScreenFactory(
     private val context: Context,
     private val widgetProvider: WidgetProvider,
     private val containerProvider: ContainerProvider,
 ) {
-    fun create(containerPageData: ContainerPageData): ContainerPage {
-        return ContainerPage(container(containerData = containerPageData.content))
+    fun create(screenData: ScreenData): Screen {
+        return Screen(container(containerData = screenData.content))
     }
 
     private fun container(containerData: ContainerData): Container<*> {

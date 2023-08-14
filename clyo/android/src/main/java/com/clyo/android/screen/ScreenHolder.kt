@@ -1,21 +1,21 @@
-package com.clyo.android.page
+package com.clyo.android.screen
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 
-class PageHolder @JvmOverloads constructor(
+class ScreenHolder @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    fun show(containerPage: ContainerPage) {
-        showOnlyPage(containerPage)
+    fun show(screen: Screen) {
+        showOnlyPage(screen)
     }
 
-    private fun showOnlyPage(containerPage: ContainerPage) {
+    private fun showOnlyPage(screen: Screen) {
         removeAllViews()
-        addView(containerPage.container.view)
+        addView(screen.container.view)
     }
 }

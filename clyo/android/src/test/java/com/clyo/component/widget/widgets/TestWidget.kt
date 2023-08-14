@@ -1,6 +1,6 @@
 package com.clyo.component.widget.widgets
 
-import com.clyo.component.properties.WidgetProperties
+import com.clyo.component.widget.WidgetProperties
 import com.clyo.component.type.ComponentType
 import com.clyo.component.widget.WidgetData
 import kotlinx.serialization.SerialName

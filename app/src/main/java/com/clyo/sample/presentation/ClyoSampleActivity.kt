@@ -3,7 +3,7 @@ package com.clyo.sample.presentation
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.clyo.android.page.newPage
+import com.clyo.android.screen.newScreen
 import com.clyo.android.scope.provider.clyo
 import com.clyo.sample.R
 import com.clyo.sample.databinding.ActivityClyoSampleBinding
@@ -24,7 +24,7 @@ internal class ClyoSampleActivity : AppCompatActivity(R.layout.activity_clyo_sam
         super.onCreate(savedInstanceState)
 
         viewModel.getPageJson().observe(this) { jsonValue ->
-            val page = clyo.newPage(jsonValue)
+            val page = clyo.newScreen(jsonValue)
             binding.clyoPageHolderView.show(page)
         }
     }

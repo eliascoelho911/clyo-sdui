@@ -1,9 +1,7 @@
 package com.clyo.component.widget
 
-import com.clyo.component.properties.WidgetProperties
 import com.clyo.component.widget.widgets.TestWidgetProperties
 import com.clyo.component.widget.widgets.TestWidgetStubs
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
