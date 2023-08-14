@@ -2,11 +2,13 @@ package com.clyo.sample.presentation.components.widgets
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatTextView
-import com.clyo.android.components.Widget
+import com.clyo.android.component.Widget
 import com.clyo.component.properties.WidgetProperties
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@SerialName("text")
 data class TextProperties(
     val text: String,
     val textSize: Float

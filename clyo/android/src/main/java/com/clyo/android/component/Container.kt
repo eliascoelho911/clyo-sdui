@@ -1,9 +1,8 @@
-package com.clyo.android.components
+package com.clyo.android.component
 
 import android.view.ViewGroup
 
 abstract class Container<V : ViewGroup> : Component<V> {
-
     private val _content = mutableListOf<Widget<*, *>>()
 
     val content: List<Widget<*, *>> get() = _content

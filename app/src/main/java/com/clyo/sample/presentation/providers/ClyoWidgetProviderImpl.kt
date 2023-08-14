@@ -1,7 +1,7 @@
-package com.clyo.sample.presentation
+package com.clyo.sample.presentation.providers
 
 import android.content.Context
-import com.clyo.android.components.Widget
+import com.clyo.android.component.Widget
 import com.clyo.android.widget.WidgetProvider
 import com.clyo.component.type.ComponentType
 import com.clyo.sample.presentation.components.widgets.Text

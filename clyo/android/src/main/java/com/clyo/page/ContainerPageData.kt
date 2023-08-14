@@ -4,6 +4,6 @@ import com.clyo.component.container.ContainerData
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PageData(
+data class ContainerPageData(
     val content: ContainerData
 )

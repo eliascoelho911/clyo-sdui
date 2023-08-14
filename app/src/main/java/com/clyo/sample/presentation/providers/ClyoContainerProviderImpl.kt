@@ -1,7 +1,7 @@
-package com.clyo.sample.presentation
+package com.clyo.sample.presentation.providers
 
 import android.content.Context
-import com.clyo.android.components.Container
+import com.clyo.android.component.Container
 import com.clyo.android.container.ContainerProvider
 import com.clyo.component.type.ComponentType
 import com.clyo.sample.presentation.components.containers.Column

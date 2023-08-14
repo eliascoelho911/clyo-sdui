@@ -10,12 +10,12 @@ class PageHolder @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    fun show(page: Page) {
-        showOnlyPage(page)
+    fun show(containerPage: ContainerPage) {
+        showOnlyPage(containerPage)
     }
 
-    private fun showOnlyPage(page: Page) {
+    private fun showOnlyPage(containerPage: ContainerPage) {
         removeAllViews()
-        addView(page.container.view)
+        addView(containerPage.container.view)
     }
 }

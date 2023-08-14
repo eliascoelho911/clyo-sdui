@@ -1,7 +1,7 @@
 package com.clyo.android.widget
 
 import android.content.Context
-import com.clyo.android.components.Widget
+import com.clyo.android.component.Widget
 import com.clyo.component.type.ComponentType
 
 interface WidgetProvider {

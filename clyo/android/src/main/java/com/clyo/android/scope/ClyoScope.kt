@@ -1,15 +1,15 @@
 package com.clyo.android.scope
 
 import android.content.Context
-import com.clyo.android.page.Page
-import com.clyo.page.PageData
-import com.clyo.android.page.PageFactory
+import com.clyo.android.ClyoApplication
+import com.clyo.android.container.ContainerProvider
+import com.clyo.android.widget.WidgetProvider
+import kotlinx.serialization.json.Json
 
 class ClyoScope internal constructor(
-    private val context: Context,
-    private val pageFactory: PageFactory
+    internal val androidContext: Context
 ) {
-    fun page(pageData: PageData): Page {
-        return pageFactory.create(context, pageData)
-    }
+    internal val widgetProvider: WidgetProvider = ClyoApplication.clyo.widgetProvider
+    internal val containerProvider: ContainerProvider = ClyoApplication.clyo.containerProvider
+    internal val json: Json = ClyoApplication.clyo.json
 }
