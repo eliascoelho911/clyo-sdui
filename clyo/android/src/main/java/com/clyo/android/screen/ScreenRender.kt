@@ -11,6 +11,11 @@ fun ClyoScope.newScreen(jsonValue: String): Screen {
     return factory.create(screenData)
 }
 
+fun ClyoScope.showNewScreen(jsonValue: String, holder: ScreenHolder) {
+    val screen = newScreen(jsonValue)
+    holder.show(screen)
+}
+
 private fun ClyoScope.containerPageFactory(): ScreenFactory {
     return ScreenFactory(androidContext, widgetProvider, containerProvider)
 }
