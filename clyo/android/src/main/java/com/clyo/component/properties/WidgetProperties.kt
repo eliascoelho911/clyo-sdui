@@ -6,5 +6,5 @@ import kotlinx.serialization.json.JsonClassDiscriminator
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable
-@JsonClassDiscriminator("#type")
+@JsonClassDiscriminator("#widget")
 abstract class WidgetProperties : Properties()

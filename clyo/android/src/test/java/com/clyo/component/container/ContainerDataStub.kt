@@ -6,7 +6,7 @@ import com.clyo.component.widget.widgets.TestWidgetStubs
 internal object ContainerDataStub {
     val jsonValue = """
         {
-            "type": "test-container",
+            "#container": "test-container",
             "content": [
                 ${TestWidgetStubs.jsonValue}
             ]
