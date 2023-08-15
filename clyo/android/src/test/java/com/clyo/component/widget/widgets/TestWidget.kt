@@ -24,11 +24,9 @@ internal object TestWidgetStubs {
 
     val jsonValue = """
         {
-            "type": "test",
-            "properties": {
-                "arg0": "arg0_value",
-                "arg1": "arg1_value"
-            }
+            "#widget": "test",
+            "arg0": "arg0_value",
+            "arg1": "arg1_value"
         }
     """.trimIndent()
 }

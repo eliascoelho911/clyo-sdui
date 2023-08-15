@@ -2,7 +2,7 @@ package com.clyo.component.widget
 
 import com.clyo.component.properties.WidgetProperties
 import com.clyo.component.type.ComponentType
-import com.clyo.component.type.serializer.ComponentTypeSerializer
+import com.clyo.component.type.ComponentTypeSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -20,7 +20,7 @@ import kotlinx.serialization.json.jsonPrimitive
 
 @Serializable(with = WidgetDataJsonTransformingSerializer::class)
 data class WidgetData(
-    @SerialName("type")
+    @SerialName("#widget")
     @Serializable(with = ComponentTypeSerializer::class)
     val type: ComponentType,
 
@@ -32,26 +32,21 @@ internal object WidgetDataJsonTransformingSerializer :
     JsonTransformingSerializer<WidgetData>(WidgetDataSerializer) {
 
     override fun transformDeserialize(element: JsonElement): JsonElement {
-        val type = element.jsonObject["type"]!!.jsonPrimitive.content
-        val properties = (element.jsonObject["properties"]!!.jsonObject).let { properties ->
-            val propertiesMapWithType = properties.jsonObject.toMutableMap().apply {
-                put("type", JsonPrimitive(type))
-            }
-
-            JsonObject(propertiesMapWithType)
-        }
+        val type = element.jsonObject["#widget"]!!.jsonPrimitive.content
+        val onlyProperties = element.jsonObject.filter { !it.key.startsWith("#") }
+        val propertiesWithType = onlyProperties + ("#widget" to JsonPrimitive(type))
 
         return buildJsonObject {
-            put("type", JsonPrimitive(type))
-            put("properties", properties)
+            put("#widget", JsonPrimitive(type))
+            put("properties", JsonObject(propertiesWithType))
         }
     }
 }
 
-internal object WidgetDataSerializer : KSerializer<WidgetData> {
+private object WidgetDataSerializer : KSerializer<WidgetData> {
 
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("WidgetData") {
-        element("type", ComponentTypeSerializer.descriptor)
+        element("#widget", ComponentTypeSerializer.descriptor)
         element("properties", WidgetProperties.serializer().descriptor)
     }
 

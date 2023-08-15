@@ -3,13 +3,11 @@ package com.clyo.sample
 private val pageJson = """
 {
     "content": {
-        "type": "column",
+        "#container": "column",
         "content": [
             {
-                "type": "text",
-                "properties": {
-                    "text": "Hello, world!"
-                }
+                "#widget": "text",
+                "text": "Hello, world!"
             }
         ]
     }
