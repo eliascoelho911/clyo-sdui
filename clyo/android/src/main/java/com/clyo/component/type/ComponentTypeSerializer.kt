@@ -1,6 +1,5 @@
-package com.clyo.component.type.serializer
+package com.clyo.component.type
 
-import com.clyo.component.type.ComponentType
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
