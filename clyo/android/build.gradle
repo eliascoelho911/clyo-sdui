@@ -18,6 +18,7 @@ android {
 dependencies {
     // Android
     implementation Libs.appCompat
+    implementation Libs.coreKtx
 
     // Kotlin
     implementation Libs.kotlinReflect
